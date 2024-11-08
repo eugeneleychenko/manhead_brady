@@ -8,11 +8,17 @@ def process_inventory_file(inventory_path, tour_data_path, genre_df):
     # Read input files
     inventory_df = pd.read_csv(inventory_path)
     
-    # Get band name from filename
-    band_name = ' '.join([word.capitalize() for word in base_filename.split('_')])
+    # Get band name from filename - modify to preserve original capitalization
+    base_filename = base_filename.replace('_', ' ')  # Just replace underscores with spaces
+    band_name = base_filename  # Use the filename as-is without modifying capitalization
     
-    # Get genre for the band
-    genre = genre_df[genre_df['Band Name'] == band_name]['Genre'].iloc[0]
+    # Get genre for the band - Add error handling
+    band_genre_match = genre_df[genre_df['Band Name'] == band_name]
+    if len(band_genre_match) == 0:
+        print(f"Available bands in genre mapping:")
+        print(genre_df['Band Name'].tolist())
+        raise ValueError(f"No genre found for band: {band_name}")
+    genre = band_genre_match['Genre'].iloc[0]
     
     # Extract show dates and cities from column headers
     show_columns = [col for col in inventory_df.columns if '-' in col]
@@ -20,21 +26,36 @@ def process_inventory_file(inventory_path, tour_data_path, genre_df):
     
     print("\nProcessing inventory shows:")
     for col in show_columns:
-        # Parse "City - MM/DD/YY ($7.00/head)" format
-        parts = col.split(' - ')
-        city = parts[0].strip()
-        date = parts[1].split(' ')[0]
-        
-        # Convert date to desired format
-        date_obj = datetime.strptime(date, '%m/%d/%y')
-        date_str = date_obj.strftime('%-m/%-d/%Y')
-        
-        shows.append({
-            'city': city,
-            'date': date_str
-        })
-        print(f"City: {city}, Date: {date_str}")
-
+        try:
+            # Debug print
+            print(f"Processing column: {col}")
+            
+            # Parse "City - MM/DD/YY ($7.00/head)" format
+            parts = col.split(' - ')
+            if len(parts) < 2:
+                print(f"Warning: Column '{col}' doesn't match expected format 'City - MM/DD/YY'")
+                continue
+                
+            city = parts[0].strip()
+            date_part = parts[1].split(' ')[0]  # Get just the date part before the price
+            
+            # Convert date to desired format
+            date_obj = datetime.strptime(date_part, '%m/%d/%y')
+            date_str = date_obj.strftime('%-m/%-d/%Y')
+            
+            shows.append({
+                'city': city,
+                'date': date_str
+            })
+            print(f"Successfully processed - City: {city}, Date: {date_str}")
+            
+        except Exception as e:
+            print(f"Error processing column '{col}': {str(e)}")
+            continue
+    
+    if not shows:
+        raise ValueError("No valid show dates found in inventory file")
+    
     # Create output rows
     output_rows = []
     
@@ -114,7 +135,7 @@ def update_venue_details(output_path, tour_data_path):
 
 if __name__ == "__main__":
     # File paths
-    inventory_path = "Air Supply.csv"  # Replace with your inventory file path
+    inventory_path = "Air_Supply.csv"  # Replace with your inventory file path
     tour_data_path = "tour_data.csv"  # Replace with your tour data file path
     genre_map_path = "band_genre_map.csv"  # Replace with your genre mapping file path
     
