@@ -55,7 +55,8 @@ date_range = st.sidebar.date_input(
 )
 
 # Genre filter
-all_genres = ['All'] + sorted(display_df['Genre'].unique().tolist())
+# Replace NaN with 'Unknown' and then get unique values
+all_genres = ['All'] + sorted(display_df['Genre'].fillna('Unknown').unique().tolist())
 selected_genre = st.sidebar.selectbox('Select Genre', all_genres)
 
 # Artist filter
