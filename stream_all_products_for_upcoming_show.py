@@ -16,21 +16,34 @@ def load_static_data():
         response = requests.get(tour_data_url)
         response.raise_for_status()  # Raise an exception for HTTP errors
         
-        # Parse the CSV data with more flexible options
-        # The error suggests inconsistent number of columns, so we'll handle that
+        # Define the column names for the CSV without headers
+        column_names = [
+            'Band', 'Show Date', 'City', 'State', 'Venue', 'Nights', 'Type', 
+            'Capacity', 'Attn', 'PPH', 'Col10', 'Merch', 'Col12', 'Expenses', 
+            'Col14', 'Net', 'Col16'
+        ]
+        
+        # Parse the CSV data with explicit column names and handling for no header
         tour_df = pd.read_csv(
             StringIO(response.text),
             sep=',',
-            header=0,  # First row is the header
+            header=None,  # No header in the file
+            names=column_names,  # Use our defined column names
             engine='python',  # More flexible parsing engine
             on_bad_lines='warn'  # Log warnings for problematic lines but don't fail
         )
         
-        # Ensure we have the needed columns, creating them if they don't exist
-        required_columns = ['Band', 'Show Date', 'City', 'ST', 'Venue', 'Nights', 'Type', 'Capacity', 'Attn']
-        for col in required_columns:
-            if col not in tour_df.columns:
-                tour_df[col] = None
+        # Convert numeric columns to appropriate types
+        numeric_columns = ['Capacity', 'Attn']
+        for col in numeric_columns:
+            tour_df[col] = pd.to_numeric(tour_df[col], errors='coerce')
+        
+        # In case the file actually has headers, check if the first row looks like headers
+        if isinstance(tour_df['Band'].iloc[0], str) and tour_df['Band'].iloc[0] == 'Band':
+            tour_df = tour_df.iloc[1:].reset_index(drop=True)
+        
+        # Map 'State' to 'ST' for compatibility
+        tour_df['ST'] = tour_df['State']
         
         st.success("Successfully loaded tour data from external source")
     except Exception as e:
@@ -95,8 +108,9 @@ def process_inventory_file(inventory_df, band_name, genre_df, price_df):
     # Create output rows
     output_rows = []
     
-    # Filter price data for this band
-    band_prices = price_df[price_df['Band Name'] == band_name]
+    # Filter price data for this band, also checking for band name with "(MH)" suffix
+    band_with_mh = f"{band_name} (MH)"
+    band_prices = price_df[(price_df['Band Name'] == band_name) | (price_df['Band Name'] == band_with_mh)]
     
     for _, row in inventory_df.iterrows():
         if pd.isna(row['Item Name']):  # Skip empty rows
@@ -145,35 +159,88 @@ def process_inventory_file(inventory_df, band_name, genre_df, price_df):
 def update_venue_details(output_df, tour_df, band_name):
     st.write("Updating venue details...")
     
-    # Filter for selected band's shows
-    band_shows = tour_df[tour_df['Band'] == band_name]
+    # Check for both exact band name and band name with "(MH)" suffix
+    band_with_mh = f"{band_name} (MH)"
+    band_shows = tour_df[(tour_df['Band'] == band_name) | (tour_df['Band'] == band_with_mh)]
+    
     st.write(f"Found {len(band_shows)} {band_name} shows")
     
-    # Create lookup dictionary from tour data using just city
+    # Create lookup dictionary from tour data with flexible city matching
     venue_lookup = {}
     for _, row in band_shows.iterrows():
         if pd.notna(row['City']):
+            # Handle cases where city includes state or other text
             city = row['City'].strip()
-            venue_lookup[city] = {
+            
+            # Handle NaN values with proper conversion
+            attendance = 0
+            if pd.notna(row['Attn']):
+                attendance = row['Attn']
+            
+            # Store city name in lowercase for case-insensitive matching
+            venue_lookup[city.lower()] = {
                 'venue': row['Venue'] if pd.notna(row['Venue']) else '',
                 'state': row['ST'] if pd.notna(row['ST']) else '',
-                'attendance': row['Attn'] if pd.notna(row['Attn']) else 0
+                'attendance': attendance  # Use the safely converted attendance
             }
+            
+            # Also store shortened versions (before commas or spaces) for better matching
+            if ',' in city:
+                short_city = city.split(',')[0].strip()
+                venue_lookup[short_city.lower()] = venue_lookup[city.lower()]
+            if ' ' in city:
+                first_word = city.split(' ')[0].strip()
+                # Only use first word if it's reasonably long (avoid matching on "San", etc.)
+                if len(first_word) > 3:
+                    venue_lookup[first_word.lower()] = venue_lookup[city.lower()]
+    
+    # Add a fallback for "Indianapolis, IN" style city names
+    for city_key in list(venue_lookup.keys()):
+        if ',' not in city_key:
+            continue
+        base_city = city_key.split(',')[0].strip()
+        if base_city not in venue_lookup:
+            venue_lookup[base_city] = venue_lookup[city_key]
     
     st.write("Venue lookup created for cities:")
     st.write(venue_lookup)
     
-    # Update venue details in output
-    updates = 0
-    for idx, row in output_df.iterrows():
-        city = row['venue city']
+    # Update the output dataframe with venue details - using correct column names
+    for i, row in output_df.iterrows():
+        # Use 'venue city' instead of 'City'
+        if 'venue city' not in row or pd.isna(row['venue city']):
+            continue
+            
+        city = row['venue city'].lower()
+        
+        # Try direct match first
         if city in venue_lookup:
-            output_df.at[idx, 'venue name'] = venue_lookup[city]['venue']
-            output_df.at[idx, 'venue state'] = venue_lookup[city]['state']
-            output_df.at[idx, 'attendance'] = venue_lookup[city]['attendance']
-            updates += 1
+            output_df.at[i, 'venue name'] = venue_lookup[city]['venue']
+            output_df.at[i, 'venue state'] = venue_lookup[city]['state']
+            output_df.at[i, 'attendance'] = venue_lookup[city]['attendance']
+        else:
+            # Try match with only the part before a comma
+            if ',' in city:
+                base_city = city.split(',')[0].strip().lower()
+                if base_city in venue_lookup:
+                    output_df.at[i, 'venue name'] = venue_lookup[base_city]['venue']
+                    output_df.at[i, 'venue state'] = venue_lookup[base_city]['state']
+                    output_df.at[i, 'attendance'] = venue_lookup[base_city]['attendance']
+            
+            # Try partial match on any city
+            else:
+                matched = False
+                for venue_city, details in venue_lookup.items():
+                    if city in venue_city or venue_city in city:
+                        output_df.at[i, 'venue name'] = details['venue']
+                        output_df.at[i, 'venue state'] = details['state']
+                        output_df.at[i, 'attendance'] = details['attendance']
+                        matched = True
+                        break
+                
+                if not matched:
+                    st.warning(f"No venue match found for city: {row['venue city']}")
     
-    st.write(f"Updated {updates} rows with venue details")
     return output_df
 
 def main():
