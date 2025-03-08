@@ -284,12 +284,43 @@ def main():
                 # Update venue details
                 final_df = update_venue_details(output_df, tour_df, selected_band)
                 
+                # Add toggle to hide rows with missing data
+                show_all_data = st.checkbox("Show all data (including rows with missing attendance or price)", value=True)
+                
+                # Filter the data if the toggle is off
+                display_df = final_df
+                if not show_all_data:
+                    # Add debug information to check the columns and data
+                    st.write("Columns in dataframe:", final_df.columns.tolist())
+                    
+                    # First, check if both columns actually exist in the dataframe
+                    has_attendance = 'attendance' in final_df.columns
+                    has_price = 'product price' in final_df.columns
+                    
+                    if has_attendance and has_price:
+                        # Convert columns to numeric to handle any string values
+                        final_df['attendance'] = pd.to_numeric(final_df['attendance'], errors='coerce')
+                        final_df['product price'] = pd.to_numeric(final_df['product price'], errors='coerce')
+                        
+                        # Show counts of non-null values to help diagnose the issue
+                        st.write(f"Rows with attendance data: {final_df['attendance'].notna().sum()}")
+                        st.write(f"Rows with product price data: {final_df['product price'].notna().sum()}")
+                        
+                        # Filter out rows with missing attendance OR price (using AND for the filter)
+                        display_df = final_df[(final_df['attendance'].notna() & (final_df['attendance'] > 0)) & 
+                                             (final_df['product price'].notna() & (final_df['product price'] > 0))]
+                    else:
+                        st.warning(f"Missing required columns. Has attendance column: {has_attendance}, Has price column: {has_price}")
+                        display_df = final_df  # Show all data if columns are missing
+                        
+                    st.write(f"Showing {len(display_df)} rows with both attendance and price data (filtered from {len(final_df)} total rows)")
+                
                 # Display results
                 st.write("Processed Data:")
-                st.dataframe(final_df)
+                st.dataframe(display_df)
                 
                 # Download button
-                csv = final_df.to_csv(index=False)
+                csv = final_df.to_csv(index=False)  # Always download the full dataset
                 st.download_button(
                     label="Download processed data",
                     data=csv,
