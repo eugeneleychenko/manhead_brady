@@ -14,4 +14,8 @@ flask-cors==4.0.0
 streamlit==1.35.0
 
 # Deployment dependencies
-python-dotenv==1.0.1 
+python-dotenv==1.0.1
+
+# Memory optimization
+psutil==5.9.8
+memory-profiler==0.61.0 
