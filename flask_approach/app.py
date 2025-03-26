@@ -8,6 +8,10 @@ import os
 import logging
 import datetime as dt
 import time
+import gc  # Add garbage collection module
+
+# Configure aggressive garbage collection
+gc.set_threshold(100, 5, 5)  # More aggressive garbage collection
 
 # Configure logging
 timestamp = dt.datetime.now().strftime("%m_%d_%Y-%I_%M_%S_%p")
@@ -54,6 +58,7 @@ def load_models():
         os.unlink(temp_path)
         print("Model loaded successfully")
         logging.info("Model loaded successfully")
+        gc.collect()  # Force garbage collection after loading model
         
         # Scaler
         with tempfile.NamedTemporaryFile(delete=False) as temp:
@@ -65,6 +70,7 @@ def load_models():
         os.unlink(temp_path)
         print("Scaler loaded successfully")
         logging.info("Scaler loaded successfully")
+        gc.collect()  # Force garbage collection after loading scaler
         
         # Encoder
         with tempfile.NamedTemporaryFile(delete=False) as temp:
@@ -80,6 +86,9 @@ def load_models():
         elapsed_time = time.time() - start_time
         print(f"All models loaded successfully in {elapsed_time:.2f} seconds!")
         logging.info(f"All models loaded successfully in {elapsed_time:.2f} seconds")
+        
+        # Final garbage collection after loading all models
+        gc.collect()
         return True
     except Exception as e:
         print(f"Error loading models: {e}")
@@ -107,6 +116,7 @@ def predict():
         
         # Convert to DataFrame
         df = pd.DataFrame(data)
+        df = df.copy()  # This can help with memory usage
         
         # Process data for prediction
         # Convert 'showDate' to datetime and extract features
@@ -134,6 +144,7 @@ def predict():
         
         # Combine features
         df_scaled_encoded = pd.concat([df_num, df_cat], axis=1)
+        gc.collect()  # Force garbage collection after large DataFrame operations
         
         # Drop rows with NA values
         df_scaled_encoded.dropna(inplace=True)
@@ -153,6 +164,10 @@ def predict():
         # Convert datetime to string format for JSON serialization
         output_df['showDate'] = output_df['showDate'].dt.strftime('%Y-%m-%d')
         
+        # Clean up to free memory
+        del df_num, df_cat, df_scaled_encoded, predictions, df
+        gc.collect()  # Force garbage collection before returning response
+        
         # Return results
         return jsonify({
             "status": "success",
@@ -162,6 +177,7 @@ def predict():
         
     except Exception as e:
         logging.error(f"Prediction error: {e}")
+        gc.collect()  # Force garbage collection after error
         return jsonify({"status": "error", "message": str(e)}), 500
 
 @app.route('/model-info', methods=['GET'])
@@ -178,14 +194,17 @@ def model_info():
         categorical_features = list(encoder.keys()) if hasattr(encoder, 'keys') else []
         numerical_features = list(scaler.keys()) if hasattr(scaler, 'keys') else []
         
-        return jsonify({
+        result = {
             "status": "success",
             "model_type": model_type,
             "categorical_features": categorical_features,
             "numerical_features": numerical_features,
             "input_categorical_features": input_categorical_features,
             "input_numerical_features": input_numerical_features,
-        }), 200
+        }
+        
+        gc.collect()  # Force garbage collection after generating response
+        return jsonify(result), 200
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
