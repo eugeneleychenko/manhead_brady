@@ -74,6 +74,20 @@ def process_inventory_file(inventory_df, band_name, genre_df, price_df):
     # Get the corresponding Band Name for price lookups
     band_name_for_price = band_genre_match['Band Name'].iloc[0] if 'Band Name' in band_genre_match.columns else band_name
     
+    # Debug: Show pricing data for this band
+    st.write(f"Looking up prices for band: {band_name_for_price}")
+    
+    # Filter price data for this band, also checking for band name with "(MH)" suffix
+    band_with_mh = f"{band_name_for_price} (MH)"
+    band_prices = price_df[(price_df['Band Name'] == band_name_for_price) | (price_df['Band Name'] == band_with_mh)]
+    
+    if band_prices.empty:
+        st.warning(f"No price data found for band: {band_name_for_price}")
+        st.write("Available bands in price data:")
+        st.write(price_df['Band Name'].unique())
+    else:
+        st.success(f"Found {len(band_prices)} price entries for {band_name_for_price}")
+    
     # Extract show dates and cities from column headers
     show_columns = [col for col in inventory_df.columns if '-' in col]
     shows = []
@@ -90,15 +104,28 @@ def process_inventory_file(inventory_df, band_name, genre_df, price_df):
             city = parts[0].strip()
             date_part = parts[1].split(' ')[0]  # Get just the date part before the price
             
+            # Try to extract price if it's in the format
+            price = None
+            if '($' in col:
+                price_part = col.split('($')[1].split('/')[0]
+                try:
+                    price = float(price_part.replace('$', ''))
+                except ValueError:
+                    price = None
+            
             # Convert date to desired format
             date_obj = datetime.strptime(date_part, '%m/%d/%y')
             date_str = date_obj.strftime('%-m/%-d/%Y')
             
             shows.append({
                 'city': city,
-                'date': date_str
+                'date': date_str,
+                'price': price
             })
-            st.write(f"Successfully processed - City: {city}, Date: {date_str}")
+            show_info = f"City: {city}, Date: {date_str}"
+            if price:
+                show_info += f", Price: ${price:.2f}"
+            st.write(f"Successfully processed - {show_info}")
             
         except Exception as e:
             st.error(f"Error processing column '{col}': {str(e)}")
@@ -110,10 +137,6 @@ def process_inventory_file(inventory_df, band_name, genre_df, price_df):
     
     # Create output rows
     output_rows = []
-    
-    # Filter price data for this band, also checking for band name with "(MH)" suffix
-    band_with_mh = f"{band_name} (MH)"
-    band_prices = price_df[(price_df['Band Name'] == band_name_for_price) | (price_df['Band Name'] == band_with_mh)]
     
     for _, row in inventory_df.iterrows():
         if pd.isna(row['Item Name']):  # Skip empty rows
@@ -131,18 +154,36 @@ def process_inventory_file(inventory_df, band_name, genre_df, price_df):
                 if not sku_match.empty:
                     item_price = sku_match['Price'].iloc[0]
             
-            # If no price found by SKU, try to find by item name and size
+            # If no price found by SKU, try to find by item name
             if item_price == '' and 'Item Name' in row:
-                # This is a simplified approach - in reality, you might need more complex matching logic
-                for _, price_row in band_prices.iterrows():
-                    if pd.notna(price_row['SKU']) and row['Item Name'] in price_row['SKU'] and size in price_row['SKU']:
-                        item_price = price_row['Price']
-                        break
+                # Extract price from show column headers if available
+                # Format example: "City - MM/DD/YY ($35.00/head)"
+                if show_columns:
+                    first_show = show_columns[0]
+                    if '($' in first_show:
+                        price_part = first_show.split('($')[1].split('/')[0]
+                        try:
+                            # Remove $ and convert to float
+                            item_price = float(price_part.replace('$', ''))
+                        except ValueError:
+                            item_price = ''
+                
+                # If still no price, try matching by item name
+                if item_price == '':
+                    for _, price_row in band_prices.iterrows():
+                        if pd.notna(price_row['SKU']) and row['Item Name'].strip() in price_row['SKU']:
+                            item_price = price_row['Price']
+                            break
         
         # For each show
         for show in shows:
+            # Use the price from the show column if available, otherwise use the looked-up price
+            show_price = item_price
+            if show.get('price') is not None:
+                show_price = show['price']
+                
             output_rows.append({
-                'artistName': band_name_for_price,
+                'artistName': band_name,
                 'Genre': genre,
                 'showDate': show['date'],
                 'venue name': '',
@@ -151,7 +192,7 @@ def process_inventory_file(inventory_df, band_name, genre_df, price_df):
                 'attendance': 0,
                 'product size': size,
                 'productType': row['Product Type'],
-                'product price': item_price,
+                'product price': show_price,
                 'Item Name': row['Item Name']
             })
 
