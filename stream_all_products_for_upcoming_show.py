@@ -63,13 +63,16 @@ def load_static_data():
 
 def process_inventory_file(inventory_df, band_name, genre_df, price_df):
     # Get genre for the band - Add error handling
-    band_genre_match = genre_df[genre_df['Band Name'] == band_name]
+    band_genre_match = genre_df[genre_df['MH band'] == band_name]
     if len(band_genre_match) == 0:
         st.error(f"No genre found for band: {band_name}")
         st.write("Available bands in genre mapping:")
-        st.write(genre_df['Band Name'].tolist())
+        st.write(genre_df['MH band'].tolist())
         return None
     genre = band_genre_match['Genre'].iloc[0]
+    
+    # Get the corresponding Band Name for price lookups
+    band_name_for_price = band_genre_match['Band Name'].iloc[0] if 'Band Name' in band_genre_match.columns else band_name
     
     # Extract show dates and cities from column headers
     show_columns = [col for col in inventory_df.columns if '-' in col]
@@ -110,7 +113,7 @@ def process_inventory_file(inventory_df, band_name, genre_df, price_df):
     
     # Filter price data for this band, also checking for band name with "(MH)" suffix
     band_with_mh = f"{band_name} (MH)"
-    band_prices = price_df[(price_df['Band Name'] == band_name) | (price_df['Band Name'] == band_with_mh)]
+    band_prices = price_df[(price_df['Band Name'] == band_name_for_price) | (price_df['Band Name'] == band_with_mh)]
     
     for _, row in inventory_df.iterrows():
         if pd.isna(row['Item Name']):  # Skip empty rows
@@ -139,7 +142,7 @@ def process_inventory_file(inventory_df, band_name, genre_df, price_df):
         # For each show
         for show in shows:
             output_rows.append({
-                'artistName': band_name,
+                'artistName': band_name_for_price,
                 'Genre': genre,
                 'showDate': show['date'],
                 'venue name': '',
@@ -156,14 +159,14 @@ def process_inventory_file(inventory_df, band_name, genre_df, price_df):
     output_df = pd.DataFrame(output_rows)
     return output_df
 
-def update_venue_details(output_df, tour_df, band_name):
+def update_venue_details(output_df, tour_df, band_name, band_name_for_lookup):
     st.write("Updating venue details...")
     
     # Check for both exact band name and band name with "(MH)" suffix
-    band_with_mh = f"{band_name} (MH)"
-    band_shows = tour_df[(tour_df['Band'] == band_name) | (tour_df['Band'] == band_with_mh)]
+    band_with_mh = f"{band_name_for_lookup} (MH)"
+    band_shows = tour_df[(tour_df['Band'] == band_name_for_lookup) | (tour_df['Band'] == band_with_mh)]
     
-    st.write(f"Found {len(band_shows)} {band_name} shows")
+    st.write(f"Found {len(band_shows)} {band_name_for_lookup} shows")
     
     # Create lookup dictionary from tour data with flexible city matching
     venue_lookup = {}
@@ -250,10 +253,18 @@ def main():
     genre_df, tour_df, price_df = load_static_data()
     
     # Get list of bands for dropdown
-    bands = sorted(genre_df['Band Name'].unique())
+    bands = sorted(genre_df['MH band'].unique())
     
     # Band selection dropdown
     selected_band = st.selectbox("Select Band", bands)
+    
+    # Get the corresponding Band Name for additional lookups
+    selected_band_info = genre_df[genre_df['MH band'] == selected_band]
+    band_name_for_lookup = ""
+    if len(selected_band_info) > 0 and 'Band Name' in selected_band_info.columns:
+        band_name_for_lookup = selected_band_info['Band Name'].iloc[0]
+    else:
+        band_name_for_lookup = selected_band
     
     # File uploader - now accepts both CSV and Excel files
     uploaded_file = st.file_uploader("Upload inventory file", type=['csv', 'xlsx', 'xls'])
@@ -282,7 +293,7 @@ def main():
             
             if output_df is not None:
                 # Update venue details
-                final_df = update_venue_details(output_df, tour_df, selected_band)
+                final_df = update_venue_details(output_df, tour_df, selected_band, band_name_for_lookup)
                 
                 # Add toggle to hide rows with missing data
                 show_all_data = st.checkbox("Show all data (including rows with missing attendance or price)", value=True)
