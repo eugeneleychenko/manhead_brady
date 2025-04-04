@@ -20,35 +20,59 @@ logging.basicConfig(
 
 # Set page title and header
 st.set_page_config(page_title="All Products Sales By Size Predictor", layout="wide")
-st.title("Predict Merch Sales Quantity By Size")
+st.title("Predict Merch Sales Quantity By Size for Replit")
 
 # Define paths for model files
+MODEL_DIR = Path("persisted_models")
+MODEL_DIR.mkdir(exist_ok=True)  # Create directory if it doesn't exist
+
+MODEL_PATH = MODEL_DIR / "model.joblib"
+SCALER_PATH = MODEL_DIR / "scaler.joblib"
+ENCODER_PATH = MODEL_DIR / "encoder.joblib"
+
 MODEL_URL = "https://mh-forecast.nyc3.cdn.digitaloceanspaces.com/model_retrained_compressed.joblib"
 SCALER_URL = "https://mh-forecast.nyc3.cdn.digitaloceanspaces.com/robust_scaler_retrained_compressed.joblib"
 ENCODER_URL = "https://mh-forecast.nyc3.cdn.digitaloceanspaces.com/label_encoder_retrained_compressed.joblib"
 
-# Load models and encoders with optimized caching
-@st.cache_resource(show_spinner=False)
+# Function to download models if not already present locally
+def download_models():
+    try:
+        if not MODEL_PATH.exists():
+            with st.spinner("Downloading model (one-time operation)..."):
+                model_response = requests.get(MODEL_URL)
+                MODEL_PATH.write_bytes(model_response.content)
+                logging.info("Model downloaded and saved locally.")
+
+        if not SCALER_PATH.exists():
+            with st.spinner("Downloading scaler (one-time operation)..."):
+                scaler_response = requests.get(SCALER_URL)
+                SCALER_PATH.write_bytes(scaler_response.content)
+                logging.info("Scaler downloaded and saved locally.")
+
+        if not ENCODER_PATH.exists():
+            with st.spinner("Downloading encoder (one-time operation)..."):
+                encoder_response = requests.get(ENCODER_URL)
+                ENCODER_PATH.write_bytes(encoder_response.content)
+                logging.info("Encoder downloaded and saved locally.")
+    except Exception as e:
+        st.error(f"Error downloading model files: {e}")
+        logging.error(f"Error downloading model files: {e}")
+        raise
+
+# Function to load models from local storage
+@st.cache_resource(show_spinner=False)  # Cache loaded models in memory
 def load_models():
     try:
-        # Show a single spinner for the entire loading process
-        with st.spinner("Loading model files (this may take a moment)..."):
-            # Download and load the model files
-            model_response = requests.get(MODEL_URL)
-            scaler_response = requests.get(SCALER_URL)
-            encoder_response = requests.get(ENCODER_URL)
-            
-            # Check if downloads were successful
-            if model_response.status_code != 200 or scaler_response.status_code != 200 or encoder_response.status_code != 200:
-                raise Exception("Failed to download one or more model files")
-            
-            # Load the model files from memory using BytesIO
-            model = load(BytesIO(model_response.content))
-            scaler = load(BytesIO(scaler_response.content))
-            encoder = load(BytesIO(encoder_response.content))
-            
-            logging.info("All models loaded successfully from hosted URLs")
-            return model, scaler, encoder
+        # Ensure models are downloaded before loading
+        download_models()
+
+        # Load models from local files
+        model = load(MODEL_PATH)
+        scaler = load(SCALER_PATH)
+        encoder = load(ENCODER_PATH)
+        
+        logging.info("Models loaded successfully from local storage.")
+        return model, scaler, encoder
     except Exception as e:
         st.error(f"Error loading model files: {e}")
         logging.error(f"Error loading model files: {e}")
