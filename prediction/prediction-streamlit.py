@@ -28,7 +28,7 @@ SCALER_URL = "https://mh-forecast.nyc3.cdn.digitaloceanspaces.com/robust_scaler_
 ENCODER_URL = "https://mh-forecast.nyc3.cdn.digitaloceanspaces.com/label_encoder_retrained_compressed.joblib"
 
 # Load models and encoders with optimized caching
-@st.cache_resource
+@st.cache_resource(show_spinner=False)
 def load_models():
     try:
         # Show a single spinner for the entire loading process

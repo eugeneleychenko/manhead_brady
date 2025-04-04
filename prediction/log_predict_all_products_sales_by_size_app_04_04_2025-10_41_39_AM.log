@@ -1,0 +1,7 @@
+2025-04-04 10:41:39,350 - DEBUG - connectionpool.py - 1049 - Starting new HTTPS connection (1): mh-forecast.nyc3.cdn.digitaloceanspaces.com:443
+2025-04-04 10:41:39,520 - DEBUG - connectionpool.py - 544 - https://mh-forecast.nyc3.cdn.digitaloceanspaces.com:443 "GET /model_retrained_compressed.joblib HTTP/1.1" 200 None
+2025-04-04 10:42:10,851 - DEBUG - connectionpool.py - 1049 - Starting new HTTPS connection (1): mh-forecast.nyc3.cdn.digitaloceanspaces.com:443
+2025-04-04 10:42:10,975 - DEBUG - connectionpool.py - 544 - https://mh-forecast.nyc3.cdn.digitaloceanspaces.com:443 "GET /robust_scaler_retrained_compressed.joblib HTTP/1.1" 200 None
+2025-04-04 10:42:10,977 - DEBUG - connectionpool.py - 1049 - Starting new HTTPS connection (1): mh-forecast.nyc3.cdn.digitaloceanspaces.com:443
+2025-04-04 10:42:11,122 - DEBUG - connectionpool.py - 544 - https://mh-forecast.nyc3.cdn.digitaloceanspaces.com:443 "GET /label_encoder_retrained_compressed.joblib HTTP/1.1" 200 None
+2025-04-04 10:42:19,015 - INFO - prediction-streamlit.py - 50 - All models loaded successfully from hosted URLs
