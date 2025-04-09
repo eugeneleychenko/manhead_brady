@@ -30,7 +30,7 @@ INCLUDED_BANDS = [
     "BOYS LIKE GIRLS (MH)", "Bert Kreischer (MH)", "Billy Idol (Manhead)",
     "Billy Porter (MH)", "Black Pistol Fire", "Blindside (MH)", "Butch Walker",
     "Celtic Thunder (MH)", "Celtic Woman", "Clandestine", "Country Music Association (MH)",
-    "Dean Lewis (MH)", "Emerald Cup Festival (MH)", "Fall Out Boy", "JXDN",
+    "Dean Lewis (MH)", "Deftones (MH)" "Emerald Cup Festival (MH)", "Fall Out Boy", "JXDN",
     "Jelly Roll (MH)", "Jerry Cantrell (MH)", "Jewel (Manhead)", "Joe Perry Project",
     "Joji (MH)", "Jukebox The Ghost (Manhead)", "Justin Hayward (Manhead)",
     "LIMP BIZKIT (MH)", "Lykke Li (MH)", "Machine Gun Kelly (MH)", "Macklemore (MH)",
@@ -76,7 +76,6 @@ def process_inventory_file(inventory_df, band_name, genre_df, price_df):
     show_columns = [col for col in inventory_df.columns if '-' in col]
     shows = []
     
-    st.write("Processing inventory shows:")
     for col in show_columns:
         try:
             # Parse "City - MM/DD/YY ($7.00/head)" format
@@ -107,10 +106,6 @@ def process_inventory_file(inventory_df, band_name, genre_df, price_df):
                     'date': date_str,
                     'price': price
                 })
-                show_info = f"City: {city}, Date: {date_str}"
-                if price:
-                    show_info += f", Price: ${price:.2f}"
-                st.write(f"Successfully processed - {show_info}")
             except Exception as e:
                 st.error(f"Error parsing date '{date_part}': {str(e)}")
             
@@ -135,9 +130,21 @@ def process_inventory_file(inventory_df, band_name, genre_df, price_df):
         # Only look up price by SKU - no fallbacks
         item_price = ''
         if not band_prices.empty and 'SKU' in row and pd.notna(row['SKU']):
-            sku_match = band_prices[band_prices['SKU'] == row['SKU']]
+            sku = row['SKU']
+            sku_match = band_prices[band_prices['SKU'] == sku]
+            
+            # Log SKU lookup process for every 10th item to avoid too much output
+            if _ % 10 == 0:  
+                logging.debug(f"Looking up SKU: {sku}")
+                
             if not sku_match.empty:
                 item_price = sku_match['Price'].iloc[0]
+                # Log successful matches for every 10th item
+                if _ % 10 == 0:
+                    logging.debug(f"Found price {item_price} for SKU {sku}")
+            else:
+                # Log failed matches for every item to understand the issue
+                logging.debug(f"No price match found for SKU: {sku}")
         
         # For each show
         for show in shows:
@@ -154,7 +161,7 @@ def process_inventory_file(inventory_df, band_name, genre_df, price_df):
                 'attendance': 0,
                 'product size': size,
                 'productType': row['Product Type'],
-                'product price': show_price,
+                'product price': show_price if show_price != '' else np.nan,
                 'Item Name': row['Item Name']
             })
 
@@ -163,13 +170,9 @@ def process_inventory_file(inventory_df, band_name, genre_df, price_df):
     return output_df
 
 def update_venue_details(output_df, tour_df, band_name, band_name_for_lookup):
-    st.write("Updating venue details...")
-    
     # Check for both exact band name and band name with "(MH)" suffix
     band_with_mh = f"{band_name_for_lookup} (MH)"
     band_shows = tour_df[(tour_df['Band'] == band_name_for_lookup) | (tour_df['Band'] == band_with_mh)]
-    
-    st.write(f"Found {len(band_shows)} {band_name_for_lookup} shows")
     
     # Create lookup dictionary from tour data with flexible city matching
     venue_lookup = {}
@@ -207,9 +210,6 @@ def update_venue_details(output_df, tour_df, band_name, band_name_for_lookup):
         base_city = city_key.split(',')[0].strip()
         if base_city not in venue_lookup:
             venue_lookup[base_city] = venue_lookup[city_key]
-    
-    st.write("Venue lookup created for cities:")
-    st.write(list(venue_lookup.keys()))
     
     # Update the output dataframe with venue details - using correct column names
     for i, row in output_df.iterrows():
@@ -271,6 +271,9 @@ def predict_sales_by_size(data_df):
         if 'showDate' in df_copy.columns:
             df_copy['showDate'] = df_copy['showDate'].dt.strftime('%Y-%m-%d')
         
+        # Replace NaN values with None for JSON serialization
+        df_copy = df_copy.replace({np.nan: None})
+        
         # Prepare the data for API - Convert DataFrame to dictionary list
         data_list = df_copy.to_dict(orient='records')
         
@@ -299,6 +302,9 @@ def predict_per_head(data_df):
         # Convert datetime columns to string format before JSON serialization
         if 'showDate' in df_copy.columns:
             df_copy['showDate'] = df_copy['showDate'].dt.strftime('%Y-%m-%d')
+        
+        # Replace NaN values with None for JSON serialization
+        df_copy = df_copy.replace({np.nan: None})
         
         # Prepare the data for API - Convert DataFrame to dictionary list
         data_list = df_copy.to_dict(orient='records')
@@ -434,15 +440,16 @@ def show_file_formatting_page():
                 # Update venue details
                 final_df = update_venue_details(output_df, tour_df, selected_band, band_name_for_lookup)
                 
+                # Ensure product price is numeric for display
+                if 'product price' in final_df.columns:
+                    final_df['product price'] = pd.to_numeric(final_df['product price'], errors='coerce')
+                
                 # Add toggle to hide rows with missing data
-                show_all_data = st.checkbox("Show all data (including rows with missing attendance or price)", value=True)
+                show_all_data = st.checkbox("Show all data (including rows with missing attendance or price)", value=False)
                 
                 # Filter the data if the toggle is off
                 display_df = final_df
                 if not show_all_data:
-                    # Add debug information to check the columns and data
-                    st.write("Columns in dataframe:", final_df.columns.tolist())
-                    
                     # First, check if both columns actually exist in the dataframe
                     has_attendance = 'attendance' in final_df.columns
                     has_price = 'product price' in final_df.columns
@@ -451,10 +458,6 @@ def show_file_formatting_page():
                         # Convert columns to numeric to handle any string values
                         final_df['attendance'] = pd.to_numeric(final_df['attendance'], errors='coerce')
                         final_df['product price'] = pd.to_numeric(final_df['product price'], errors='coerce')
-                        
-                        # Show counts of non-null values to help diagnose the issue
-                        st.write(f"Rows with attendance data: {final_df['attendance'].notna().sum()}")
-                        st.write(f"Rows with product price data: {final_df['product price'].notna().sum()}")
                         
                         # Filter out rows with missing attendance OR price (using AND for the filter)
                         display_df = final_df[(final_df['attendance'].notna() & (final_df['attendance'] > 0)) & 
