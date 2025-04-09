@@ -479,7 +479,7 @@ def show_file_formatting_page():
                 
                 # Download button
                 with col1:
-                    csv = final_df.to_csv(index=False)
+                    csv = display_df.to_csv(index=False)
                     st.download_button(
                         label="Download formatted data",
                         data=csv,
@@ -491,7 +491,7 @@ def show_file_formatting_page():
                 with col2:
                     if st.button("Continue to Prediction"):
                         # Store the dataframe in session state to use in prediction page
-                        st.session_state.formatted_data = final_df
+                        st.session_state.formatted_data = display_df
                         st.session_state.page = "Prediction"
                         # Force rerun to switch page
                         st.experimental_rerun()
@@ -523,8 +523,18 @@ def show_prediction_page():
             st.warning("No prediction methods are currently available from the API.")
             return
     
+    # Initialize session state for tracking prediction type
+    if 'previous_prediction_type' not in st.session_state:
+        st.session_state.previous_prediction_type = "Sales Quantity By Size"
+    
     # Select prediction type
     prediction_type = st.radio("Select Prediction Type", ["Sales Quantity By Size", "Per Head Revenue"])
+    
+    # Check if prediction type has changed and reset uploader if it has
+    if prediction_type != st.session_state.previous_prediction_type:
+        # Reset the uploader by clearing the session state's file uploader key
+        st.session_state.pop('uploader_key', None)
+        st.session_state.previous_prediction_type = prediction_type
     
     # Check if we have data from the File Formatting page
     formatted_data = None
@@ -532,8 +542,12 @@ def show_prediction_page():
         formatted_data = st.session_state.formatted_data
         st.success("Using data from File Formatting page ✅")
     
-    # File uploader
-    uploaded_file = st.file_uploader("Choose a CSV file for prediction", type="csv")
+    # Use a unique key for the file uploader that changes when prediction type changes
+    if 'uploader_key' not in st.session_state:
+        st.session_state.uploader_key = f"file_uploader_{prediction_type}_{datetime.now().strftime('%Y%m%d%H%M%S')}"
+    
+    # File uploader with dynamic key
+    uploaded_file = st.file_uploader("Choose a CSV file for prediction", type="csv", key=st.session_state.uploader_key)
     
     # Process file or use formatted data
     if uploaded_file is not None or formatted_data is not None:
