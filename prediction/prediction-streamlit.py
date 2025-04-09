@@ -30,7 +30,7 @@ INCLUDED_BANDS = [
     "BOYS LIKE GIRLS (MH)", "Bert Kreischer (MH)", "Billy Idol (Manhead)",
     "Billy Porter (MH)", "Black Pistol Fire", "Blindside (MH)", "Butch Walker",
     "Celtic Thunder (MH)", "Celtic Woman", "Clandestine", "Country Music Association (MH)",
-    "Dean Lewis (MH)", "Deftones (MH)" "Emerald Cup Festival (MH)", "Fall Out Boy", "JXDN",
+    "Dean Lewis (MH)", "Deftones (MH)", "Emerald Cup Festival (MH)", "Fall Out Boy", "JXDN",
     "Jelly Roll (MH)", "Jerry Cantrell (MH)", "Jewel (Manhead)", "Joe Perry Project",
     "Joji (MH)", "Jukebox The Ghost (Manhead)", "Justin Hayward (Manhead)",
     "LIMP BIZKIT (MH)", "Lykke Li (MH)", "Machine Gun Kelly (MH)", "Macklemore (MH)",
