@@ -53,7 +53,11 @@ PATHS = load_paths(CONFIG_PATH)
 
 REPO_ROOT = os.path.dirname(os.path.abspath(CONFIG_PATH))
 STREAMLIT_DOWNLOADS_DIR = os.path.join(REPO_ROOT, "outputs")
-os.makedirs(STREAMLIT_DOWNLOADS_DIR, exist_ok=True)
+try:
+    os.makedirs(STREAMLIT_DOWNLOADS_DIR, exist_ok=True)
+except (OSError, PermissionError):
+    STREAMLIT_DOWNLOADS_DIR = "/tmp/streamlit_downloads"
+    os.makedirs(STREAMLIT_DOWNLOADS_DIR, exist_ok=True)
 
 def save_streamlit_download_copy(file_name: str, data_bytes: bytes) -> str | None:
     out_path = os.path.join(STREAMLIT_DOWNLOADS_DIR, file_name)
@@ -90,7 +94,10 @@ add_artist_choice = st.radio(
 ARTIST_METADATA_PATH = PATHS["artist_meta_csv"]
 INSTAGRAM_COL = "Instagram_followers"
 
-os.makedirs(os.path.dirname(ARTIST_METADATA_PATH), exist_ok=True)
+try:
+    os.makedirs(os.path.dirname(ARTIST_METADATA_PATH), exist_ok=True)
+except (OSError, PermissionError):
+    pass
 
 if "artist_entries" not in st.session_state:
     st.session_state["artist_entries"] = []
