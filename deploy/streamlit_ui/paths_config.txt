@@ -1,0 +1,50 @@
+# ===============================================================
+# Cloud Deploy Paths Config (Render — Streamlit UI)
+# Flask API is hosted separately on Replit (set FLASK_API_URL env var)
+# All paths relative to this file's directory
+# ===============================================================
+
+# Inputs: Raw files
+path_sales_pattern = CSVs/add_sales_reports_files_here/*.csv
+path_tour_pattern = CSVs/add_tour_summary_files_here/*.csv
+
+# Outputs: Consolidation pipeline
+merch_path_out = CSVs/merged_files/combined_sales_report.csv
+tour_path_out = CSVs/merged_files/combined_tour_report.csv
+merged_path = CSVs/merged_files/merged_merch_tour.csv
+final_out = CSVs/merged_files/merged_with_weather.csv
+consolidation_stats_json = CSVs/merged_files/consolidation_stats.json
+
+# Training datasets (kept for compatibility, not used in cloud)
+master_training_dataset = CSVs/merged_files/Training_dataset_continuosly_updated.csv
+master_training_dataset_backup = CSVs/merged_files/Training_dataset.__backup__.csv
+
+# Features / enrichment inputs
+spotify_csv = CSVs/features/spotify_monthly_listeners.csv
+artist_meta_csv = CSVs/features/artist_metadata.csv
+venue_meta_csv = CSVs/features/venue_holiday_data.csv
+
+# Geo + caching
+coords_path = zip_coordinates.txt
+geocoding_cache_name = cache/geocoding_cache
+weather_cache_name = cache/.cache
+
+# Flask app — artifacts not present here (Flask runs on Replit)
+flask_artifacts_dir = Flask/
+last_train_metrics_json = Flask/last_train_metrics.json
+model_joblib = Flask/model_retrained.joblib
+scaler_joblib = Flask/robust_scaler_retrained.joblib
+encoder_joblib = Flask/label_encoder_retrained.joblib
+flask_templates_dir = Flask/templates
+flask_downloads_dir = outputs/flask_downloads
+flask_logs_dir = /tmp/logs
+flask_port = 5000
+
+# Scripts
+consolidation_script_path = consolidate_pipeline.py
+train_model_script_path = train_model.py
+
+# Revenue per Head
+revph_script_path = revenue_per_head.py
+revph_output_csv = outputs/predicted_sales_with_revenue_per_head.csv
+revph_summary_json = outputs/revenue_per_head_summary.json
