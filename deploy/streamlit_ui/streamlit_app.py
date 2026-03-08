@@ -8,7 +8,7 @@ import tempfile
 import subprocess
 import pandas as pd
 import streamlit as st
-from io import StringIO
+from io import StringIO, BytesIO
 from audit_logger import log_event, sha256_bytes, sha256_file
 
 
@@ -74,7 +74,27 @@ _flask_base = _os.environ.get(
     "PREDICTION_API_BASE_URL",
     _os.environ.get("FLASK_API_URL", f"http://localhost:{int(PATHS.get('flask_port', '5000'))}"),
 )
-FLASK_API_URL = _flask_base.rstrip("/") + "/api/predict"
+API_BASE_URL = _flask_base.rstrip("/")
+FLASK_API_URL = API_BASE_URL + "/api/predict"
+
+def _call_prediction_api_with_fallback(upload_name: str, upload_bytes: bytes, timeout: int = 120):
+    files = {"csv_file": (upload_name, upload_bytes, "text/csv")}
+    response = requests.post(f"{API_BASE_URL}/api/predict", files=files, timeout=timeout)
+    route_used = "api_predict"
+
+    # Control API compatibility: fallback to legacy /predict/size contract.
+    if response.status_code == 404:
+        route_used = "legacy_predict_size"
+        df = pd.read_csv(BytesIO(upload_bytes), encoding="utf-8-sig")
+        if "showDate" in df.columns:
+            df["showDate"] = pd.to_datetime(df["showDate"], errors="coerce").dt.strftime("%Y-%m-%d")
+        json_rows = df.astype(object).where(pd.notna(df), None).to_dict(orient="records")
+        response = requests.post(
+            f"{API_BASE_URL}/predict/size",
+            json={"data": json_rows},
+            timeout=timeout,
+        )
+    return response, route_used
 
 st.set_page_config(page_title="Merch Sales Prediction", layout="wide")
 
@@ -436,11 +456,11 @@ if uploaded_file is not None:
             details={"input_file": uploaded_file.name, "input_hash": file_hash},
         )
 
-        files = {"csv_file": (uploaded_file.name, file_bytes, "text/csv")}
-
         with st.spinner("Calling prediction API and running model..."):
             try:
-                response = requests.post(FLASK_API_URL, files=files, timeout=120)
+                response, route_used = _call_prediction_api_with_fallback(
+                    uploaded_file.name, file_bytes, timeout=120
+                )
                 response.raise_for_status()
             except requests.RequestException as e:
                 log_event(
@@ -468,7 +488,7 @@ if uploaded_file is not None:
                         )
                         st.error(f"API returned an error: {payload['error']}")
                     else:
-                        data = payload.get("data", [])
+                        data = payload.get("data", payload.get("predictions", []))
 
                         if not data:
                             log_event(
@@ -486,6 +506,7 @@ if uploaded_file is not None:
                                 details={
                                     "input_file": uploaded_file.name,
                                     "input_hash": file_hash,
+                                    "route_used": route_used,
                                     "rows_out": int(df_pred.shape[0]),
                                     "cols_out": list(df_pred.columns),
                                 },
