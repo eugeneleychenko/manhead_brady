@@ -1,0 +1,38 @@
+name: Keep New Model API Warm
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+jobs:
+  ping-new-model-api:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Ping health endpoint
+        env:
+          NEW_MODEL_HEALTH_URL: ${{ secrets.NEW_MODEL_HEALTH_URL }}
+          DEFAULT_HEALTH_URL: https://manhead-new-model-api.replit.app/health
+        run: |
+          set -euo pipefail
+
+          URL="${NEW_MODEL_HEALTH_URL:-$DEFAULT_HEALTH_URL}"
+          echo "Pinging: ${URL}"
+
+          STATUS_CODE="$(curl --silent --show-error \
+            --output /tmp/health-response.json \
+            --write-out "%{http_code}" \
+            --max-time 30 \
+            "${URL}")"
+
+          echo "HTTP status: ${STATUS_CODE}"
+          if [ -f /tmp/health-response.json ]; then
+            echo "Response body:"
+            cat /tmp/health-response.json
+          fi
+
+          if [ "${STATUS_CODE}" != "200" ]; then
+            echo "Health check failed with status ${STATUS_CODE}"
+            exit 1
+          fi
