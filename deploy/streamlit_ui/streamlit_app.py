@@ -10,6 +10,7 @@ import pandas as pd
 import streamlit as st
 from io import StringIO, BytesIO
 from audit_logger import log_event, sha256_bytes, sha256_file
+from converter_utils import ConversionInputError, convert_sales_reports_to_prediction_input
 
 
 def find_paths_config(start_dir: str, filename: str = "paths_config.txt") -> str:
@@ -712,3 +713,185 @@ if revph_file is not None:
                     use_container_width=True,
                     hide_index=True,
                 )
+
+st.markdown("---")
+st.header("Step 6: Sales Report -> Prediction Input Converter")
+converter_tab, converter_notes_tab = st.tabs(
+    ["Converter", "How to use output"]
+)
+
+with converter_tab:
+    st.write(
+        "Upload an atVenu sales report and tour summary, then convert to the 21-column "
+        "new-model prediction input format."
+    )
+
+    sales_report_upload = st.file_uploader(
+        "Upload atVenu sales report CSV",
+        type=["csv"],
+        key="converter_sales_report_upload",
+    )
+    tour_summary_upload = st.file_uploader(
+        "Upload tour summary CSV",
+        type=["csv"],
+        key="converter_tour_summary_upload",
+    )
+    converter_band_name = st.text_input(
+        "Band name",
+        value="Air Supply",
+        key="converter_band_name",
+    )
+    show_date_override = st.text_input(
+        "Optional show date override (YYYY-MM-DD)",
+        value="",
+        key="converter_show_date_override",
+        help="Use this when the sales report file name does not include MM-DD-YYYY.",
+    )
+    fetch_weather_for_converter = st.checkbox(
+        "Fetch historical weather for show date",
+        value=False,
+        key="converter_fetch_weather",
+        help=(
+            "If disabled, weather defaults are used (temperature=15, rain=0, snowfall=0). "
+            "Enable this for richer historical backtest-style inputs."
+        ),
+    )
+
+    if st.button("Convert to prediction input CSV", key="converter_run_button"):
+        if sales_report_upload is None or tour_summary_upload is None:
+            st.error("Upload both the sales report and tour summary CSV files.")
+        else:
+            band_genre_map_path = os.path.join(REPO_ROOT, "prediction", "band_genre_map.csv")
+
+            log_event(
+                step="step6_converter",
+                status="start",
+                details={
+                    "sales_report_file": sales_report_upload.name,
+                    "tour_summary_file": tour_summary_upload.name,
+                    "band_name": converter_band_name,
+                    "show_date_override": show_date_override,
+                    "fetch_weather": bool(fetch_weather_for_converter),
+                },
+            )
+
+            try:
+                converted_df, converter_meta = convert_sales_reports_to_prediction_input(
+                    sales_report_bytes=sales_report_upload.getvalue(),
+                    sales_report_name=sales_report_upload.name,
+                    tour_summary_bytes=tour_summary_upload.getvalue(),
+                    band_name=converter_band_name,
+                    artist_meta_path=PATHS.get("artist_meta_csv"),
+                    spotify_path=PATHS.get("spotify_csv"),
+                    band_genre_map_path=band_genre_map_path,
+                    show_date_override=show_date_override,
+                    fetch_weather=fetch_weather_for_converter,
+                )
+            except ConversionInputError as exc:
+                log_event(
+                    step="step6_converter",
+                    status="error",
+                    details={
+                        "sales_report_file": sales_report_upload.name,
+                        "tour_summary_file": tour_summary_upload.name,
+                        "band_name": converter_band_name,
+                        "error": str(exc),
+                    },
+                )
+                st.error(str(exc))
+            except Exception as exc:
+                log_event(
+                    step="step6_converter",
+                    status="error",
+                    details={
+                        "sales_report_file": sales_report_upload.name,
+                        "tour_summary_file": tour_summary_upload.name,
+                        "band_name": converter_band_name,
+                        "error": f"Unexpected converter error: {exc}",
+                    },
+                )
+                st.error(f"Unexpected converter error: {exc}")
+            else:
+                st.success(
+                    "Conversion complete. Download the CSV and upload it in Step 4 for predictions."
+                )
+                st.caption(
+                    f"Show date: {converter_meta['show_date']} | "
+                    f"Venue: {converter_meta['venue_name']} | "
+                    f"Rows: {converter_meta['rows_out']}"
+                )
+                st.dataframe(converted_df.head(200), use_container_width=True)
+
+                converter_csv_buffer = StringIO()
+                converted_df.to_csv(converter_csv_buffer, index=False)
+                converter_csv_str = converter_csv_buffer.getvalue()
+                converter_file_name = "converted_prediction_input.csv"
+                save_streamlit_download_copy(
+                    converter_file_name,
+                    converter_csv_str.encode("utf-8"),
+                )
+
+                st.download_button(
+                    label="Download converted prediction input CSV",
+                    data=converter_csv_str,
+                    file_name=converter_file_name,
+                    mime="text/csv",
+                    key="converter_download_button",
+                )
+
+                st.button(
+                    "Send to Predict (coming soon)",
+                    disabled=True,
+                    key="converter_send_to_predict_button",
+                )
+                st.caption(
+                    "V1 is download-only. Upload the converted file in Step 4 to run predictions."
+                )
+
+                log_event(
+                    step="step6_converter",
+                    status="success",
+                    details={
+                        "sales_report_file": sales_report_upload.name,
+                        "tour_summary_file": tour_summary_upload.name,
+                        "band_name": converter_band_name,
+                        "output_rows": int(converted_df.shape[0]),
+                        "output_cols": list(converted_df.columns),
+                        "show_date": converter_meta["show_date"],
+                        "venue_name": converter_meta["venue_name"],
+                        "fetch_weather": bool(fetch_weather_for_converter),
+                    },
+                )
+
+with converter_notes_tab:
+    st.write("Converter output columns (new-model prediction input):")
+    st.code(
+        ", ".join(
+            [
+                "artistName",
+                "Genre",
+                "showDate",
+                "HolidayStatus",
+                "venue name",
+                "venue city",
+                "venue state",
+                "venue country",
+                "venue postalCode",
+                "merch category",
+                "productType",
+                "product size",
+                "attendance",
+                "product price",
+                "temperature_daily_mean",
+                "rain",
+                "snowfall",
+                "spotifyMonthlyListeners",
+                "Instagram",
+                "venue capacity",
+                "spotifyMissing",
+            ]
+        )
+    )
+    st.caption(
+        "Mode A/B comparison and bind validation consume this same prediction-format schema."
+    )
