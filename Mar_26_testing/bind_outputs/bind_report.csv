@@ -1,0 +1,5 @@
+check,status,reason,left_label,right_label
+old_api vs comparison_old_column,MATCH,all_equal,baseline_old.csv,comparison_mode_a.csv
+new_api vs new_local_streamlit,MATCH,all_equal,baseline_new.csv,new_local_streamlit.csv
+new_api vs new_cloud_streamlit,MATCH,all_equal,baseline_new.csv,new_cloud_streamlit.csv
+new_api vs comparison_new_column,MATCH,all_equal,baseline_new.csv,comparison_mode_a.csv

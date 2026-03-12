@@ -1,0 +1,34 @@
+{
+  "old_api_vs_comparison_old_column": {
+    "status": "MATCH",
+    "reason": "all_equal",
+    "left_label": "baseline_old.csv",
+    "right_label": "comparison_mode_a.csv",
+    "left_rows": 252,
+    "right_rows": 252,
+    "column_results": [
+      {
+        "column": "predicted_sales_quantity vs old_predicted_sales_quantity",
+        "is_match": true,
+        "mismatch_count": 0,
+        "mismatch_rows_preview": []
+      }
+    ]
+  },
+  "new_api_vs_comparison_new_column": {
+    "status": "MATCH",
+    "reason": "all_equal",
+    "left_label": "baseline_new.csv",
+    "right_label": "comparison_mode_a.csv",
+    "left_rows": 252,
+    "right_rows": 252,
+    "column_results": [
+      {
+        "column": "predicted_sales_quantity vs new_predicted_sales_quantity",
+        "is_match": true,
+        "mismatch_count": 0,
+        "mismatch_rows_preview": []
+      }
+    ]
+  }
+}
