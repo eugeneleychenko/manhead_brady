@@ -9,7 +9,7 @@ import streamlit as st
 
 
 DEFAULT_OLD_API_BASE_URL = "https://fast-api-data-master-eugene59.replit.app"
-DEFAULT_NEW_API_BASE_URL = "https://manhead-new-model-api.replit.app"
+DEFAULT_NEW_API_BASE_URL = "https://manhead-new-prediction-mar-26.replit.app"
 
 OLD_API_BASE_URL = os.environ.get(
     "OLD_MODEL_API_BASE_URL",

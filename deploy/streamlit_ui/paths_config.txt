@@ -23,6 +23,8 @@ master_training_dataset_backup = CSVs/merged_files/Training_dataset.__backup__.c
 spotify_csv = CSVs/features/spotify_monthly_listeners.csv
 artist_meta_csv = CSVs/features/artist_metadata.csv
 venue_meta_csv = CSVs/features/venue_holiday_data.csv
+band_sku_price_data = CSVs/features/band_sku_price_data.csv
+band_genre_map = CSVs/features/band_genre_map.csv
 
 # Geo + caching
 coords_path = zip_coordinates.txt

@@ -10,6 +10,7 @@ from pathlib import Path
 from io import BytesIO
 from datetime import datetime
 from io import StringIO
+from atvenu_api import get_band_venue_data
 
 # Configure logging
 timestamp = dt.datetime.now().strftime("%m_%d_%Y-%I_%M_%S_%p")
@@ -22,7 +23,14 @@ logging.basicConfig(
 )
 
 # API Configuration
-API_BASE_URL = "https://fast-api-data-master-eugene59.replit.app"
+# Primary switch for both methods. Set this to the legacy API URL for rollback.
+PRIMARY_API_BASE_URL = os.environ.get(
+    "PREDICTION_API_BASE_URL",
+    "https://manhead-new-prediction-mar-26.replit.app",
+).rstrip("/")
+# Optional method-level overrides.
+SIZE_API_BASE_URL = os.environ.get("SIZE_API_BASE_URL", PRIMARY_API_BASE_URL).rstrip("/")
+PERHEAD_API_BASE_URL = os.environ.get("PERHEAD_API_BASE_URL", PRIMARY_API_BASE_URL).rstrip("/")
 
 # Define the list of included bands
 INCLUDED_BANDS = [
@@ -245,83 +253,253 @@ def update_venue_details(output_df, tour_df, band_name, band_name_for_lookup):
                         break
                 
                 if not matched:
-                    st.warning(f"No venue match found for city: {row['venue city']}")
+                    logging.debug(f"No venue match in stored tour data for city: {row['venue city']}")
     
+    if not venue_lookup:
+        st.info("No stored tour data found for this band. Will try atVenu live API...")
+    
+    return output_df
+
+def fill_missing_from_live_api(output_df, band_name):
+    """For rows still missing attendance, fetch capacity from atVenu API and use 80%."""
+    missing_mask = (output_df['attendance'] == 0) | (output_df['attendance'].isna())
+    if not missing_mask.any():
+        return output_df
+
+    try:
+        cache_key = f"atvenu_api_{band_name}"
+        if cache_key in st.session_state:
+            api_lookup = st.session_state[cache_key]
+        else:
+            with st.spinner("Fetching venue capacity from atVenu live API..."):
+                api_lookup = get_band_venue_data(band_name)
+            st.session_state[cache_key] = api_lookup
+
+        if not api_lookup:
+            st.warning("No data returned from atVenu API for this band.")
+            return output_df
+
+        filled_count = 0
+        for i, row in output_df[missing_mask].iterrows():
+            city = row['venue city'].lower().strip()
+
+            match = api_lookup.get(city)
+            if not match:
+                for api_city, details in api_lookup.items():
+                    if city in api_city or api_city in city:
+                        match = details
+                        break
+
+            if match:
+                if not output_df.at[i, 'venue name'] or output_df.at[i, 'venue name'] == '':
+                    output_df.at[i, 'venue name'] = match['venue']
+                if not output_df.at[i, 'venue state'] or output_df.at[i, 'venue state'] == '':
+                    output_df.at[i, 'venue state'] = match['state']
+                output_df.at[i, 'attendance'] = match['attendance']
+                filled_count += 1
+
+        if filled_count > 0:
+            st.success(f"Filled attendance for {filled_count} rows from atVenu API (80% of capacity)")
+        else:
+            st.warning("atVenu API returned data but no city matches found.")
+
+    except Exception as e:
+        st.warning(f"Could not fetch from atVenu API: {e}")
+        logging.error(f"atVenu API error: {e}")
+
     return output_df
 
 # Function to check API health
 def check_api_health():
-    try:
-        response = requests.get(f"{API_BASE_URL}/health")
-        if response.status_code == 200:
-            health_data = response.json()
-            return True, health_data
-        else:
-            return False, {"error": f"API returned status code {response.status_code}"}
-    except Exception as e:
-        return False, {"error": str(e)}
+    health_data = {"endpoints": {}}
+    all_healthy = True
+
+    endpoint_map = {
+        "Size API": SIZE_API_BASE_URL,
+    }
+    if PERHEAD_API_BASE_URL != SIZE_API_BASE_URL:
+        endpoint_map["Per-Head API"] = PERHEAD_API_BASE_URL
+
+    for endpoint_name, base_url in endpoint_map.items():
+        try:
+            response = requests.get(f"{base_url}/health", timeout=20)
+            if response.status_code == 200:
+                payload = response.json()
+                health_data["endpoints"][endpoint_name] = {
+                    "base_url": base_url,
+                    "healthy": True,
+                    "response": payload,
+                }
+            else:
+                all_healthy = False
+                health_data["endpoints"][endpoint_name] = {
+                    "base_url": base_url,
+                    "healthy": False,
+                    "error": f"HTTP {response.status_code}",
+                }
+        except Exception as e:
+            all_healthy = False
+            health_data["endpoints"][endpoint_name] = {
+                "base_url": base_url,
+                "healthy": False,
+                "error": str(e),
+            }
+
+    if not all_healthy:
+        errs = []
+        for endpoint_name, endpoint_data in health_data["endpoints"].items():
+            if not endpoint_data.get("healthy", False):
+                errs.append(f"{endpoint_name}: {endpoint_data.get('error', 'unhealthy')}")
+        health_data["error"] = "; ".join(errs) if errs else "unknown health error"
+
+    return all_healthy, health_data
 
 # Function to make size prediction API call
 def predict_sales_by_size(data_df):
     try:
         # Create a copy of the dataframe to avoid modifying the original
         df_copy = data_df.copy()
-        
-        # Convert datetime columns to string format before JSON serialization
+
+        # Normalize showDate before sending to API.
         if 'showDate' in df_copy.columns:
-            df_copy['showDate'] = df_copy['showDate'].dt.strftime('%Y-%m-%d')
-        
-        # Replace NaN values with None for JSON serialization
-        df_copy = df_copy.replace({np.nan: None})
-        
-        # Prepare the data for API - Convert DataFrame to dictionary list
-        data_list = df_copy.to_dict(orient='records')
-        
-        # Make the API call
+            if pd.api.types.is_datetime64_any_dtype(df_copy['showDate']):
+                df_copy['showDate'] = df_copy['showDate'].dt.strftime('%Y-%m-%d')
+            else:
+                df_copy['showDate'] = pd.to_datetime(df_copy['showDate'], errors='coerce').dt.strftime('%Y-%m-%d')
+
+        # Primary contract: /predict/size with JSON payload.
+        df_json = df_copy.replace({np.nan: None})
+        data_list = df_json.to_dict(orient='records')
         response = requests.post(
-            f"{API_BASE_URL}/predict/size",
-            json={"data": data_list}
+            f"{SIZE_API_BASE_URL}/predict/size",
+            json={"data": data_list},
+            timeout=180,
         )
-        
+
+        # Compatibility fallback for newer API shape using multipart csv_file.
+        if response.status_code == 404:
+            csv_bytes = df_copy.to_csv(index=False).encode("utf-8")
+            files = {"csv_file": ("prediction_input.csv", csv_bytes, "text/csv")}
+            response = requests.post(
+                f"{SIZE_API_BASE_URL}/api/predict",
+                files=files,
+                timeout=180,
+            )
+
         if response.status_code == 200:
             result = response.json()
-            # Convert predictions back to DataFrame
-            predictions_df = pd.DataFrame(result["predictions"])
+            if "data" in result:
+                predictions_df = pd.DataFrame(result["data"])
+            elif "predictions" in result:
+                predictions_df = pd.DataFrame(result["predictions"])
+            elif "error" in result:
+                return False, {"error": result["error"]}
+            else:
+                return False, {"error": "API response missing prediction payload"}
             return True, predictions_df
         else:
             return False, {"error": f"API returned status code {response.status_code}: {response.text}"}
     except Exception as e:
         return False, {"error": str(e)}
 
-# Function to make per head prediction API call
+def _to_number(series):
+    return pd.to_numeric(
+        series.astype(str).str.replace(r"[^0-9\.\-]", "", regex=True),
+        errors="coerce",
+    )
+
+def _derive_per_head_from_size(size_df):
+    df = size_df.copy()
+    show_key_cols = ["artistName", "venue name", "venue city", "venue state", "showDate"]
+
+    for col in show_key_cols:
+        if col not in df.columns:
+            df[col] = ""
+    for col in ["attendance", "predicted_sales_quantity", "product price"]:
+        if col not in df.columns:
+            df[col] = np.nan
+
+    qty_num = _to_number(df["predicted_sales_quantity"])
+    price_num = _to_number(df["product price"])
+    attendance_num = _to_number(df["attendance"])
+    predicted_revenue_row = qty_num * price_num
+
+    show_agg = (
+        pd.DataFrame(
+            {
+                "predicted_revenue_row": predicted_revenue_row,
+                "attendance_num": attendance_num,
+            }
+        )
+        .join(df[show_key_cols])
+        .groupby(show_key_cols, dropna=False)
+        .agg(
+            show_predicted_revenue=("predicted_revenue_row", "sum"),
+            show_attendance=("attendance_num", "max"),
+        )
+        .reset_index()
+    )
+    show_agg["predicted_$_per_head"] = (
+        show_agg["show_predicted_revenue"]
+        / show_agg["show_attendance"].replace({0: pd.NA})
+    )
+    show_agg["predicted_$_per_head"] = pd.to_numeric(
+        show_agg["predicted_$_per_head"], errors="coerce"
+    ).round(3)
+
+    per_head_df = df.merge(
+        show_agg[show_key_cols + ["predicted_$_per_head"]],
+        on=show_key_cols,
+        how="left",
+    )
+    out_cols = [
+        "Genre",
+        "artistName",
+        "attendance",
+        "predicted_$_per_head",
+        "showDate",
+        "venue city",
+        "venue name",
+        "venue state",
+    ]
+    for col in out_cols:
+        if col not in per_head_df.columns:
+            per_head_df[col] = np.nan
+    return per_head_df[out_cols]
+
+# Function to make per head prediction (API-first with handoff-style fallback)
 def predict_per_head(data_df):
     try:
-        # Create a copy of the dataframe to avoid modifying the original
         df_copy = data_df.copy()
-        
-        # Convert datetime columns to string format before JSON serialization
         if 'showDate' in df_copy.columns:
-            df_copy['showDate'] = df_copy['showDate'].dt.strftime('%Y-%m-%d')
-        
-        # Replace NaN values with None for JSON serialization
-        df_copy = df_copy.replace({np.nan: None})
-        
-        # Prepare the data for API - Convert DataFrame to dictionary list
-        data_list = df_copy.to_dict(orient='records')
-        
-        # Make the API call
+            if pd.api.types.is_datetime64_any_dtype(df_copy['showDate']):
+                df_copy['showDate'] = df_copy['showDate'].dt.strftime('%Y-%m-%d')
+            else:
+                df_copy['showDate'] = pd.to_datetime(df_copy['showDate'], errors='coerce').dt.strftime('%Y-%m-%d')
+
+        df_json = df_copy.replace({np.nan: None})
+        data_list = df_json.to_dict(orient='records')
         response = requests.post(
-            f"{API_BASE_URL}/predict/perhead",
-            json={"data": data_list}
+            f"{PERHEAD_API_BASE_URL}/predict/perhead",
+            json={"data": data_list},
+            timeout=180,
         )
-        
+
         if response.status_code == 200:
             result = response.json()
-            # Convert predictions back to DataFrame
-            predictions_df = pd.DataFrame(result["predictions"])
-            return True, predictions_df
-        else:
-            return False, {"error": f"API returned status code {response.status_code}: {response.text}"}
+            if "predictions" in result:
+                return True, pd.DataFrame(result["predictions"])
+            if "data" in result:
+                return True, pd.DataFrame(result["data"])
+            if "error" in result:
+                return False, {"error": result["error"]}
+            return False, {"error": "API response missing prediction payload"}
+
+        # Fallback path: derive per-head from size predictions locally.
+        success, size_result = predict_sales_by_size(df_copy)
+        if not success:
+            return False, {"error": f"Per-head API HTTP {response.status_code}: {response.text}"}
+        return True, _derive_per_head_from_size(size_result)
     except Exception as e:
         return False, {"error": str(e)}
 
@@ -440,6 +618,9 @@ def show_file_formatting_page():
                 # Update venue details
                 final_df = update_venue_details(output_df, tour_df, selected_band, band_name_for_lookup)
                 
+                # Fill missing attendance from atVenu live API (80% of capacity)
+                final_df = fill_missing_from_live_api(final_df, selected_band)
+                
                 # Ensure product price is numeric for display
                 if 'product price' in final_df.columns:
                     final_df['product price'] = pd.to_numeric(final_df['product price'], errors='coerce')
@@ -512,16 +693,6 @@ def show_prediction_page():
         st.warning("You can still proceed with file upload, but predictions will not work until the API is available.")
     else:
         st.success("API is available ✅")
-        # Display available prediction methods based on API health
-        available_methods = []
-        if health_data.get("models", {}).get("size_model", False):
-            available_methods.append("Sales Quantity By Size")
-        if health_data.get("models", {}).get("per_head_model", False):
-            available_methods.append("Per Head Revenue")
-        
-        if not available_methods:
-            st.warning("No prediction methods are currently available from the API.")
-            return
     
     # Initialize session state for tracking prediction type
     if 'previous_prediction_type' not in st.session_state:
@@ -687,7 +858,7 @@ def show_prediction_page():
 def show_about_page():
     st.header("About the Merchandise Prediction Platform")
     
-    st.markdown("""
+    st.markdown(f"""
     ## Overview ✅
     This application helps predict merchandise sales for concerts and events. It provides two key predictions:
     
@@ -708,30 +879,39 @@ def show_about_page():
     - Product pricing
     
     ## API Integration ✅
-    This frontend application connects to the prediction API at:
-    `https://fast-api-data-master-eugene59.replit.app/`
-    
-    The API provides the machine learning models that power the predictions.
+    This frontend defaults both methods to one API base:
+    - **Primary API** (`PREDICTION_API_BASE_URL`): `{PRIMARY_API_BASE_URL}`
+    - **Size override** (`SIZE_API_BASE_URL`): `{SIZE_API_BASE_URL}`
+    - **Per-head override** (`PERHEAD_API_BASE_URL`): `{PERHEAD_API_BASE_URL}`
+
+    Per-head uses `/predict/perhead` on the API first, with handoff-style
+    local fallback from size predictions if needed.
+    Rollback: set `PREDICTION_API_BASE_URL` to the legacy API URL.
     """)
     
     # Check API status and show it
     api_healthy, health_data = check_api_health()
     
     if api_healthy:
-        st.success("API is currently available and healthy ✅")
-        
-        # Show model status
-        st.subheader("API Status")
-        models_status = health_data.get("models", {})
-        
-        status_df = pd.DataFrame({
-            "Model": list(models_status.keys()),
-            "Available": list(models_status.values())
-        })
-        
-        st.dataframe(status_df)
+        st.success("Prediction APIs are currently reachable ✅")
     else:
-        st.error(f"API is currently unavailable. Error: {health_data.get('error', 'Unknown error')}")
+        st.warning("One or more prediction APIs are unavailable.")
+
+    st.subheader("API Status")
+    endpoint_rows = []
+    for endpoint_name, endpoint_data in health_data.get("endpoints", {}).items():
+        payload = endpoint_data.get("response", {})
+        endpoint_rows.append({
+            "Endpoint": endpoint_name,
+            "Base URL": endpoint_data.get("base_url", ""),
+            "Healthy": endpoint_data.get("healthy", False),
+            "Status": payload.get("status", ""),
+            "State": payload.get("state", ""),
+            "Error": endpoint_data.get("error", ""),
+        })
+
+    if endpoint_rows:
+        st.dataframe(pd.DataFrame(endpoint_rows), use_container_width=True)
 
 # Set page title and header
 st.set_page_config(page_title="Merchandise Prediction Platform", layout="wide")

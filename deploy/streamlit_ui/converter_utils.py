@@ -2,8 +2,9 @@ from __future__ import annotations
 
 import csv
 import datetime as dt
+import os
 import re
-from io import StringIO
+from io import BytesIO, StringIO
 from pathlib import Path
 from typing import Any
 
@@ -486,5 +487,438 @@ def convert_sales_reports_to_prediction_input(
         "venue_name": str(show["venue name"]),
         "rows_out": int(out_df.shape[0]),
         "fetch_weather": bool(fetch_weather),
+    }
+    return out_df, metadata
+
+
+# ---------------------------------------------------------------------------
+# Step 3: Inventory / Forecast file converter
+# ---------------------------------------------------------------------------
+
+TOUR_DATA_URL = "https://atvenu-forecast.votintsev.com/tour_data.csv"
+TOUR_DATA_COLUMNS = [
+    "Band", "Show Date", "City", "ST", "Venue", "Nights", "Type",
+    "Capacity", "Attn", "PPH", "Col10", "Merch", "Col12", "Expenses",
+    "Col14", "Net", "Col16",
+]
+
+ATVENU_API_ENDPOINT = "https://api.atvenu.com"
+ATVENU_API_TOKEN = os.environ.get("ATVENU_API_TOKEN", "live_yvYLBo32dRE9z_yCdhwU")
+ATTENDANCE_RATIO = 0.80
+
+US_CITY_STATE = {
+    "Lancaster": "PA", "Englewood": "NJ", "Flint": "MI", "Prior Lake": "MN",
+    "Kansas City": "MO", "Saint Louis": "MO", "St. Louis": "MO",
+    "West Palm Beach": "FL", "Miami": "FL", "Myrtle Beach": "SC",
+    "Las Vegas": "NV", "North Tonawanda": "NY", "Greensburg": "PA",
+    "San Jose": "CA", "San Francisco": "CA", "Los Angeles": "CA",
+    "San Diego": "CA", "New York": "NY", "Brooklyn": "NY", "Chicago": "IL",
+    "Houston": "TX", "Dallas": "TX", "Austin": "TX", "Denver": "CO",
+    "Seattle": "WA", "Portland": "OR", "Phoenix": "AZ", "Atlanta": "GA",
+    "Nashville": "TN", "Boston": "MA", "Philadelphia": "PA", "Pittsburgh": "PA",
+    "Detroit": "MI", "Minneapolis": "MN", "St. Paul": "MN", "Milwaukee": "WI",
+    "Cleveland": "OH", "Columbus": "OH", "Cincinnati": "OH", "Indianapolis": "IN",
+    "Charlotte": "NC", "Raleigh": "NC", "Tampa": "FL", "Orlando": "FL",
+    "Jacksonville": "FL", "Baltimore": "MD", "Washington": "DC", "Richmond": "VA",
+    "Norfolk": "VA", "New Orleans": "LA", "Memphis": "TN", "Louisville": "KY",
+    "Oklahoma City": "OK", "Tulsa": "OK", "Salt Lake City": "UT", "Boise": "ID",
+    "Omaha": "NE", "Des Moines": "IA", "Buffalo": "NY", "Rochester": "NY",
+    "Syracuse": "NY", "Albany": "NY", "Hartford": "CT", "Providence": "RI",
+    "Birmingham": "AL", "Knoxville": "TN", "Chattanooga": "TN", "Reno": "NV",
+    "Albuquerque": "NM", "El Paso": "TX", "Tucson": "AZ", "Honolulu": "HI",
+    "Anchorage": "AK", "Wichita": "KS", "Little Rock": "AR", "Sacramento": "CA",
+    "Sarasota": "FL", "Fort Myers": "FL", "Fort Lauderdale": "FL",
+    "Pompano Beach": "FL", "Boca Raton": "FL", "Temecula": "CA", "Chandler": "AZ",
+    "Red Bank": "NJ", "Oxon Hill": "MD", "Durham": "NC", "Lincoln City": "OR",
+    "Hershey": "PA", "Bensalem": "PA", "Greenville": "SC", "Morrison": "CO",
+    "Napa": "CA", "Valley Center": "CA", "Rancho Mirage": "CA",
+    "Toronto": "ON", "Montreal": "QC", "Vancouver": "BC", "Calgary": "AB",
+    "Edmonton": "AB", "Ottawa": "ON", "Winnipeg": "MB", "Halifax": "NS",
+}
+
+INCLUDED_BANDS = [
+    "Air Supply", "Alan Parsons Live", "All That Remains (MH)", "Apocalyptica",
+    "BOYS LIKE GIRLS (MH)", "Bert Kreischer (MH)", "Billy Idol (Manhead)",
+    "Billy Porter (MH)", "Black Pistol Fire", "Blindside (MH)", "Butch Walker",
+    "Celtic Thunder (MH)", "Celtic Woman", "Clandestine",
+    "Country Music Association (MH)", "Dean Lewis (MH)", "Deftones (MH)",
+    "Emerald Cup Festival (MH)", "Fall Out Boy", "JXDN", "Jelly Roll (MH)",
+    "Jerry Cantrell (MH)", "Jewel (Manhead)", "Joe Perry Project", "Joji (MH)",
+    "Jukebox The Ghost (Manhead)", "Justin Hayward (Manhead)",
+    "LIMP BIZKIT (MH)", "Lykke Li (MH)", "Machine Gun Kelly (MH)",
+    "Macklemore (MH)", "Marina (MH)", "Marvelous 3", "Masiwei (MH)",
+    "Matt And Kim", "Midnight Oil (MH)", "Midtown", "Morrissey", "NIKI",
+    "Nessa Barrett (MH)", "New Edition", "Noel Gallagher HFB (MH)",
+    "Panic! At the Disco", "Royal Blood (MH)", "Seal (MH)",
+    "Sebastian Maniscalco (MH)", "Sexyy Red", "Shame", "Skegss (MH)",
+    "Sonic Symphony", "Taylor Tomlinson (MH)", "The Buggles (MH)",
+    "The Chats (MH)", "The Sisters Of Mercy (MH)",
+    "The Smashing Pumpkins (MH)", "The Zombies (MH)", "Toto (MH)",
+    "Trevor Noah (MH)", "Tyler Childers (MH)", "Warren Hue", "Willow (MH)",
+    "YES (MH)",
+]
+
+
+def _fetch_tour_data() -> pd.DataFrame:
+    """Download tour_data.csv from external URL."""
+    try:
+        resp = requests.get(TOUR_DATA_URL, timeout=15)
+        resp.raise_for_status()
+        tour_df = pd.read_csv(
+            StringIO(resp.text),
+            header=None,
+            names=TOUR_DATA_COLUMNS,
+            engine="python",
+            on_bad_lines="warn",
+        )
+        if (
+            isinstance(tour_df["Band"].iloc[0], str)
+            and tour_df["Band"].iloc[0] == "Band"
+        ):
+            tour_df = tour_df.iloc[1:].reset_index(drop=True)
+        for col in ("Capacity", "Attn"):
+            tour_df[col] = pd.to_numeric(tour_df[col], errors="coerce")
+        return tour_df
+    except Exception:
+        return pd.DataFrame(columns=TOUR_DATA_COLUMNS)
+
+
+def _build_venue_lookup_from_tour_data(
+    tour_df: pd.DataFrame,
+    band_name: str,
+) -> dict[str, dict[str, Any]]:
+    """Build a city->venue-details dict from the stored tour_data."""
+    band_with_mh = f"{band_name} (MH)"
+    band_shows = tour_df[
+        (tour_df["Band"] == band_name) | (tour_df["Band"] == band_with_mh)
+    ]
+    lookup: dict[str, dict[str, Any]] = {}
+    for _, row in band_shows.iterrows():
+        city = str(row.get("City", "")).strip()
+        if not city:
+            continue
+        attendance = int(_clean_num(row.get("Attn", 0)))
+        capacity = int(_clean_num(row.get("Capacity", 0)))
+        lookup[city.lower()] = {
+            "venue": str(row.get("Venue", "") or ""),
+            "state": str(row.get("ST", "") or ""),
+            "attendance": attendance,
+            "capacity": capacity if capacity > 0 else attendance,
+            "zip": "",
+        }
+        if "," in city:
+            short = city.split(",")[0].strip()
+            lookup[short.lower()] = lookup[city.lower()]
+    return lookup
+
+
+def _fetch_atvenu_api_venues(band_name: str) -> dict[str, dict[str, Any]]:
+    """Fetch venue data from atVenu GraphQL API for a band. Returns city->details."""
+    try:
+        from datetime import datetime, timedelta
+        from gql import Client, gql
+        from gql.transport.requests import RequestsHTTPTransport
+
+        transport = RequestsHTTPTransport(
+            url=ATVENU_API_ENDPOINT,
+            headers={"x-api-key": ATVENU_API_TOKEN},
+            retries=2,
+            timeout=30,
+        )
+        client = Client(transport=transport, fetch_schema_from_transport=True)
+
+        query = gql("""
+        query getFutureShows(
+          $firstForAccounts: Int!, $afterForAccounts: String,
+          $firstForTours: Int!, $firstForShows: Int!,
+          $dateRange: DateRange!
+        ) {
+          organization {
+            accounts(first: $firstForAccounts, after: $afterForAccounts) {
+              pageInfo { endCursor hasNextPage }
+              nodes {
+                name
+                tours(first: $firstForTours) {
+                  nodes {
+                    shows(first: $firstForShows, showsOverlap: $dateRange) {
+                      nodes {
+                        showDate capacity attendance
+                        location { name city country }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        """)
+
+        start = datetime.now().strftime("%Y-%m-%d")
+        end = (datetime.now() + timedelta(days=365)).strftime("%Y-%m-%d")
+        lookup: dict[str, dict[str, Any]] = {}
+        cursor = None
+
+        while True:
+            data = client.execute(query, variable_values={
+                "firstForAccounts": 20, "afterForAccounts": cursor,
+                "firstForTours": 10, "firstForShows": 50,
+                "dateRange": {"start": start, "end": end},
+            })
+            for account in data["organization"]["accounts"]["nodes"]:
+                if account["name"].lower().strip() != band_name.lower().strip():
+                    continue
+                for tour in account.get("tours", {}).get("nodes", []):
+                    for show in tour.get("shows", {}).get("nodes", []):
+                        loc = show.get("location") or {}
+                        city_raw = loc.get("city", "")
+                        city, api_state = ("", "")
+                        if "," in city_raw:
+                            city, api_state = city_raw.split(",", 1)
+                            city, api_state = city.strip(), api_state.strip()
+                        else:
+                            city = city_raw.strip()
+
+                        if not city:
+                            continue
+
+                        state = api_state
+                        if not state or state == "null":
+                            state = US_CITY_STATE.get(city, "")
+
+                        cap = int(show.get("capacity") or 0)
+                        attn = show.get("attendance")
+                        est = int(attn) if attn else int(cap * ATTENDANCE_RATIO)
+
+                        lookup[city.lower()] = {
+                            "venue": loc.get("name", ""),
+                            "state": state,
+                            "attendance": est,
+                            "capacity": cap,
+                            "zip": "",
+                        }
+
+            pi = data["organization"]["accounts"]["pageInfo"]
+            if not pi["hasNextPage"]:
+                break
+            cursor = pi["endCursor"]
+
+        return lookup
+    except Exception:
+        return {}
+
+
+def _match_city(
+    city: str,
+    lookup: dict[str, dict[str, Any]],
+) -> dict[str, Any] | None:
+    key = city.lower().strip()
+    if key in lookup:
+        return lookup[key]
+    for lk_city, details in lookup.items():
+        if key in lk_city or lk_city in key:
+            return details
+    return None
+
+
+def _parse_inventory_file(
+    file_bytes: bytes,
+    file_name: str,
+) -> tuple[pd.DataFrame, list[dict[str, str]]]:
+    """
+    Parse a raw atvenu inventory/forecast file (CSV or Excel).
+    Returns (products_df, shows_list) where shows_list has city/date entries.
+    """
+    ext = file_name.rsplit(".", 1)[-1].lower() if "." in file_name else "csv"
+    if ext in ("xlsx", "xls"):
+        inventory_df = pd.read_excel(BytesIO(file_bytes))
+    else:
+        text = _safe_decode_csv(file_bytes)
+        inventory_df = pd.read_csv(StringIO(text))
+
+    show_pattern = re.compile(
+        r"^(.+?)\s*-\s*(\d{1,2}/\d{1,2}/\d{2,4})\s*(?:\(.*\))?$"
+    )
+    shows: list[dict[str, str]] = []
+    for col in inventory_df.columns:
+        m = show_pattern.match(col.strip())
+        if not m:
+            continue
+        city = m.group(1).strip()
+        date_part = m.group(2).strip()
+        try:
+            date_obj = dt.datetime.strptime(date_part, "%m/%d/%y")
+        except ValueError:
+            try:
+                date_obj = dt.datetime.strptime(date_part, "%m/%d/%Y")
+            except ValueError:
+                continue
+        shows.append({
+            "city": city,
+            "date": date_obj.strftime("%Y-%m-%d"),
+        })
+
+    if not shows:
+        raise ConversionInputError(
+            "No show columns found. Expected column headers like "
+            "'City - MM/DD/YY ($X.XX/head)'."
+        )
+
+    products: list[dict[str, Any]] = []
+    for _, row in inventory_df.iterrows():
+        item_name = row.get("Item Name")
+        if pd.isna(item_name) or not str(item_name).strip():
+            continue
+        products.append({
+            "Item Name": str(item_name).strip(),
+            "productType": str(row.get("Product Type", "Unknown")).strip(),
+            "product size": str(row.get("Size", "ONE SIZE")).strip() or "ONE SIZE",
+            "SKU": str(row.get("SKU", "")).strip(),
+        })
+
+    if not products:
+        raise ConversionInputError("No product rows found in inventory file.")
+
+    return pd.DataFrame(products), shows
+
+
+def convert_inventory_to_prediction_input(
+    *,
+    file_bytes: bytes,
+    file_name: str,
+    band_name: str,
+    price_df: pd.DataFrame | None = None,
+    artist_meta_path: str | None = None,
+    spotify_path: str | None = None,
+    band_genre_map_path: str | None = None,
+    fetch_weather: bool = False,
+    progress_callback: Any = None,
+) -> tuple[pd.DataFrame, dict[str, Any]]:
+    """
+    Convert a raw atvenu inventory/forecast file into the 21-column
+    prediction input format.
+    """
+    band_name = band_name.strip()
+    if not band_name:
+        raise ConversionInputError("Band name is required.")
+
+    products_df, shows = _parse_inventory_file(file_bytes, file_name)
+
+    if progress_callback:
+        progress_callback(f"Parsed {len(products_df)} products and {len(shows)} shows")
+
+    # Price lookup by SKU
+    if price_df is not None and not price_df.empty:
+        band_with_mh = f"{band_name} (MH)"
+        band_prices = price_df[
+            (price_df["Band Name"] == band_name)
+            | (price_df["Band Name"] == band_with_mh)
+        ]
+        sku_to_price = {}
+        for _, pr in band_prices.iterrows():
+            sku_to_price[str(pr["SKU"]).strip()] = float(pr["Price"])
+    else:
+        sku_to_price = {}
+
+    # Venue lookup: stored tour data first, then atVenu API fallback
+    if progress_callback:
+        progress_callback("Fetching venue data from tour_data.csv...")
+    tour_df = _fetch_tour_data()
+    venue_lookup = _build_venue_lookup_from_tour_data(tour_df, band_name)
+
+    cities_missing = [
+        s["city"] for s in shows if _match_city(s["city"], venue_lookup) is None
+    ]
+    api_lookup: dict[str, dict[str, Any]] = {}
+    if cities_missing:
+        if progress_callback:
+            progress_callback(
+                f"{len(cities_missing)} cities not in stored data, "
+                "trying atVenu API..."
+            )
+        api_lookup = _fetch_atvenu_api_venues(band_name)
+
+    # Enrichment data
+    artist_meta_df = _optional_csv(artist_meta_path)
+    spotify_df = _optional_csv(spotify_path)
+    band_genre_df = _optional_csv(band_genre_map_path)
+
+    genre = _genre_for_band(band_name, artist_meta_df, band_genre_df)
+    instagram = _instagram_for_band(band_name, artist_meta_df)
+    spotify_listeners, spotify_missing = _spotify_for_band(band_name, spotify_df)
+
+    # Build output rows
+    output_rows: list[dict[str, Any]] = []
+    venue_match_count = 0
+    price_miss_skus: list[str] = []
+
+    for show in shows:
+        show_date = show["date"]
+        show_date_obj = dt.datetime.strptime(show_date, "%Y-%m-%d").date()
+        holiday_status = _holiday_status(show_date_obj)
+
+        venue_info = _match_city(show["city"], venue_lookup)
+        if venue_info is None:
+            venue_info = _match_city(show["city"], api_lookup)
+        if venue_info:
+            venue_match_count += 1
+
+        venue_name = venue_info["venue"] if venue_info else ""
+        venue_state = venue_info["state"] if venue_info else US_CITY_STATE.get(show["city"], "")
+        attendance = venue_info["attendance"] if venue_info else 0
+        capacity = venue_info["capacity"] if venue_info else 0
+        postal_code = venue_info.get("zip", "") if venue_info else ""
+        venue_country = _venue_country(venue_state) if venue_state else "United States"
+
+        weather = {"temperature_daily_mean": 15.0, "rain": 0.0, "snowfall": 0.0}
+        if fetch_weather:
+            lat, lon = _geocode_city(show["city"], venue_state)
+            weather = _fetch_weather(lat, lon, show_date)
+
+        for _, product in products_df.iterrows():
+            sku = str(product["SKU"])
+            price = sku_to_price.get(sku, None)
+            if price is None and sku:
+                price_miss_skus.append(sku)
+
+            output_rows.append({
+                "artistName": band_name,
+                "Genre": genre,
+                "showDate": show_date,
+                "HolidayStatus": holiday_status,
+                "venue name": venue_name,
+                "venue city": show["city"],
+                "venue state": venue_state,
+                "venue country": venue_country,
+                "venue postalCode": postal_code,
+                "merch category": str(product["Item Name"]),
+                "productType": str(product["productType"]),
+                "product size": str(product["product size"]),
+                "attendance": int(attendance),
+                "product price": float(price) if price is not None else float("nan"),
+                "temperature_daily_mean": float(weather["temperature_daily_mean"]),
+                "rain": float(weather["rain"]),
+                "snowfall": float(weather["snowfall"]),
+                "spotifyMonthlyListeners": int(spotify_listeners),
+                "Instagram": int(instagram),
+                "venue capacity": int(capacity),
+                "spotifyMissing": int(spotify_missing),
+            })
+
+    out_df = pd.DataFrame(output_rows)
+    out_df = out_df[OUTPUT_COLUMNS]
+
+    unique_price_misses = sorted(set(price_miss_skus))
+    metadata = {
+        "band_name": band_name,
+        "shows_parsed": len(shows),
+        "products_parsed": len(products_df),
+        "rows_out": int(out_df.shape[0]),
+        "venue_matches": venue_match_count,
+        "venue_misses": len(shows) - venue_match_count,
+        "price_miss_skus": unique_price_misses,
+        "fetch_weather": bool(fetch_weather),
+        "show_dates": [s["date"] for s in shows],
+        "show_cities": [s["city"] for s in shows],
     }
     return out_df, metadata

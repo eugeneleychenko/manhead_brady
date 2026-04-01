@@ -10,7 +10,12 @@ import pandas as pd
 import streamlit as st
 from io import StringIO, BytesIO
 from audit_logger import log_event, sha256_bytes, sha256_file
-from converter_utils import ConversionInputError, convert_sales_reports_to_prediction_input
+from converter_utils import (
+    ConversionInputError,
+    convert_sales_reports_to_prediction_input,
+    convert_inventory_to_prediction_input,
+    INCLUDED_BANDS,
+)
 
 
 def find_paths_config(start_dir: str, filename: str = "paths_config.txt") -> str:
@@ -432,6 +437,177 @@ if st.button("Run consolidation pipeline"):
                 details["master_hash"] = sha256_file(master_path)
 
             log_event(step="step2_consolidate", status="success", details=details)
+
+st.markdown("---")
+st.header("Step 3: Inventory Forecast Converter")
+
+st.write(
+    "Upload a raw atvenu inventory/forecast file "
+    "(Tours > MerchIQ > Tour Forecast > Products export) "
+    "and convert it to the 21-column prediction input format."
+)
+
+step3_band = st.selectbox(
+    "Select band",
+    INCLUDED_BANDS,
+    index=0,
+    key="step3_band_select",
+)
+
+step3_file = st.file_uploader(
+    "Upload inventory file (CSV or Excel)",
+    type=["csv", "xlsx", "xls"],
+    key="step3_inventory_uploader",
+)
+
+step3_fetch_weather = st.checkbox(
+    "Fetch weather for show dates",
+    value=False,
+    key="step3_fetch_weather",
+    help=(
+        "If disabled, weather defaults are used (temperature=15, rain=0, snowfall=0). "
+        "Enable for richer enrichment (requires geocoding + Open-Meteo API calls)."
+    ),
+)
+
+if "step3_converted_df" not in st.session_state:
+    st.session_state["step3_converted_df"] = None
+    st.session_state["step3_meta"] = None
+
+if step3_file is not None:
+    st.caption(f"File: `{step3_file.name}`")
+
+    if st.button("Convert inventory to prediction input", key="step3_convert_button"):
+        file_bytes = step3_file.getvalue()
+        status_area = st.empty()
+
+        def _step3_progress(msg: str) -> None:
+            status_area.info(msg)
+
+        band_genre_map_path = PATHS.get("band_genre_map") or os.path.join(
+            REPO_ROOT, "prediction", "band_genre_map.csv"
+        )
+        price_csv_path = PATHS.get("band_sku_price_data") or os.path.join(
+            REPO_ROOT, "prediction", "band_sku_price_data.csv"
+        )
+
+        price_df = None
+        if os.path.exists(price_csv_path):
+            try:
+                price_df = pd.read_csv(price_csv_path)
+            except Exception:
+                pass
+
+        log_event(
+            step="step3_inventory",
+            status="start",
+            details={
+                "input_file": step3_file.name,
+                "band_name": step3_band,
+                "fetch_weather": bool(step3_fetch_weather),
+            },
+        )
+
+        try:
+            with st.spinner("Converting inventory file..."):
+                converted_df, meta = convert_inventory_to_prediction_input(
+                    file_bytes=file_bytes,
+                    file_name=step3_file.name,
+                    band_name=step3_band,
+                    price_df=price_df,
+                    artist_meta_path=PATHS.get("artist_meta_csv"),
+                    spotify_path=PATHS.get("spotify_csv"),
+                    band_genre_map_path=band_genre_map_path,
+                    fetch_weather=step3_fetch_weather,
+                    progress_callback=_step3_progress,
+                )
+        except ConversionInputError as exc:
+            log_event(
+                step="step3_inventory",
+                status="error",
+                details={"input_file": step3_file.name, "error": str(exc)},
+            )
+            st.error(str(exc))
+        except Exception as exc:
+            log_event(
+                step="step3_inventory",
+                status="error",
+                details={"input_file": step3_file.name, "error": f"Unexpected: {exc}"},
+            )
+            st.error(f"Conversion failed: {exc}")
+        else:
+            status_area.empty()
+            st.session_state["step3_converted_df"] = converted_df
+            st.session_state["step3_meta"] = meta
+
+            log_event(
+                step="step3_inventory",
+                status="success",
+                details={
+                    "input_file": step3_file.name,
+                    "band_name": step3_band,
+                    "rows_out": meta["rows_out"],
+                    "shows_parsed": meta["shows_parsed"],
+                    "venue_matches": meta["venue_matches"],
+                    "venue_misses": meta["venue_misses"],
+                    "price_miss_count": len(meta.get("price_miss_skus", [])),
+                },
+            )
+
+    converted_df = st.session_state.get("step3_converted_df")
+    meta = st.session_state.get("step3_meta")
+
+    if converted_df is not None and meta is not None:
+        st.success(
+            f"Converted {meta['products_parsed']} products x "
+            f"{meta['shows_parsed']} shows = {meta['rows_out']} rows."
+        )
+
+        col_a, col_b, col_c = st.columns(3)
+        col_a.metric("Shows parsed", meta["shows_parsed"])
+        col_b.metric("Venue matches", meta["venue_matches"])
+        col_c.metric("Venue misses", meta["venue_misses"])
+
+        if meta.get("price_miss_skus"):
+            st.warning(
+                f"{len(meta['price_miss_skus'])} SKUs had no price match. "
+                f"First few: {', '.join(meta['price_miss_skus'][:5])}"
+            )
+
+        show_all = st.checkbox(
+            "Show all rows (including missing attendance/price)",
+            value=False,
+            key="step3_show_all",
+        )
+        display_df = converted_df
+        if not show_all:
+            mask = (
+                converted_df["attendance"].notna()
+                & (converted_df["attendance"] > 0)
+                & converted_df["product price"].notna()
+                & (converted_df["product price"] > 0)
+            )
+            display_df = converted_df[mask]
+            st.write(
+                f"Showing {len(display_df)} of {len(converted_df)} rows "
+                "(filtered to rows with attendance and price)"
+            )
+
+        st.dataframe(display_df.head(500), use_container_width=True)
+
+        csv_buffer = StringIO()
+        converted_df.to_csv(csv_buffer, index=False)
+        csv_str = csv_buffer.getvalue()
+        out_file_name = f"{step3_band.replace(' ', '_')}_prediction_input.csv"
+        save_streamlit_download_copy(out_file_name, csv_str.encode("utf-8"))
+
+        st.download_button(
+            label="Download 21-column prediction input CSV",
+            data=csv_str,
+            file_name=out_file_name,
+            mime="text/csv",
+            key="step3_download",
+        )
 
 st.markdown("---")
 st.header("Step 4: Run Predictions")
