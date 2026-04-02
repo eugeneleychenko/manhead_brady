@@ -1,0 +1,38 @@
+APPAREL
+SKU,Name,Type,Sex,Size,Sold,Unit % of Total,Comp,Avg. Price,Gross Rev,% of Total
+"",50th Anniversary SA Tour Tee,T-Shirt,"",XS,3,19%,0,$46.69,$140.08,19%
+"",50th Anniversary SA Tour Tee,T-Shirt,"",M,6,38%,0,$46.69,$280.17,38%
+"",50th Anniversary SA Tour Tee,T-Shirt,"",L,5,31%,0,$46.69,$233.47,31%
+"",50th Anniversary SA Tour Tee,T-Shirt,"",XL,1,6%,0,$46.69,$46.69,6%
+"",50th Anniversary SA Tour Tee,T-Shirt,"",2XL,1,6%,0,$46.69,$46.69,6%
+SUBTOTAL,50th Anniversary SA Tour Tee,T-Shirt,"","",16,44%,0,$46.69,$747.11,44%
+
+"",S.A. Grey Jazzy Balloon Tee,T-Shirt,"",XS,4,44%,0,$46.69,$186.78,44%
+"",S.A. Grey Jazzy Balloon Tee,T-Shirt,"",M,2,22%,0,$46.69,$93.39,22%
+"",S.A. Grey Jazzy Balloon Tee,T-Shirt,"",L,2,22%,0,$46.69,$93.39,22%
+"",S.A. Grey Jazzy Balloon Tee,T-Shirt,"",XL,1,11%,0,$46.69,$46.69,11%
+"",S.A. Grey Jazzy Balloon Tee,T-Shirt,"",2XL,0,0%,0,$0.00,$0.00,0%
+SUBTOTAL,S.A. Grey Jazzy Balloon Tee,T-Shirt,"","",9,25%,0,$46.69,$420.25,25%
+
+"",S.A. Black Est. 1975 Guitar T-Shirt,T-Shirt,"",XS,1,9%,0,$46.69,$46.69,9%
+"",S.A. Black Est. 1975 Guitar T-Shirt,T-Shirt,"",M,5,45%,0,$46.69,$233.47,45%
+"",S.A. Black Est. 1975 Guitar T-Shirt,T-Shirt,"",L,4,36%,0,$46.69,$186.78,36%
+"",S.A. Black Est. 1975 Guitar T-Shirt,T-Shirt,"",XL,1,9%,0,$46.69,$46.69,9%
+"",S.A. Black Est. 1975 Guitar T-Shirt,T-Shirt,"",2XL,0,0%,0,$0.00,$0.00,0%
+SUBTOTAL,S.A. Black Est. 1975 Guitar T-Shirt,T-Shirt,"","",11,31%,0,$46.69,$513.64,31%
+
+TOTAL APPAREL,"","","","",36,100%,0,"","$1,681.00",100%
+
+
+OTHER
+SKU,Name,Type,Sex,Size,Sold,Unit % of Total,Comp,Avg. Price,Gross Rev,% of Total
+
+TOTAL OTHER,"","","","",0,0%,0,"",$0.00,0%
+
+
+MUSIC
+UPC,Name,Type,Sex,Size,Sold,Unit % of Total,Comp,Avg. Price,Gross Rev,% of Total
+
+TOTAL MUSIC,"","","","",0,0%,0,"",$0.00,0%
+
+GRAND TOTAL,"","","","",36,"",0,"","$1,681.00"

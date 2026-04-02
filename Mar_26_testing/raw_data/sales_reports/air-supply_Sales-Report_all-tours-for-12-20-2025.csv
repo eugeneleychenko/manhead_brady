@@ -1,0 +1,88 @@
+APPAREL
+SKU,Name,Type,Sex,Size,Sold,Unit % of Total,Comp,Avg. Price,Gross Rev,% of Total
+AIRS-T1021-S,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,"",S,6,12%,0,$39.87,$239.24,12%
+AIRS-T1021-M,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,"",M,10,20%,0,$39.87,$398.74,20%
+AIRS-T1021-L,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,"",L,11,22%,1,$39.87,$438.61,22%
+AIRS-T1021-XL,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,"",XL,12,24%,0,$39.87,$478.49,24%
+AIRS-T1021-XXL,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,"",2XL,6,12%,0,$39.87,$239.24,12%
+AIRS-T1021-3XL,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,"",3XL,6,12%,0,$39.87,$239.24,12%
+SUBTOTAL,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,"","",51,22%,1,$39.87,"$2,033.57",24%
+
+AIRS-T1017-S,Balloon Arch Tee,T-Shirt,U,S,3,7%,0,$39.87,$119.62,7%
+AIRS-T1017-M,Balloon Arch Tee,T-Shirt,U,M,6,14%,0,$39.87,$239.24,14%
+AIRS-T1017-L,Balloon Arch Tee,T-Shirt,U,L,12,29%,0,$39.87,$478.49,29%
+AIRS-T1017-XL,Balloon Arch Tee,T-Shirt,U,XL,12,29%,0,$39.87,$478.49,29%
+AIRS-T1017-XXL,Balloon Arch Tee,T-Shirt,U,2XL,6,14%,0,$39.87,$239.24,14%
+AIRS-T1017-3XL,Balloon Arch Tee,T-Shirt,U,3XL,3,7%,0,$39.87,$119.62,7%
+SUBTOTAL,Balloon Arch Tee,T-Shirt,U,"",42,18%,0,$39.87,"$1,674.70",20%
+
+AIRS-T1018-S,Jazzy Balloon Tee,T-Shirt,U,S,2,5%,1,$39.87,$79.75,5%
+AIRS-T1018-M,Jazzy Balloon Tee,T-Shirt,U,M,5,13%,1,$39.87,$199.37,13%
+AIRS-T1018-L,Jazzy Balloon Tee,T-Shirt,U,L,12,31%,0,$39.87,$478.49,31%
+AIRS-T1018-XL,Jazzy Balloon Tee,T-Shirt,U,XL,11,28%,1,$39.87,$438.61,28%
+AIRS-T1018-XXL,Jazzy Balloon Tee,T-Shirt,U,2XL,6,15%,0,$39.87,$239.24,15%
+AIRS-T1018-3XL,Jazzy Balloon Tee,T-Shirt,U,3XL,3,8%,0,$39.87,$119.62,8%
+SUBTOTAL,Jazzy Balloon Tee,T-Shirt,U,"",39,17%,3,$39.87,"$1,555.08",19%
+
+AIRS-T1010-S,Est. 1975 Guitar T-Shirt,T-Shirt,M,S,0,0%,0,$0.00,$0.00,0%
+AIRS-T1010-M,Est. 1975 Guitar T-Shirt,T-Shirt,M,M,0,0%,0,$0.00,$0.00,0%
+AIRS-T1010-L,Est. 1975 Guitar T-Shirt,T-Shirt,M,L,0,0%,0,$0.00,$0.00,0%
+AIRS-T1010-XL,Est. 1975 Guitar T-Shirt,T-Shirt,M,XL,0,0%,0,$0.00,$0.00,0%
+AIRS-T1010-XXL,Est. 1975 Guitar T-Shirt,T-Shirt,M,2XL,0,0%,0,$0.00,$0.00,0%
+AIRS-T1010-3XL,Est. 1975 Guitar T-Shirt,T-Shirt,M,3XL,0,0%,0,$0.00,$0.00,0%
+SUBTOTAL,Est. 1975 Guitar T-Shirt,T-Shirt,M,"",0,0%,0,$0.00,$0.00,0%
+
+AIRS-T1016-S,Women's V-Neck T-Shirt,T-Shirt,F,S,0,0%,0,$0.00,$0.00,0%
+AIRS-T1016-M,Women's V-Neck T-Shirt,T-Shirt,F,M,0,0%,0,$0.00,$0.00,0%
+AIRS-T1016-L,Women's V-Neck T-Shirt,T-Shirt,F,L,0,0%,0,$0.00,$0.00,0%
+AIRS-T1016-XL,Women's V-Neck T-Shirt,T-Shirt,F,XL,0,0%,0,$0.00,$0.00,0%
+AIRS-T1016-XXL,Women's V-Neck T-Shirt,T-Shirt,F,2XL,0,0%,0,$0.00,$0.00,0%
+SUBTOTAL,Women's V-Neck T-Shirt,T-Shirt,F,"",0,0%,0,$0.00,$0.00,0%
+
+AIRS-TANK1001-S,Bling Logo Tank,Tank Top,F,S,3,14%,0,$39.87,$119.62,14%
+AIRS-TANK1001-M,Bling Logo Tank,Tank Top,F,M,7,33%,0,$39.87,$279.12,33%
+AIRS-TANK1001-L,Bling Logo Tank,Tank Top,F,L,6,29%,0,$39.87,$239.24,29%
+AIRS-TANK1001-XL,Bling Logo Tank,Tank Top,F,XL,0,0%,0,$0.00,$0.00,0%
+AIRS-TANK1001-XXL,Bling Logo Tank,Tank Top,F,2XL,5,24%,0,$39.87,$199.37,24%
+SUBTOTAL,Bling Logo Tank,Tank Top,F,"",21,9%,0,$39.87,$837.35,10%
+
+AIRS-TOUR-HOOD1003-S,Balloon Arch Hoodie,Sweatshirt,U,S,3,11%,0,$54.37,$163.12,11%
+AIRS-TOUR-HOOD1003-M,Balloon Arch Hoodie,Sweatshirt,U,M,6,22%,0,$54.37,$326.24,22%
+AIRS-TOUR-HOOD1003-L,Balloon Arch Hoodie,Sweatshirt,U,L,6,22%,0,$54.37,$326.24,22%
+AIRS-TOUR-HOOD1003-XL,Balloon Arch Hoodie,Sweatshirt,U,XL,6,22%,0,$54.37,$326.24,22%
+AIRS-TOUR-HOOD1003-XXL,Balloon Arch Hoodie,Sweatshirt,U,2XL,3,11%,0,$54.37,$163.12,11%
+AIRS-TOUR-HOOD1003-3XL,Balloon Arch Hoodie,Sweatshirt,U,3XL,3,11%,0,$54.37,$163.12,11%
+SUBTOTAL,Balloon Arch Hoodie,Sweatshirt,U,"",27,12%,0,$54.37,"$1,468.08",18%
+
+AIRS-JACK1001-S,50th Anniversary Denim Jacket,Jacket,U,S,0,0%,0,$0.00,$0.00,0%
+AIRS-JACK1001-M,50th Anniversary Denim Jacket,Jacket,U,M,0,0%,0,$0.00,$0.00,0%
+AIRS-JACK1001-L,50th Anniversary Denim Jacket,Jacket,U,L,0,0%,0,$0.00,$0.00,0%
+AIRS-JACK1001-XL,50th Anniversary Denim Jacket,Jacket,U,XL,0,0%,0,$0.00,$0.00,0%
+AIRS-JACK1001-XXL,50th Anniversary Denim Jacket,Jacket,U,2XL,0,0%,0,$0.00,$0.00,0%
+SUBTOTAL,50th Anniversary Denim Jacket,Jacket,U,"",0,0%,0,$0.00,$0.00,0%
+
+AIRS-T1002-S,White Logo Tee,T-Shirt,U,S,0,0%,0,$0.00,$0.00,0%
+AIRS-T1002-M,White Logo Tee,T-Shirt,U,M,0,0%,0,$0.00,$0.00,0%
+AIRS-T1002-L,White Logo Tee,T-Shirt,U,L,0,0%,0,$0.00,$0.00,0%
+AIRS-T1002-XL,White Logo Tee,T-Shirt,U,XL,0,0%,0,$0.00,$0.00,0%
+AIRS-T1002-XXL,White Logo Tee,T-Shirt,U,2XL,0,0%,0,$0.00,$0.00,0%
+AIRS-T1002-3X,White Logo Tee,T-Shirt,U,3XL,0,0%,0,$0.00,$0.00,0%
+SUBTOTAL,White Logo Tee,T-Shirt,U,"",0,0%,0,$0.00,$0.00,0%
+
+TOTAL APPAREL,"","","","",180,78%,4,"","$7,568.78",90%
+
+
+OTHER
+SKU,Name,Type,Sex,Size,Sold,Unit % of Total,Comp,Avg. Price,Gross Rev,% of Total
+AIRS-ACC1008,Distressed Logo Tote,Bag,"",,25,11%,0,$21.75,$543.73,6%
+AIRS-ACC1009,Jazzy Balloon Magnet,Magnet,"",,25,11%,0,$10.87,$271.87,3%
+
+TOTAL OTHER,"","","","",50,22%,0,"",$815.60,10%
+
+
+MUSIC
+UPC,Name,Type,Sex,Size,Sold,Unit % of Total,Comp,Avg. Price,Gross Rev,% of Total
+
+TOTAL MUSIC,"","","","",0,0%,0,"",$0.00,0%
+
+GRAND TOTAL,"","","","",230,"",4,"","$8,384.38"

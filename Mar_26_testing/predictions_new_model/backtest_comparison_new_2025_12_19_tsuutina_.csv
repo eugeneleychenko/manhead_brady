@@ -1,0 +1,29 @@
+show_date,city,attendance,Item Name,productType,product size,product price,actual_sold,predicted_sold,delta,abs_error,pct_error
+12/19/2025,Tsuut'ina ,2347,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,S,39.87,6,19,13,13,216.7
+12/19/2025,Tsuut'ina ,2347,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,M,39.87,12,27,15,15,125.0
+12/19/2025,Tsuut'ina ,2347,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,L,39.87,12,29,17,17,141.7
+12/19/2025,Tsuut'ina ,2347,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,XL,39.87,12,28,16,16,133.3
+12/19/2025,Tsuut'ina ,2347,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,2XL,39.87,5,22,17,17,340.0
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Tee,T-Shirt,S,39.87,3,19,16,16,533.3
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Tee,T-Shirt,M,39.87,6,27,21,21,350.0
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Tee,T-Shirt,L,39.87,12,29,17,17,141.7
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Tee,T-Shirt,XL,39.87,3,28,25,25,833.3
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Tee,T-Shirt,2XL,39.87,6,22,16,16,266.7
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Tee,T-Shirt,3XL,39.87,3,23,20,20,666.7
+12/19/2025,Tsuut'ina ,2347,Jazzy Balloon Tee,T-Shirt,S,39.87,3,19,16,16,533.3
+12/19/2025,Tsuut'ina ,2347,Jazzy Balloon Tee,T-Shirt,M,39.87,6,27,21,21,350.0
+12/19/2025,Tsuut'ina ,2347,Jazzy Balloon Tee,T-Shirt,L,39.87,7,29,22,22,314.3
+12/19/2025,Tsuut'ina ,2347,Jazzy Balloon Tee,T-Shirt,XL,39.87,3,28,25,25,833.3
+12/19/2025,Tsuut'ina ,2347,Jazzy Balloon Tee,T-Shirt,3XL,39.87,2,23,21,21,1050.0
+12/19/2025,Tsuut'ina ,2347,Bling Logo Tank,Tank Top,S,39.87,5,17,12,12,240.0
+12/19/2025,Tsuut'ina ,2347,Bling Logo Tank,Tank Top,M,39.87,7,25,18,18,257.1
+12/19/2025,Tsuut'ina ,2347,Bling Logo Tank,Tank Top,L,39.87,1,26,25,25,2500.0
+12/19/2025,Tsuut'ina ,2347,Bling Logo Tank,Tank Top,XL,39.87,3,24,21,21,700.0
+12/19/2025,Tsuut'ina ,2347,Bling Logo Tank,Tank Top,2XL,39.87,2,20,18,18,900.0
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Hoodie,Sweatshirt,S,54.37,2,11,9,9,450.0
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Hoodie,Sweatshirt,M,54.37,5,15,10,10,200.0
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Hoodie,Sweatshirt,L,54.37,6,16,10,10,166.7
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Hoodie,Sweatshirt,XL,54.37,6,15,9,9,150.0
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Hoodie,Sweatshirt,2XL,54.37,2,13,11,11,550.0
+12/19/2025,Tsuut'ina ,2347,Distressed Logo Tote,Bag,ONE SIZE,21.75,18,14,-4,4,22.2
+12/19/2025,Tsuut'ina ,2347,Jazzy Balloon Magnet,Magnet,ONE SIZE,10.87,15,16,1,1,6.7

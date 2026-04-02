@@ -1,0 +1,31 @@
+show_date,city,attendance,Item Name,productType,product size,product price,actual_sold,predicted_sold,delta,abs_error,pct_error
+12/20/2025,Edmonton,4423,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,S,39.87,6,32,26,26,433.3
+12/20/2025,Edmonton,4423,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,M,39.87,10,30,20,20,200.0
+12/20/2025,Edmonton,4423,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,L,39.87,11,30,19,19,172.7
+12/20/2025,Edmonton,4423,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,XL,39.87,12,32,20,20,166.7
+12/20/2025,Edmonton,4423,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,2XL,39.87,6,29,23,23,383.3
+12/20/2025,Edmonton,4423,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,3XL,39.87,6,32,26,26,433.3
+12/20/2025,Edmonton,4423,Balloon Arch Tee,T-Shirt,S,39.87,3,32,29,29,966.7
+12/20/2025,Edmonton,4423,Balloon Arch Tee,T-Shirt,M,39.87,6,30,24,24,400.0
+12/20/2025,Edmonton,4423,Balloon Arch Tee,T-Shirt,L,39.87,12,30,18,18,150.0
+12/20/2025,Edmonton,4423,Balloon Arch Tee,T-Shirt,XL,39.87,12,32,20,20,166.7
+12/20/2025,Edmonton,4423,Balloon Arch Tee,T-Shirt,2XL,39.87,6,29,23,23,383.3
+12/20/2025,Edmonton,4423,Balloon Arch Tee,T-Shirt,3XL,39.87,3,32,29,29,966.7
+12/20/2025,Edmonton,4423,Jazzy Balloon Tee,T-Shirt,S,39.87,2,32,30,30,1500.0
+12/20/2025,Edmonton,4423,Jazzy Balloon Tee,T-Shirt,M,39.87,5,30,25,25,500.0
+12/20/2025,Edmonton,4423,Jazzy Balloon Tee,T-Shirt,L,39.87,12,30,18,18,150.0
+12/20/2025,Edmonton,4423,Jazzy Balloon Tee,T-Shirt,XL,39.87,11,32,21,21,190.9
+12/20/2025,Edmonton,4423,Jazzy Balloon Tee,T-Shirt,2XL,39.87,6,29,23,23,383.3
+12/20/2025,Edmonton,4423,Jazzy Balloon Tee,T-Shirt,3XL,39.87,3,32,29,29,966.7
+12/20/2025,Edmonton,4423,Bling Logo Tank,Tank Top,S,39.87,3,25,22,22,733.3
+12/20/2025,Edmonton,4423,Bling Logo Tank,Tank Top,M,39.87,7,26,19,19,271.4
+12/20/2025,Edmonton,4423,Bling Logo Tank,Tank Top,L,39.87,6,26,20,20,333.3
+12/20/2025,Edmonton,4423,Bling Logo Tank,Tank Top,2XL,39.87,5,24,19,19,380.0
+12/20/2025,Edmonton,4423,Balloon Arch Hoodie,Sweatshirt,S,54.37,3,24,21,21,700.0
+12/20/2025,Edmonton,4423,Balloon Arch Hoodie,Sweatshirt,M,54.37,6,28,22,22,366.7
+12/20/2025,Edmonton,4423,Balloon Arch Hoodie,Sweatshirt,L,54.37,6,29,23,23,383.3
+12/20/2025,Edmonton,4423,Balloon Arch Hoodie,Sweatshirt,XL,54.37,6,29,23,23,383.3
+12/20/2025,Edmonton,4423,Balloon Arch Hoodie,Sweatshirt,2XL,54.37,3,26,23,23,766.7
+12/20/2025,Edmonton,4423,Balloon Arch Hoodie,Sweatshirt,3XL,54.37,3,29,26,26,866.7
+12/20/2025,Edmonton,4423,Distressed Logo Tote,Bag,ONE SIZE,21.75,25,30,5,5,20.0
+12/20/2025,Edmonton,4423,Jazzy Balloon Magnet,Magnet,ONE SIZE,10.87,25,35,10,10,40.0

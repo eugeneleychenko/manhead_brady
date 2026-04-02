@@ -1,0 +1,14 @@
+[   15294ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://share.streamlit.io/api/v2/github/repository/branches?owner=&repo=:0
+[   15386ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://share.streamlit.io/api/v2/github/repository/branches?owner=&repo=:0
+[   24977ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://share.streamlit.io/api/v2/github/list-python-files?owner=eugeneleychenko&repo=manhead_brady&ref=master:0
+[   36243ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://share.streamlit.io/api/v2/github/validate-file-exists?owner=eugeneleychenko&repo=manhead_brady&path=streamlit_app.py&ref=main:0
+[   46410ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://share.streamlit.io/api/v2/github/validate-file-exists?owner=eugeneleychenko&repo=manhead_brady&path=streamlit_app.py&ref=new-model-streamlit-ui:0
+[  112937ms] [WARNING] Unrecognized feature: 'ambient-light-sensor'. @ https://mh-predict-new-ui.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[  112937ms] [WARNING] Unrecognized feature: 'battery'. @ https://mh-predict-new-ui.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[  112937ms] [WARNING] Unrecognized feature: 'document-domain'. @ https://mh-predict-new-ui.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[  112937ms] [WARNING] Unrecognized feature: 'layout-animations'. @ https://mh-predict-new-ui.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[  112937ms] [WARNING] Unrecognized feature: 'legacy-image-formats'. @ https://mh-predict-new-ui.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[  112937ms] [WARNING] Unrecognized feature: 'oversized-images'. @ https://mh-predict-new-ui.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[  112937ms] [WARNING] Unrecognized feature: 'vr'. @ https://mh-predict-new-ui.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[  112938ms] [WARNING] Unrecognized feature: 'wake-lock'. @ https://mh-predict-new-ui.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[  113160ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://mh-predict-new-ui.streamlit.app/~/+/:0

@@ -1,0 +1,13 @@
+[   24486ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://share.streamlit.io/api/v2/github/repository/branches?owner=&repo=:0
+[   24581ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://share.streamlit.io/api/v2/github/repository/branches?owner=&repo=:0
+[   31098ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://share.streamlit.io/api/v2/github/list-python-files?owner=eugeneleychenko&repo=manhead_brady&ref=master:0
+[   40004ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://share.streamlit.io/api/v2/github/validate-file-exists?owner=eugeneleychenko&repo=manhead_brady&path=streamlit_app.py&ref=main:0
+[  119431ms] [WARNING] Unrecognized feature: 'ambient-light-sensor'. @ https://mh-predict-new-model.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[  119431ms] [WARNING] Unrecognized feature: 'battery'. @ https://mh-predict-new-model.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[  119431ms] [WARNING] Unrecognized feature: 'document-domain'. @ https://mh-predict-new-model.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[  119431ms] [WARNING] Unrecognized feature: 'layout-animations'. @ https://mh-predict-new-model.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[  119431ms] [WARNING] Unrecognized feature: 'legacy-image-formats'. @ https://mh-predict-new-model.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[  119431ms] [WARNING] Unrecognized feature: 'oversized-images'. @ https://mh-predict-new-model.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[  119431ms] [WARNING] Unrecognized feature: 'vr'. @ https://mh-predict-new-model.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[  119431ms] [WARNING] Unrecognized feature: 'wake-lock'. @ https://mh-predict-new-model.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[  119589ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://mh-predict-new-model.streamlit.app/~/+/:0

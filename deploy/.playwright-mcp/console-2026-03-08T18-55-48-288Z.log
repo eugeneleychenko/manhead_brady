@@ -1,0 +1,6 @@
+[   22709ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://share.streamlit.io/api/v2/github/repository/branches?owner=&repo=:0
+[   22772ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://share.streamlit.io/api/v2/github/repository/branches?owner=&repo=:0
+[   29566ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://share.streamlit.io/api/v2/github/list-python-files?owner=eugeneleychenko&repo=manhead_brady&ref=master:0
+[   38754ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://share.streamlit.io/api/v2/github/validate-file-exists?owner=eugeneleychenko&repo=manhead_brady&path=streamlit_app.py&ref=main:0
+[   53294ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://share.streamlit.io/api/v2/github/validate-file-exists?owner=eugeneleychenko&repo=manhead_brady&path=streamlit_app.py&ref=new-model-streamlit-ui:0
+[  101165ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://mh-predict-new-model.streamlit.app/:0

@@ -1,0 +1,31 @@
+%_item_sales_per_category,Day of Week Num,Genre,HolidayStatus,Instagram,Show Day,Show Month,artistName,attendance,merch category,predicted_sales_quantity,product price,product size,productType,showDate,spotifyMonthlyListeners,temperature_daily_mean,venue capacity,venue city,venue country,venue name,venue postalCode,venue state
+4.53,6,Pop,1,347,20,12,Air Supply,4423,50th Anniversary Tour Date T-Shirt 2026,22,39.87,S,T-Shirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+5.97,6,Pop,1,347,20,12,Air Supply,4423,50th Anniversary Tour Date T-Shirt 2026,29,39.87,M,T-Shirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+6.38,6,Pop,1,347,20,12,Air Supply,4423,50th Anniversary Tour Date T-Shirt 2026,31,39.87,L,T-Shirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+5.76,6,Pop,1,347,20,12,Air Supply,4423,50th Anniversary Tour Date T-Shirt 2026,28,39.87,XL,T-Shirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+5.35,6,Pop,1,347,20,12,Air Supply,4423,50th Anniversary Tour Date T-Shirt 2026,26,39.87,2XL,T-Shirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+5.35,6,Pop,1,347,20,12,Air Supply,4423,50th Anniversary Tour Date T-Shirt 2026,26,39.87,3XL,T-Shirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+4.53,6,Pop,1,347,20,12,Air Supply,4423,Balloon Arch Tee,22,39.87,S,T-Shirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+5.97,6,Pop,1,347,20,12,Air Supply,4423,Balloon Arch Tee,29,39.87,M,T-Shirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+6.38,6,Pop,1,347,20,12,Air Supply,4423,Balloon Arch Tee,31,39.87,L,T-Shirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+5.76,6,Pop,1,347,20,12,Air Supply,4423,Balloon Arch Tee,28,39.87,XL,T-Shirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+5.35,6,Pop,1,347,20,12,Air Supply,4423,Balloon Arch Tee,26,39.87,2XL,T-Shirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+5.35,6,Pop,1,347,20,12,Air Supply,4423,Balloon Arch Tee,26,39.87,3XL,T-Shirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+4.53,6,Pop,1,347,20,12,Air Supply,4423,Jazzy Balloon Tee,22,39.87,S,T-Shirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+5.97,6,Pop,1,347,20,12,Air Supply,4423,Jazzy Balloon Tee,29,39.87,M,T-Shirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+6.38,6,Pop,1,347,20,12,Air Supply,4423,Jazzy Balloon Tee,31,39.87,L,T-Shirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+5.76,6,Pop,1,347,20,12,Air Supply,4423,Jazzy Balloon Tee,28,39.87,XL,T-Shirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+5.35,6,Pop,1,347,20,12,Air Supply,4423,Jazzy Balloon Tee,26,39.87,2XL,T-Shirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+5.35,6,Pop,1,347,20,12,Air Supply,4423,Jazzy Balloon Tee,26,39.87,3XL,T-Shirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+20.83,6,Pop,1,347,20,12,Air Supply,4423,Bling Logo Tank,20,39.87,S,Tank Top,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+27.08,6,Pop,1,347,20,12,Air Supply,4423,Bling Logo Tank,26,39.87,M,Tank Top,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+28.12,6,Pop,1,347,20,12,Air Supply,4423,Bling Logo Tank,27,39.87,L,Tank Top,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+23.96,6,Pop,1,347,20,12,Air Supply,4423,Bling Logo Tank,23,39.87,2XL,Tank Top,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+13.86,6,Pop,1,347,20,12,Air Supply,4423,Balloon Arch Hoodie,14,54.37,S,Sweatshirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+17.82,6,Pop,1,347,20,12,Air Supply,4423,Balloon Arch Hoodie,18,54.37,M,Sweatshirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+18.81,6,Pop,1,347,20,12,Air Supply,4423,Balloon Arch Hoodie,19,54.37,L,Sweatshirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+16.83,6,Pop,1,347,20,12,Air Supply,4423,Balloon Arch Hoodie,17,54.37,XL,Sweatshirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+15.84,6,Pop,1,347,20,12,Air Supply,4423,Balloon Arch Hoodie,16,54.37,2XL,Sweatshirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+16.83,6,Pop,1,347,20,12,Air Supply,4423,Balloon Arch Hoodie,17,54.37,3XL,Sweatshirt,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+100.0,6,Pop,1,347,20,12,Air Supply,4423,Distressed Logo Tote,23,21.75,ONE SIZE,Bag,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta
+100.0,6,Pop,1,347,20,12,Air Supply,4423,Jazzy Balloon Magnet,24,10.87,ONE SIZE,Magnet,2025-12-20,9197653,15.0,2236,Edmonton,United States,Edmonton Expo Centre,AB T5B,Alberta

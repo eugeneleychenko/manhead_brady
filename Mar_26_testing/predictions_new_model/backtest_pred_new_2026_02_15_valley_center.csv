@@ -1,0 +1,38 @@
+%_item_sales_per_category,Day of Week Num,Genre,HolidayStatus,Instagram,Show Day,Show Month,artistName,attendance,merch category,predicted_sales_quantity,product price,product size,productType,showDate,spotifyMonthlyListeners,temperature_daily_mean,venue capacity,venue city,venue country,venue name,venue postalCode,venue state
+3.12,7,Pop,1,347,15,2,Air Supply,1900,50th Anniversary Tour Date T-Shirt 2026,17,40.0,S,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+4.77,7,Pop,1,347,15,2,Air Supply,1900,50th Anniversary Tour Date T-Shirt 2026,26,40.0,L,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+4.22,7,Pop,1,347,15,2,Air Supply,1900,50th Anniversary Tour Date T-Shirt 2026,23,40.0,XL,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+3.67,7,Pop,1,347,15,2,Air Supply,1900,50th Anniversary Tour Date T-Shirt 2026,20,40.0,2XL,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+3.12,7,Pop,1,347,15,2,Air Supply,1900,Balloon Arch Tee,17,40.0,S,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+4.4,7,Pop,1,347,15,2,Air Supply,1900,Balloon Arch Tee,24,40.0,M,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+4.77,7,Pop,1,347,15,2,Air Supply,1900,Balloon Arch Tee,26,40.0,L,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+4.22,7,Pop,1,347,15,2,Air Supply,1900,Balloon Arch Tee,23,40.0,XL,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+3.67,7,Pop,1,347,15,2,Air Supply,1900,Balloon Arch Tee,20,40.0,2XL,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+3.85,7,Pop,1,347,15,2,Air Supply,1900,Balloon Arch Tee,21,40.0,3XL,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+3.12,7,Pop,1,347,15,2,Air Supply,1900,Jazzy Balloon Tee,17,40.0,S,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+4.4,7,Pop,1,347,15,2,Air Supply,1900,Jazzy Balloon Tee,24,40.0,M,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+4.77,7,Pop,1,347,15,2,Air Supply,1900,Jazzy Balloon Tee,26,40.0,L,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+4.22,7,Pop,1,347,15,2,Air Supply,1900,Jazzy Balloon Tee,23,40.0,XL,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+3.85,7,Pop,1,347,15,2,Air Supply,1900,Jazzy Balloon Tee,21,40.0,3XL,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+3.12,7,Pop,1,347,15,2,Air Supply,1900,Est. 1975 Guitar T-Shirt,17,40.0,S,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+4.4,7,Pop,1,347,15,2,Air Supply,1900,Est. 1975 Guitar T-Shirt,24,40.0,M,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+4.77,7,Pop,1,347,15,2,Air Supply,1900,Est. 1975 Guitar T-Shirt,26,40.0,L,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+4.22,7,Pop,1,347,15,2,Air Supply,1900,Est. 1975 Guitar T-Shirt,23,40.0,XL,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+3.67,7,Pop,1,347,15,2,Air Supply,1900,Est. 1975 Guitar T-Shirt,20,40.0,2XL,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+3.85,7,Pop,1,347,15,2,Air Supply,1900,Est. 1975 Guitar T-Shirt,21,40.0,3XL,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+3.12,7,Pop,1,347,15,2,Air Supply,1900,Women's V-Neck T-Shirt,17,40.0,S,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+4.77,7,Pop,1,347,15,2,Air Supply,1900,Women's V-Neck T-Shirt,26,40.0,L,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+4.22,7,Pop,1,347,15,2,Air Supply,1900,Women's V-Neck T-Shirt,23,40.0,XL,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+3.67,7,Pop,1,347,15,2,Air Supply,1900,Women's V-Neck T-Shirt,20,40.0,2XL,T-Shirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+33.82,7,Pop,1,347,15,2,Air Supply,1900,Bling Logo Tank,23,40.0,M,Tank Top,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+35.29,7,Pop,1,347,15,2,Air Supply,1900,Bling Logo Tank,24,40.0,L,Tank Top,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+30.88,7,Pop,1,347,15,2,Air Supply,1900,Bling Logo Tank,21,40.0,XL,Tank Top,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+20.0,7,Pop,1,347,15,2,Air Supply,1900,Balloon Arch Hoodie,6,75.0,S,Sweatshirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+23.33,7,Pop,1,347,15,2,Air Supply,1900,Balloon Arch Hoodie,7,75.0,L,Sweatshirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+20.0,7,Pop,1,347,15,2,Air Supply,1900,Balloon Arch Hoodie,6,75.0,XL,Sweatshirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+16.67,7,Pop,1,347,15,2,Air Supply,1900,Balloon Arch Hoodie,5,75.0,2XL,Sweatshirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+20.0,7,Pop,1,347,15,2,Air Supply,1900,Balloon Arch Hoodie,6,75.0,3XL,Sweatshirt,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+50.0,7,Pop,1,347,15,2,Air Supply,1900,50th Anniversary Denim Jacket,6,150.0,M,Jacket,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+50.0,7,Pop,1,347,15,2,Air Supply,1900,50th Anniversary Denim Jacket,6,150.0,XL,Jacket,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+100.0,7,Pop,1,347,15,2,Air Supply,1900,Distressed Logo Tote,13,30.0,ONE SIZE,Bag,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA
+100.0,7,Pop,1,347,15,2,Air Supply,1900,Jazzy Balloon Magnet,15,10.0,ONE SIZE,Magnet,2026-02-15,9197653,15.0,2550,Valley Center,United States,Harrah's Resort SoCal- The Event Center,92082,CA

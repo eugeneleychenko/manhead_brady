@@ -1,0 +1,48 @@
+[     854ms] [ERROR] Client Error in reaching server endpoint - No response received when attempting to reach DoInitPings @ http://localhost:8503/static/js/index.6xX1278W.js:964
+[     854ms] [ERROR] 
+Is Streamlit still running? If you accidentally stopped Streamlit, just restart it in your terminal:
+
+```bash
+streamlit run yourscript.py
+```
+       @ http://localhost:8503/static/js/index.6xX1278W.js:974
+[     854ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8503/_stcore/health:0
+[     855ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:8503/_stcore/host-config:0
+[     910ms] [ERROR] The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored. @ https://replit.com/@eugene59/ManheadNewModelAPI:0
+[     910ms] [ERROR] The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon? @ https://replit.com/@eugene59/ManheadNewModelAPI:0
+[     910ms] [ERROR] The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored. @ https://replit.com/@eugene59/ManheadNewModelAPI:0
+[    2016ms] [ERROR] The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored. @ https://www.gstatic.com/recaptcha/releases/QvLuXwupqtKMva7GIh5eGl3U/recaptcha__en.js:714
+[    2016ms] [ERROR] The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon? @ https://www.gstatic.com/recaptcha/releases/QvLuXwupqtKMva7GIh5eGl3U/recaptcha__en.js:714
+[    2016ms] [ERROR] The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored. @ https://www.gstatic.com/recaptcha/releases/QvLuXwupqtKMva7GIh5eGl3U/recaptcha__en.js:714
+[    2231ms] [ERROR] The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored. @ https://www.gstatic.com/recaptcha/releases/QvLuXwupqtKMva7GIh5eGl3U/recaptcha__en.js:773
+[    2231ms] [ERROR] The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon? @ https://www.gstatic.com/recaptcha/releases/QvLuXwupqtKMva7GIh5eGl3U/recaptcha__en.js:773
+[    2231ms] [ERROR] The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored. @ https://www.gstatic.com/recaptcha/releases/QvLuXwupqtKMva7GIh5eGl3U/recaptcha__en.js:773
+[    2231ms] [ERROR] The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored. @ https://www.gstatic.com/recaptcha/releases/QvLuXwupqtKMva7GIh5eGl3U/recaptcha__en.js:773
+[    2231ms] [ERROR] The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon? @ https://www.gstatic.com/recaptcha/releases/QvLuXwupqtKMva7GIh5eGl3U/recaptcha__en.js:773
+[    2231ms] [ERROR] The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored. @ https://www.gstatic.com/recaptcha/releases/QvLuXwupqtKMva7GIh5eGl3U/recaptcha__en.js:773
+[    2427ms] [ERROR] The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored. @ https://www.gstatic.com/recaptcha/releases/QvLuXwupqtKMva7GIh5eGl3U/recaptcha__en.js:794
+[    2427ms] [ERROR] The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon? @ https://www.gstatic.com/recaptcha/releases/QvLuXwupqtKMva7GIh5eGl3U/recaptcha__en.js:794
+[    2427ms] [ERROR] The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored. @ https://www.gstatic.com/recaptcha/releases/QvLuXwupqtKMva7GIh5eGl3U/recaptcha__en.js:794
+[    2427ms] [ERROR] The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored. @ https://www.gstatic.com/recaptcha/releases/QvLuXwupqtKMva7GIh5eGl3U/recaptcha__en.js:794
+[    2427ms] [ERROR] The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon? @ https://www.gstatic.com/recaptcha/releases/QvLuXwupqtKMva7GIh5eGl3U/recaptcha__en.js:794
+[    2427ms] [ERROR] The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored. @ https://www.gstatic.com/recaptcha/releases/QvLuXwupqtKMva7GIh5eGl3U/recaptcha__en.js:794
+[    2529ms] [ERROR] The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored. @ https://js.stripe.com/acacia/stripe.js:0
+[    2529ms] [ERROR] The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon? @ https://js.stripe.com/acacia/stripe.js:0
+[    2529ms] [ERROR] The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored. @ https://js.stripe.com/acacia/stripe.js:0
+[    3531ms] [ERROR] The source list for the Content Security Policy directive 'default-src' contains an invalid source: ''unsafe-dynamic''. It will be ignored. @ https://js.stripe.com/acacia/stripe.js:0
+[    3531ms] [ERROR] The Content-Security-Policy directive 'default-src' contains 'report-uri' as a source expression. Did you want to add it as a directive and forget a semicolon? @ https://js.stripe.com/acacia/stripe.js:0
+[    3531ms] [ERROR] The source list for Content Security Policy directive 'default-src' contains a source with an invalid path: '/api/4509669501698048/security/?sentry_key=7eb3d90eb4660416caf507087367e67e'. The query component, including the '?', will be ignored. @ https://js.stripe.com/acacia/stripe.js:0
+[  140159ms] [WARNING] Cache data may be lost when replacing the hostingBuildDeployActionUpdates field of a Subscription object.
+
+This could cause additional (usually avoidable) network requests to fetch data that were otherwise cached.
+
+To address this problem (which is not a bug in Apollo Client), either ensure all objects of type HostingBuildDeployLogAction and HostingBuildDeployStatusAction have an ID or a custom merge function, or define a custom merge function for the Subscription.hostingBuildDeployActionUpdates field, so InMemoryCache can safely merge these objects:
+
+  existing: {"__typename":"HostingBuildDeployLogAction","log":"\r\u001b[38;2;169;169;169m2026-03-08T14:30:10Z\u001b[37m \u001b[32minfo\u001b[37m: Build: 2e449f28-61ac-49ee-814e-f881ec721fca\r\n"}
+  incoming: {"__typename":"HostingBuildDeployStatusAction","status":"security_scanning","message":null,"debugSummary":null,"build":{"__ref":"HostingBuild:2e449f28-61ac-49ee-814e-f881ec721fca"}}
+
+For more information about these options, please refer to the documentation:
+
+  * Ensuring entity objects have IDs: https://go.apollo.dev/c/generating-unique-identifiers
+  * Defining custom merge functions: https://go.apollo.dev/c/merging-non-normalized-objects
+ @ https://cdn.replit.com/_next/static/chunks/4bbe6a60c8b51135.js:13

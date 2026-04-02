@@ -1,0 +1,38 @@
+show_date,city,attendance,Item Name,productType,product size,product price,actual_sold,predicted_sold,delta,abs_error,pct_error
+02/14/2026,Rancho Mirage,1800,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,S,40.0,4,30,26,26,650.0
+02/14/2026,Rancho Mirage,1800,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,M,40.0,2,44,42,42,2100.0
+02/14/2026,Rancho Mirage,1800,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,L,40.0,8,48,40,40,500.0
+02/14/2026,Rancho Mirage,1800,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,XL,40.0,4,41,37,37,925.0
+02/14/2026,Rancho Mirage,1800,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,2XL,40.0,4,38,34,34,850.0
+02/14/2026,Rancho Mirage,1800,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,3XL,40.0,2,41,39,39,1950.0
+02/14/2026,Rancho Mirage,1800,Balloon Arch Tee,T-Shirt,M,40.0,4,44,40,40,1000.0
+02/14/2026,Rancho Mirage,1800,Balloon Arch Tee,T-Shirt,L,40.0,5,48,43,43,860.0
+02/14/2026,Rancho Mirage,1800,Balloon Arch Tee,T-Shirt,XL,40.0,7,41,34,34,485.7
+02/14/2026,Rancho Mirage,1800,Balloon Arch Tee,T-Shirt,2XL,40.0,5,38,33,33,660.0
+02/14/2026,Rancho Mirage,1800,Jazzy Balloon Tee,T-Shirt,L,40.0,4,48,44,44,1100.0
+02/14/2026,Rancho Mirage,1800,Jazzy Balloon Tee,T-Shirt,XL,40.0,2,41,39,39,1950.0
+02/14/2026,Rancho Mirage,1800,Jazzy Balloon Tee,T-Shirt,2XL,40.0,2,38,36,36,1800.0
+02/14/2026,Rancho Mirage,1800,Jazzy Balloon Tee,T-Shirt,3XL,40.0,2,41,39,39,1950.0
+02/14/2026,Rancho Mirage,1800,Est. 1975 Guitar T-Shirt,T-Shirt,S,40.0,1,30,29,29,2900.0
+02/14/2026,Rancho Mirage,1800,Est. 1975 Guitar T-Shirt,T-Shirt,M,40.0,5,44,39,39,780.0
+02/14/2026,Rancho Mirage,1800,Est. 1975 Guitar T-Shirt,T-Shirt,L,40.0,7,48,41,41,585.7
+02/14/2026,Rancho Mirage,1800,Est. 1975 Guitar T-Shirt,T-Shirt,XL,40.0,6,41,35,35,583.3
+02/14/2026,Rancho Mirage,1800,Est. 1975 Guitar T-Shirt,T-Shirt,2XL,40.0,3,38,35,35,1166.7
+02/14/2026,Rancho Mirage,1800,Est. 1975 Guitar T-Shirt,T-Shirt,3XL,40.0,1,41,40,40,4000.0
+02/14/2026,Rancho Mirage,1800,Women's V-Neck T-Shirt,T-Shirt,S,40.0,1,30,29,29,2900.0
+02/14/2026,Rancho Mirage,1800,Women's V-Neck T-Shirt,T-Shirt,M,40.0,1,44,43,43,4300.0
+02/14/2026,Rancho Mirage,1800,Women's V-Neck T-Shirt,T-Shirt,L,40.0,2,48,46,46,2300.0
+02/14/2026,Rancho Mirage,1800,Women's V-Neck T-Shirt,T-Shirt,XL,40.0,3,41,38,38,1266.7
+02/14/2026,Rancho Mirage,1800,Women's V-Neck T-Shirt,T-Shirt,2XL,40.0,5,38,33,33,660.0
+02/14/2026,Rancho Mirage,1800,Bling Logo Tank,Tank Top,S,40.0,3,20,17,17,566.7
+02/14/2026,Rancho Mirage,1800,Bling Logo Tank,Tank Top,M,40.0,4,23,19,19,475.0
+02/14/2026,Rancho Mirage,1800,Bling Logo Tank,Tank Top,L,40.0,2,24,22,22,1100.0
+02/14/2026,Rancho Mirage,1800,Bling Logo Tank,Tank Top,XL,40.0,2,21,19,19,950.0
+02/14/2026,Rancho Mirage,1800,Bling Logo Tank,Tank Top,2XL,40.0,3,21,18,18,600.0
+02/14/2026,Rancho Mirage,1800,Balloon Arch Hoodie,Sweatshirt,S,75.0,2,5,3,3,150.0
+02/14/2026,Rancho Mirage,1800,Balloon Arch Hoodie,Sweatshirt,L,75.0,2,7,5,5,250.0
+02/14/2026,Rancho Mirage,1800,Balloon Arch Hoodie,Sweatshirt,XL,75.0,1,6,5,5,500.0
+02/14/2026,Rancho Mirage,1800,50th Anniversary Denim Jacket,Jacket,M,150.0,1,6,5,5,500.0
+02/14/2026,Rancho Mirage,1800,50th Anniversary Denim Jacket,Jacket,2XL,150.0,1,6,5,5,500.0
+02/14/2026,Rancho Mirage,1800,Distressed Logo Tote,Bag,ONE SIZE,30.0,11,19,8,8,72.7
+02/14/2026,Rancho Mirage,1800,Jazzy Balloon Magnet,Magnet,ONE SIZE,10.0,6,22,16,16,266.7

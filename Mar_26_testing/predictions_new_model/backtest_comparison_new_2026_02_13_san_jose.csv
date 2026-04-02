@@ -1,0 +1,23 @@
+show_date,city,attendance,Item Name,productType,product size,product price,actual_sold,predicted_sold,delta,abs_error,pct_error
+02/13/2026,San Jose,2634,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,L,40.0,48,28,-20,20,41.7
+02/13/2026,San Jose,2634,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,XL,40.0,28,23,-5,5,17.9
+02/13/2026,San Jose,2634,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,2XL,40.0,8,20,12,12,150.0
+02/13/2026,San Jose,2634,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,3XL,40.0,2,22,20,20,1000.0
+02/13/2026,San Jose,2634,Jazzy Balloon Tee,T-Shirt,S,40.0,6,17,11,11,183.3
+02/13/2026,San Jose,2634,Jazzy Balloon Tee,T-Shirt,M,40.0,6,26,20,20,333.3
+02/13/2026,San Jose,2634,Jazzy Balloon Tee,T-Shirt,L,40.0,6,28,22,22,366.7
+02/13/2026,San Jose,2634,Jazzy Balloon Tee,T-Shirt,XL,40.0,6,23,17,17,283.3
+02/13/2026,San Jose,2634,Jazzy Balloon Tee,T-Shirt,2XL,40.0,6,20,14,14,233.3
+02/13/2026,San Jose,2634,Jazzy Balloon Tee,T-Shirt,3XL,40.0,4,22,18,18,450.0
+02/13/2026,San Jose,2634,Est. 1975 Guitar T-Shirt,T-Shirt,S,40.0,12,17,5,5,41.7
+02/13/2026,San Jose,2634,Est. 1975 Guitar T-Shirt,T-Shirt,M,40.0,5,26,21,21,420.0
+02/13/2026,San Jose,2634,Est. 1975 Guitar T-Shirt,T-Shirt,L,40.0,10,28,18,18,180.0
+02/13/2026,San Jose,2634,Est. 1975 Guitar T-Shirt,T-Shirt,2XL,40.0,12,20,8,8,66.7
+02/13/2026,San Jose,2634,Est. 1975 Guitar T-Shirt,T-Shirt,3XL,40.0,12,22,10,10,83.3
+02/13/2026,San Jose,2634,Women's V-Neck T-Shirt,T-Shirt,S,40.0,7,17,10,10,142.9
+02/13/2026,San Jose,2634,Women's V-Neck T-Shirt,T-Shirt,M,40.0,11,26,15,15,136.4
+02/13/2026,San Jose,2634,Women's V-Neck T-Shirt,T-Shirt,L,40.0,7,28,21,21,300.0
+02/13/2026,San Jose,2634,Women's V-Neck T-Shirt,T-Shirt,XL,40.0,7,23,16,16,228.6
+02/13/2026,San Jose,2634,Women's V-Neck T-Shirt,T-Shirt,2XL,40.0,2,20,18,18,900.0
+02/13/2026,San Jose,2634,Distressed Logo Tote,Bag,ONE SIZE,30.0,15,15,0,0,0.0
+02/13/2026,San Jose,2634,Jazzy Balloon Magnet,Magnet,ONE SIZE,10.0,40,16,-24,24,60.0

@@ -1,0 +1,198 @@
+show_date,city,attendance,Item Name,productType,product size,product price,actual_sold,predicted_sold,delta,abs_error,pct_error
+02/13/2026,San Jose,2634,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,L,40.0,48,28,-20,20,41.7
+02/13/2026,San Jose,2634,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,XL,40.0,28,23,-5,5,17.9
+02/13/2026,San Jose,2634,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,2XL,40.0,8,20,12,12,150.0
+02/13/2026,San Jose,2634,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,3XL,40.0,2,22,20,20,1000.0
+02/13/2026,San Jose,2634,Jazzy Balloon Tee,T-Shirt,S,40.0,6,17,11,11,183.3
+02/13/2026,San Jose,2634,Jazzy Balloon Tee,T-Shirt,M,40.0,6,26,20,20,333.3
+02/13/2026,San Jose,2634,Jazzy Balloon Tee,T-Shirt,L,40.0,6,28,22,22,366.7
+02/13/2026,San Jose,2634,Jazzy Balloon Tee,T-Shirt,XL,40.0,6,23,17,17,283.3
+02/13/2026,San Jose,2634,Jazzy Balloon Tee,T-Shirt,2XL,40.0,6,20,14,14,233.3
+02/13/2026,San Jose,2634,Jazzy Balloon Tee,T-Shirt,3XL,40.0,4,22,18,18,450.0
+02/13/2026,San Jose,2634,Est. 1975 Guitar T-Shirt,T-Shirt,S,40.0,12,17,5,5,41.7
+02/13/2026,San Jose,2634,Est. 1975 Guitar T-Shirt,T-Shirt,M,40.0,5,26,21,21,420.0
+02/13/2026,San Jose,2634,Est. 1975 Guitar T-Shirt,T-Shirt,L,40.0,10,28,18,18,180.0
+02/13/2026,San Jose,2634,Est. 1975 Guitar T-Shirt,T-Shirt,2XL,40.0,12,20,8,8,66.7
+02/13/2026,San Jose,2634,Est. 1975 Guitar T-Shirt,T-Shirt,3XL,40.0,12,22,10,10,83.3
+02/13/2026,San Jose,2634,Women's V-Neck T-Shirt,T-Shirt,S,40.0,7,17,10,10,142.9
+02/13/2026,San Jose,2634,Women's V-Neck T-Shirt,T-Shirt,M,40.0,11,26,15,15,136.4
+02/13/2026,San Jose,2634,Women's V-Neck T-Shirt,T-Shirt,L,40.0,7,28,21,21,300.0
+02/13/2026,San Jose,2634,Women's V-Neck T-Shirt,T-Shirt,XL,40.0,7,23,16,16,228.6
+02/13/2026,San Jose,2634,Women's V-Neck T-Shirt,T-Shirt,2XL,40.0,2,20,18,18,900.0
+02/13/2026,San Jose,2634,Distressed Logo Tote,Bag,ONE SIZE,30.0,15,15,0,0,0.0
+02/13/2026,San Jose,2634,Jazzy Balloon Magnet,Magnet,ONE SIZE,10.0,40,16,-24,24,60.0
+02/14/2026,Rancho Mirage,1800,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,S,40.0,4,16,12,12,300.0
+02/14/2026,Rancho Mirage,1800,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,M,40.0,2,22,20,20,1000.0
+02/14/2026,Rancho Mirage,1800,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,L,40.0,8,25,17,17,212.5
+02/14/2026,Rancho Mirage,1800,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,XL,40.0,4,22,18,18,450.0
+02/14/2026,Rancho Mirage,1800,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,2XL,40.0,4,18,14,14,350.0
+02/14/2026,Rancho Mirage,1800,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,3XL,40.0,2,20,18,18,900.0
+02/14/2026,Rancho Mirage,1800,Balloon Arch Tee,T-Shirt,M,40.0,4,22,18,18,450.0
+02/14/2026,Rancho Mirage,1800,Balloon Arch Tee,T-Shirt,L,40.0,5,25,20,20,400.0
+02/14/2026,Rancho Mirage,1800,Balloon Arch Tee,T-Shirt,XL,40.0,7,22,15,15,214.3
+02/14/2026,Rancho Mirage,1800,Balloon Arch Tee,T-Shirt,2XL,40.0,5,18,13,13,260.0
+02/14/2026,Rancho Mirage,1800,Jazzy Balloon Tee,T-Shirt,L,40.0,4,25,21,21,525.0
+02/14/2026,Rancho Mirage,1800,Jazzy Balloon Tee,T-Shirt,XL,40.0,2,22,20,20,1000.0
+02/14/2026,Rancho Mirage,1800,Jazzy Balloon Tee,T-Shirt,2XL,40.0,2,18,16,16,800.0
+02/14/2026,Rancho Mirage,1800,Jazzy Balloon Tee,T-Shirt,3XL,40.0,2,20,18,18,900.0
+02/14/2026,Rancho Mirage,1800,Est. 1975 Guitar T-Shirt,T-Shirt,S,40.0,1,16,15,15,1500.0
+02/14/2026,Rancho Mirage,1800,Est. 1975 Guitar T-Shirt,T-Shirt,M,40.0,5,22,17,17,340.0
+02/14/2026,Rancho Mirage,1800,Est. 1975 Guitar T-Shirt,T-Shirt,L,40.0,7,25,18,18,257.1
+02/14/2026,Rancho Mirage,1800,Est. 1975 Guitar T-Shirt,T-Shirt,XL,40.0,6,22,16,16,266.7
+02/14/2026,Rancho Mirage,1800,Est. 1975 Guitar T-Shirt,T-Shirt,2XL,40.0,3,18,15,15,500.0
+02/14/2026,Rancho Mirage,1800,Est. 1975 Guitar T-Shirt,T-Shirt,3XL,40.0,1,20,19,19,1900.0
+02/14/2026,Rancho Mirage,1800,Women's V-Neck T-Shirt,T-Shirt,S,40.0,1,16,15,15,1500.0
+02/14/2026,Rancho Mirage,1800,Women's V-Neck T-Shirt,T-Shirt,M,40.0,1,22,21,21,2100.0
+02/14/2026,Rancho Mirage,1800,Women's V-Neck T-Shirt,T-Shirt,L,40.0,2,25,23,23,1150.0
+02/14/2026,Rancho Mirage,1800,Women's V-Neck T-Shirt,T-Shirt,XL,40.0,3,22,19,19,633.3
+02/14/2026,Rancho Mirage,1800,Women's V-Neck T-Shirt,T-Shirt,2XL,40.0,5,18,13,13,260.0
+02/14/2026,Rancho Mirage,1800,Bling Logo Tank,Tank Top,S,40.0,3,15,12,12,400.0
+02/14/2026,Rancho Mirage,1800,Bling Logo Tank,Tank Top,M,40.0,4,21,17,17,425.0
+02/14/2026,Rancho Mirage,1800,Bling Logo Tank,Tank Top,L,40.0,2,23,21,21,1050.0
+02/14/2026,Rancho Mirage,1800,Bling Logo Tank,Tank Top,XL,40.0,2,20,18,18,900.0
+02/14/2026,Rancho Mirage,1800,Bling Logo Tank,Tank Top,2XL,40.0,3,17,14,14,466.7
+02/14/2026,Rancho Mirage,1800,Balloon Arch Hoodie,Sweatshirt,S,75.0,2,5,3,3,150.0
+02/14/2026,Rancho Mirage,1800,Balloon Arch Hoodie,Sweatshirt,L,75.0,2,6,4,4,200.0
+02/14/2026,Rancho Mirage,1800,Balloon Arch Hoodie,Sweatshirt,XL,75.0,1,5,4,4,400.0
+02/14/2026,Rancho Mirage,1800,50th Anniversary Denim Jacket,Jacket,M,150.0,1,5,4,4,400.0
+02/14/2026,Rancho Mirage,1800,50th Anniversary Denim Jacket,Jacket,2XL,150.0,1,4,3,3,300.0
+02/14/2026,Rancho Mirage,1800,Distressed Logo Tote,Bag,ONE SIZE,30.0,11,12,1,1,9.1
+02/14/2026,Rancho Mirage,1800,Jazzy Balloon Magnet,Magnet,ONE SIZE,10.0,6,14,8,8,133.3
+02/15/2026,Valley Center,1900,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,S,40.0,4,17,13,13,325.0
+02/15/2026,Valley Center,1900,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,L,40.0,14,26,12,12,85.7
+02/15/2026,Valley Center,1900,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,XL,40.0,3,23,20,20,666.7
+02/15/2026,Valley Center,1900,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,2XL,40.0,3,20,17,17,566.7
+02/15/2026,Valley Center,1900,Balloon Arch Tee,T-Shirt,S,40.0,1,17,16,16,1600.0
+02/15/2026,Valley Center,1900,Balloon Arch Tee,T-Shirt,M,40.0,7,24,17,17,242.9
+02/15/2026,Valley Center,1900,Balloon Arch Tee,T-Shirt,L,40.0,7,26,19,19,271.4
+02/15/2026,Valley Center,1900,Balloon Arch Tee,T-Shirt,XL,40.0,5,23,18,18,360.0
+02/15/2026,Valley Center,1900,Balloon Arch Tee,T-Shirt,2XL,40.0,5,20,15,15,300.0
+02/15/2026,Valley Center,1900,Balloon Arch Tee,T-Shirt,3XL,40.0,1,21,20,20,2000.0
+02/15/2026,Valley Center,1900,Jazzy Balloon Tee,T-Shirt,S,40.0,3,17,14,14,466.7
+02/15/2026,Valley Center,1900,Jazzy Balloon Tee,T-Shirt,M,40.0,4,24,20,20,500.0
+02/15/2026,Valley Center,1900,Jazzy Balloon Tee,T-Shirt,L,40.0,2,26,24,24,1200.0
+02/15/2026,Valley Center,1900,Jazzy Balloon Tee,T-Shirt,XL,40.0,1,23,22,22,2200.0
+02/15/2026,Valley Center,1900,Jazzy Balloon Tee,T-Shirt,3XL,40.0,2,21,19,19,950.0
+02/15/2026,Valley Center,1900,Est. 1975 Guitar T-Shirt,T-Shirt,S,40.0,7,17,10,10,142.9
+02/15/2026,Valley Center,1900,Est. 1975 Guitar T-Shirt,T-Shirt,M,40.0,12,24,12,12,100.0
+02/15/2026,Valley Center,1900,Est. 1975 Guitar T-Shirt,T-Shirt,L,40.0,15,26,11,11,73.3
+02/15/2026,Valley Center,1900,Est. 1975 Guitar T-Shirt,T-Shirt,XL,40.0,2,23,21,21,1050.0
+02/15/2026,Valley Center,1900,Est. 1975 Guitar T-Shirt,T-Shirt,2XL,40.0,4,20,16,16,400.0
+02/15/2026,Valley Center,1900,Est. 1975 Guitar T-Shirt,T-Shirt,3XL,40.0,1,21,20,20,2000.0
+02/15/2026,Valley Center,1900,Women's V-Neck T-Shirt,T-Shirt,S,40.0,4,17,13,13,325.0
+02/15/2026,Valley Center,1900,Women's V-Neck T-Shirt,T-Shirt,L,40.0,2,26,24,24,1200.0
+02/15/2026,Valley Center,1900,Women's V-Neck T-Shirt,T-Shirt,XL,40.0,2,23,21,21,1050.0
+02/15/2026,Valley Center,1900,Women's V-Neck T-Shirt,T-Shirt,2XL,40.0,1,20,19,19,1900.0
+02/15/2026,Valley Center,1900,Bling Logo Tank,Tank Top,M,40.0,2,23,21,21,1050.0
+02/15/2026,Valley Center,1900,Bling Logo Tank,Tank Top,L,40.0,3,24,21,21,700.0
+02/15/2026,Valley Center,1900,Bling Logo Tank,Tank Top,XL,40.0,2,21,19,19,950.0
+02/15/2026,Valley Center,1900,Balloon Arch Hoodie,Sweatshirt,S,75.0,1,6,5,5,500.0
+02/15/2026,Valley Center,1900,Balloon Arch Hoodie,Sweatshirt,L,75.0,2,7,5,5,250.0
+02/15/2026,Valley Center,1900,Balloon Arch Hoodie,Sweatshirt,XL,75.0,1,6,5,5,500.0
+02/15/2026,Valley Center,1900,Balloon Arch Hoodie,Sweatshirt,2XL,75.0,1,5,4,4,400.0
+02/15/2026,Valley Center,1900,Balloon Arch Hoodie,Sweatshirt,3XL,75.0,1,6,5,5,500.0
+02/15/2026,Valley Center,1900,50th Anniversary Denim Jacket,Jacket,M,150.0,2,6,4,4,200.0
+02/15/2026,Valley Center,1900,50th Anniversary Denim Jacket,Jacket,XL,150.0,2,6,4,4,200.0
+02/15/2026,Valley Center,1900,Distressed Logo Tote,Bag,ONE SIZE,30.0,20,13,-7,7,35.0
+02/15/2026,Valley Center,1900,Jazzy Balloon Magnet,Magnet,ONE SIZE,10.0,15,15,0,0,0.0
+02/22/2026,Maravillas,2500,50th Anniversary SA Tour Tee,T-Shirt,XS,46.69,3,25,22,22,733.3
+02/22/2026,Maravillas,2500,50th Anniversary SA Tour Tee,T-Shirt,M,46.69,6,27,21,21,350.0
+02/22/2026,Maravillas,2500,50th Anniversary SA Tour Tee,T-Shirt,L,46.69,5,28,23,23,460.0
+02/22/2026,Maravillas,2500,50th Anniversary SA Tour Tee,T-Shirt,XL,46.69,1,25,24,24,2400.0
+02/22/2026,Maravillas,2500,50th Anniversary SA Tour Tee,T-Shirt,2XL,46.69,1,24,23,23,2300.0
+02/22/2026,Maravillas,2500,S.A. Grey Jazzy Balloon Tee,T-Shirt,XS,46.69,4,25,21,21,525.0
+02/22/2026,Maravillas,2500,S.A. Grey Jazzy Balloon Tee,T-Shirt,M,46.69,2,27,25,25,1250.0
+02/22/2026,Maravillas,2500,S.A. Grey Jazzy Balloon Tee,T-Shirt,L,46.69,2,28,26,26,1300.0
+02/22/2026,Maravillas,2500,S.A. Grey Jazzy Balloon Tee,T-Shirt,XL,46.69,1,25,24,24,2400.0
+02/22/2026,Maravillas,2500,S.A. Black Est. 1975 Guitar T-Shirt,T-Shirt,XS,46.69,1,25,24,24,2400.0
+02/22/2026,Maravillas,2500,S.A. Black Est. 1975 Guitar T-Shirt,T-Shirt,M,46.69,5,27,22,22,440.0
+02/22/2026,Maravillas,2500,S.A. Black Est. 1975 Guitar T-Shirt,T-Shirt,L,46.69,4,28,24,24,600.0
+02/22/2026,Maravillas,2500,S.A. Black Est. 1975 Guitar T-Shirt,T-Shirt,XL,46.69,1,25,24,24,2400.0
+12/17/2025,Toronto,3844,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,S,45.09,6,19,13,13,216.7
+12/17/2025,Toronto,3844,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,M,45.09,12,26,14,14,116.7
+12/17/2025,Toronto,3844,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,L,45.09,12,27,15,15,125.0
+12/17/2025,Toronto,3844,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,XL,45.09,12,25,13,13,108.3
+12/17/2025,Toronto,3844,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,2XL,45.09,6,24,18,18,300.0
+12/17/2025,Toronto,3844,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,3XL,45.09,3,24,21,21,700.0
+12/17/2025,Toronto,3844,Balloon Arch Tee,T-Shirt,S,45.09,3,19,16,16,533.3
+12/17/2025,Toronto,3844,Balloon Arch Tee,T-Shirt,M,45.09,6,26,20,20,333.3
+12/17/2025,Toronto,3844,Balloon Arch Tee,T-Shirt,L,45.09,12,27,15,15,125.0
+12/17/2025,Toronto,3844,Balloon Arch Tee,T-Shirt,XL,45.09,12,25,13,13,108.3
+12/17/2025,Toronto,3844,Balloon Arch Tee,T-Shirt,2XL,45.09,5,24,19,19,380.0
+12/17/2025,Toronto,3844,Balloon Arch Tee,T-Shirt,3XL,45.09,3,24,21,21,700.0
+12/17/2025,Toronto,3844,Jazzy Balloon Tee,T-Shirt,S,45.09,3,19,16,16,533.3
+12/17/2025,Toronto,3844,Jazzy Balloon Tee,T-Shirt,M,45.09,6,26,20,20,333.3
+12/17/2025,Toronto,3844,Jazzy Balloon Tee,T-Shirt,L,45.09,12,27,15,15,125.0
+12/17/2025,Toronto,3844,Jazzy Balloon Tee,T-Shirt,XL,45.09,8,25,17,17,212.5
+12/17/2025,Toronto,3844,Jazzy Balloon Tee,T-Shirt,2XL,45.09,3,24,21,21,700.0
+12/17/2025,Toronto,3844,Jazzy Balloon Tee,T-Shirt,3XL,45.09,1,24,23,23,2300.0
+12/17/2025,Toronto,3844,Bling Logo Tank,Tank Top,S,45.09,1,17,16,16,1600.0
+12/17/2025,Toronto,3844,Bling Logo Tank,Tank Top,M,45.09,5,22,17,17,340.0
+12/17/2025,Toronto,3844,Bling Logo Tank,Tank Top,L,45.09,5,23,18,18,360.0
+12/17/2025,Toronto,3844,Bling Logo Tank,Tank Top,XL,45.09,2,21,19,19,950.0
+12/17/2025,Toronto,3844,Bling Logo Tank,Tank Top,2XL,45.09,1,20,19,19,1900.0
+12/17/2025,Toronto,3844,Balloon Arch Hoodie,Sweatshirt,S,61.48,3,10,7,7,233.3
+12/17/2025,Toronto,3844,Balloon Arch Hoodie,Sweatshirt,M,61.48,5,12,7,7,140.0
+12/17/2025,Toronto,3844,Balloon Arch Hoodie,Sweatshirt,L,61.48,4,12,8,8,200.0
+12/17/2025,Toronto,3844,Balloon Arch Hoodie,Sweatshirt,XL,61.48,4,12,8,8,200.0
+12/17/2025,Toronto,3844,Balloon Arch Hoodie,Sweatshirt,2XL,61.48,2,11,9,9,450.0
+12/17/2025,Toronto,3844,Distressed Logo Tote,Bag,ONE SIZE,24.59,19,21,2,2,10.5
+12/17/2025,Toronto,3844,Jazzy Balloon Magnet,Magnet,ONE SIZE,12.3,22,23,1,1,4.5
+12/19/2025,Tsuut'ina ,2347,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,S,39.87,6,19,13,13,216.7
+12/19/2025,Tsuut'ina ,2347,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,M,39.87,12,27,15,15,125.0
+12/19/2025,Tsuut'ina ,2347,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,L,39.87,12,29,17,17,141.7
+12/19/2025,Tsuut'ina ,2347,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,XL,39.87,12,28,16,16,133.3
+12/19/2025,Tsuut'ina ,2347,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,2XL,39.87,5,22,17,17,340.0
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Tee,T-Shirt,S,39.87,3,19,16,16,533.3
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Tee,T-Shirt,M,39.87,6,27,21,21,350.0
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Tee,T-Shirt,L,39.87,12,29,17,17,141.7
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Tee,T-Shirt,XL,39.87,3,28,25,25,833.3
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Tee,T-Shirt,2XL,39.87,6,22,16,16,266.7
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Tee,T-Shirt,3XL,39.87,3,23,20,20,666.7
+12/19/2025,Tsuut'ina ,2347,Jazzy Balloon Tee,T-Shirt,S,39.87,3,19,16,16,533.3
+12/19/2025,Tsuut'ina ,2347,Jazzy Balloon Tee,T-Shirt,M,39.87,6,27,21,21,350.0
+12/19/2025,Tsuut'ina ,2347,Jazzy Balloon Tee,T-Shirt,L,39.87,7,29,22,22,314.3
+12/19/2025,Tsuut'ina ,2347,Jazzy Balloon Tee,T-Shirt,XL,39.87,3,28,25,25,833.3
+12/19/2025,Tsuut'ina ,2347,Jazzy Balloon Tee,T-Shirt,3XL,39.87,2,23,21,21,1050.0
+12/19/2025,Tsuut'ina ,2347,Bling Logo Tank,Tank Top,S,39.87,5,17,12,12,240.0
+12/19/2025,Tsuut'ina ,2347,Bling Logo Tank,Tank Top,M,39.87,7,25,18,18,257.1
+12/19/2025,Tsuut'ina ,2347,Bling Logo Tank,Tank Top,L,39.87,1,26,25,25,2500.0
+12/19/2025,Tsuut'ina ,2347,Bling Logo Tank,Tank Top,XL,39.87,3,24,21,21,700.0
+12/19/2025,Tsuut'ina ,2347,Bling Logo Tank,Tank Top,2XL,39.87,2,20,18,18,900.0
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Hoodie,Sweatshirt,S,54.37,2,11,9,9,450.0
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Hoodie,Sweatshirt,M,54.37,5,15,10,10,200.0
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Hoodie,Sweatshirt,L,54.37,6,16,10,10,166.7
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Hoodie,Sweatshirt,XL,54.37,6,15,9,9,150.0
+12/19/2025,Tsuut'ina ,2347,Balloon Arch Hoodie,Sweatshirt,2XL,54.37,2,13,11,11,550.0
+12/19/2025,Tsuut'ina ,2347,Distressed Logo Tote,Bag,ONE SIZE,21.75,18,14,-4,4,22.2
+12/19/2025,Tsuut'ina ,2347,Jazzy Balloon Magnet,Magnet,ONE SIZE,10.87,15,16,1,1,6.7
+12/20/2025,Edmonton,4423,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,S,39.87,6,22,16,16,266.7
+12/20/2025,Edmonton,4423,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,M,39.87,10,29,19,19,190.0
+12/20/2025,Edmonton,4423,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,L,39.87,11,31,20,20,181.8
+12/20/2025,Edmonton,4423,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,XL,39.87,12,28,16,16,133.3
+12/20/2025,Edmonton,4423,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,2XL,39.87,6,26,20,20,333.3
+12/20/2025,Edmonton,4423,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,3XL,39.87,6,26,20,20,333.3
+12/20/2025,Edmonton,4423,Balloon Arch Tee,T-Shirt,S,39.87,3,22,19,19,633.3
+12/20/2025,Edmonton,4423,Balloon Arch Tee,T-Shirt,M,39.87,6,29,23,23,383.3
+12/20/2025,Edmonton,4423,Balloon Arch Tee,T-Shirt,L,39.87,12,31,19,19,158.3
+12/20/2025,Edmonton,4423,Balloon Arch Tee,T-Shirt,XL,39.87,12,28,16,16,133.3
+12/20/2025,Edmonton,4423,Balloon Arch Tee,T-Shirt,2XL,39.87,6,26,20,20,333.3
+12/20/2025,Edmonton,4423,Balloon Arch Tee,T-Shirt,3XL,39.87,3,26,23,23,766.7
+12/20/2025,Edmonton,4423,Jazzy Balloon Tee,T-Shirt,S,39.87,2,22,20,20,1000.0
+12/20/2025,Edmonton,4423,Jazzy Balloon Tee,T-Shirt,M,39.87,5,29,24,24,480.0
+12/20/2025,Edmonton,4423,Jazzy Balloon Tee,T-Shirt,L,39.87,12,31,19,19,158.3
+12/20/2025,Edmonton,4423,Jazzy Balloon Tee,T-Shirt,XL,39.87,11,28,17,17,154.5
+12/20/2025,Edmonton,4423,Jazzy Balloon Tee,T-Shirt,2XL,39.87,6,26,20,20,333.3
+12/20/2025,Edmonton,4423,Jazzy Balloon Tee,T-Shirt,3XL,39.87,3,26,23,23,766.7
+12/20/2025,Edmonton,4423,Bling Logo Tank,Tank Top,S,39.87,3,20,17,17,566.7
+12/20/2025,Edmonton,4423,Bling Logo Tank,Tank Top,M,39.87,7,26,19,19,271.4
+12/20/2025,Edmonton,4423,Bling Logo Tank,Tank Top,L,39.87,6,27,21,21,350.0
+12/20/2025,Edmonton,4423,Bling Logo Tank,Tank Top,2XL,39.87,5,23,18,18,360.0
+12/20/2025,Edmonton,4423,Balloon Arch Hoodie,Sweatshirt,S,54.37,3,14,11,11,366.7
+12/20/2025,Edmonton,4423,Balloon Arch Hoodie,Sweatshirt,M,54.37,6,18,12,12,200.0
+12/20/2025,Edmonton,4423,Balloon Arch Hoodie,Sweatshirt,L,54.37,6,19,13,13,216.7
+12/20/2025,Edmonton,4423,Balloon Arch Hoodie,Sweatshirt,XL,54.37,6,17,11,11,183.3
+12/20/2025,Edmonton,4423,Balloon Arch Hoodie,Sweatshirt,2XL,54.37,3,16,13,13,433.3
+12/20/2025,Edmonton,4423,Balloon Arch Hoodie,Sweatshirt,3XL,54.37,3,17,14,14,466.7
+12/20/2025,Edmonton,4423,Distressed Logo Tote,Bag,ONE SIZE,21.75,25,23,-2,2,8.0
+12/20/2025,Edmonton,4423,Jazzy Balloon Magnet,Magnet,ONE SIZE,10.87,25,24,-1,1,4.0

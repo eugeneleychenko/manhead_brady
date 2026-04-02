@@ -1,0 +1,31 @@
+show_date,city,attendance,Item Name,productType,product size,product price,actual_sold,predicted_sold,delta,abs_error,pct_error
+12/17/2025,Toronto,3844,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,S,45.09,6,19,13,13,216.7
+12/17/2025,Toronto,3844,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,M,45.09,12,26,14,14,116.7
+12/17/2025,Toronto,3844,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,L,45.09,12,27,15,15,125.0
+12/17/2025,Toronto,3844,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,XL,45.09,12,25,13,13,108.3
+12/17/2025,Toronto,3844,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,2XL,45.09,6,24,18,18,300.0
+12/17/2025,Toronto,3844,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,3XL,45.09,3,24,21,21,700.0
+12/17/2025,Toronto,3844,Balloon Arch Tee,T-Shirt,S,45.09,3,19,16,16,533.3
+12/17/2025,Toronto,3844,Balloon Arch Tee,T-Shirt,M,45.09,6,26,20,20,333.3
+12/17/2025,Toronto,3844,Balloon Arch Tee,T-Shirt,L,45.09,12,27,15,15,125.0
+12/17/2025,Toronto,3844,Balloon Arch Tee,T-Shirt,XL,45.09,12,25,13,13,108.3
+12/17/2025,Toronto,3844,Balloon Arch Tee,T-Shirt,2XL,45.09,5,24,19,19,380.0
+12/17/2025,Toronto,3844,Balloon Arch Tee,T-Shirt,3XL,45.09,3,24,21,21,700.0
+12/17/2025,Toronto,3844,Jazzy Balloon Tee,T-Shirt,S,45.09,3,19,16,16,533.3
+12/17/2025,Toronto,3844,Jazzy Balloon Tee,T-Shirt,M,45.09,6,26,20,20,333.3
+12/17/2025,Toronto,3844,Jazzy Balloon Tee,T-Shirt,L,45.09,12,27,15,15,125.0
+12/17/2025,Toronto,3844,Jazzy Balloon Tee,T-Shirt,XL,45.09,8,25,17,17,212.5
+12/17/2025,Toronto,3844,Jazzy Balloon Tee,T-Shirt,2XL,45.09,3,24,21,21,700.0
+12/17/2025,Toronto,3844,Jazzy Balloon Tee,T-Shirt,3XL,45.09,1,24,23,23,2300.0
+12/17/2025,Toronto,3844,Bling Logo Tank,Tank Top,S,45.09,1,17,16,16,1600.0
+12/17/2025,Toronto,3844,Bling Logo Tank,Tank Top,M,45.09,5,22,17,17,340.0
+12/17/2025,Toronto,3844,Bling Logo Tank,Tank Top,L,45.09,5,23,18,18,360.0
+12/17/2025,Toronto,3844,Bling Logo Tank,Tank Top,XL,45.09,2,21,19,19,950.0
+12/17/2025,Toronto,3844,Bling Logo Tank,Tank Top,2XL,45.09,1,20,19,19,1900.0
+12/17/2025,Toronto,3844,Balloon Arch Hoodie,Sweatshirt,S,61.48,3,10,7,7,233.3
+12/17/2025,Toronto,3844,Balloon Arch Hoodie,Sweatshirt,M,61.48,5,12,7,7,140.0
+12/17/2025,Toronto,3844,Balloon Arch Hoodie,Sweatshirt,L,61.48,4,12,8,8,200.0
+12/17/2025,Toronto,3844,Balloon Arch Hoodie,Sweatshirt,XL,61.48,4,12,8,8,200.0
+12/17/2025,Toronto,3844,Balloon Arch Hoodie,Sweatshirt,2XL,61.48,2,11,9,9,450.0
+12/17/2025,Toronto,3844,Distressed Logo Tote,Bag,ONE SIZE,24.59,19,21,2,2,10.5
+12/17/2025,Toronto,3844,Jazzy Balloon Magnet,Magnet,ONE SIZE,12.3,22,23,1,1,4.5

@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: manhead-merch-predict
+    runtime: docker
+    dockerfilePath: ./deploy/streamlit_ui/Dockerfile
+    plan: starter
+    envVars:
+      - key: FLASK_API_URL
+        sync: false  # Set manually in Render dashboard after Flask is deployed to Replit
+    autoDeploy: true

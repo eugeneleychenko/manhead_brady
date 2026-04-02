@@ -1,0 +1,38 @@
+show_date,city,attendance,Item Name,productType,product size,product price,actual_sold,predicted_sold,delta,abs_error,pct_error
+02/15/2026,Valley Center,1900,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,S,40.0,4,17,13,13,325.0
+02/15/2026,Valley Center,1900,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,L,40.0,14,26,12,12,85.7
+02/15/2026,Valley Center,1900,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,XL,40.0,3,23,20,20,666.7
+02/15/2026,Valley Center,1900,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,2XL,40.0,3,20,17,17,566.7
+02/15/2026,Valley Center,1900,Balloon Arch Tee,T-Shirt,S,40.0,1,17,16,16,1600.0
+02/15/2026,Valley Center,1900,Balloon Arch Tee,T-Shirt,M,40.0,7,24,17,17,242.9
+02/15/2026,Valley Center,1900,Balloon Arch Tee,T-Shirt,L,40.0,7,26,19,19,271.4
+02/15/2026,Valley Center,1900,Balloon Arch Tee,T-Shirt,XL,40.0,5,23,18,18,360.0
+02/15/2026,Valley Center,1900,Balloon Arch Tee,T-Shirt,2XL,40.0,5,20,15,15,300.0
+02/15/2026,Valley Center,1900,Balloon Arch Tee,T-Shirt,3XL,40.0,1,21,20,20,2000.0
+02/15/2026,Valley Center,1900,Jazzy Balloon Tee,T-Shirt,S,40.0,3,17,14,14,466.7
+02/15/2026,Valley Center,1900,Jazzy Balloon Tee,T-Shirt,M,40.0,4,24,20,20,500.0
+02/15/2026,Valley Center,1900,Jazzy Balloon Tee,T-Shirt,L,40.0,2,26,24,24,1200.0
+02/15/2026,Valley Center,1900,Jazzy Balloon Tee,T-Shirt,XL,40.0,1,23,22,22,2200.0
+02/15/2026,Valley Center,1900,Jazzy Balloon Tee,T-Shirt,3XL,40.0,2,21,19,19,950.0
+02/15/2026,Valley Center,1900,Est. 1975 Guitar T-Shirt,T-Shirt,S,40.0,7,17,10,10,142.9
+02/15/2026,Valley Center,1900,Est. 1975 Guitar T-Shirt,T-Shirt,M,40.0,12,24,12,12,100.0
+02/15/2026,Valley Center,1900,Est. 1975 Guitar T-Shirt,T-Shirt,L,40.0,15,26,11,11,73.3
+02/15/2026,Valley Center,1900,Est. 1975 Guitar T-Shirt,T-Shirt,XL,40.0,2,23,21,21,1050.0
+02/15/2026,Valley Center,1900,Est. 1975 Guitar T-Shirt,T-Shirt,2XL,40.0,4,20,16,16,400.0
+02/15/2026,Valley Center,1900,Est. 1975 Guitar T-Shirt,T-Shirt,3XL,40.0,1,21,20,20,2000.0
+02/15/2026,Valley Center,1900,Women's V-Neck T-Shirt,T-Shirt,S,40.0,4,17,13,13,325.0
+02/15/2026,Valley Center,1900,Women's V-Neck T-Shirt,T-Shirt,L,40.0,2,26,24,24,1200.0
+02/15/2026,Valley Center,1900,Women's V-Neck T-Shirt,T-Shirt,XL,40.0,2,23,21,21,1050.0
+02/15/2026,Valley Center,1900,Women's V-Neck T-Shirt,T-Shirt,2XL,40.0,1,20,19,19,1900.0
+02/15/2026,Valley Center,1900,Bling Logo Tank,Tank Top,M,40.0,2,23,21,21,1050.0
+02/15/2026,Valley Center,1900,Bling Logo Tank,Tank Top,L,40.0,3,24,21,21,700.0
+02/15/2026,Valley Center,1900,Bling Logo Tank,Tank Top,XL,40.0,2,21,19,19,950.0
+02/15/2026,Valley Center,1900,Balloon Arch Hoodie,Sweatshirt,S,75.0,1,6,5,5,500.0
+02/15/2026,Valley Center,1900,Balloon Arch Hoodie,Sweatshirt,L,75.0,2,7,5,5,250.0
+02/15/2026,Valley Center,1900,Balloon Arch Hoodie,Sweatshirt,XL,75.0,1,6,5,5,500.0
+02/15/2026,Valley Center,1900,Balloon Arch Hoodie,Sweatshirt,2XL,75.0,1,5,4,4,400.0
+02/15/2026,Valley Center,1900,Balloon Arch Hoodie,Sweatshirt,3XL,75.0,1,6,5,5,500.0
+02/15/2026,Valley Center,1900,50th Anniversary Denim Jacket,Jacket,M,150.0,2,6,4,4,200.0
+02/15/2026,Valley Center,1900,50th Anniversary Denim Jacket,Jacket,XL,150.0,2,6,4,4,200.0
+02/15/2026,Valley Center,1900,Distressed Logo Tote,Bag,ONE SIZE,30.0,20,13,-7,7,35.0
+02/15/2026,Valley Center,1900,Jazzy Balloon Magnet,Magnet,ONE SIZE,10.0,15,15,0,0,0.0

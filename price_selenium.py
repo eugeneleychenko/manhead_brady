@@ -19,8 +19,14 @@ password = 'cali2580'
 
 # Function to convert forecast URL to tour plan merch items URL
 def convert_to_merch_items_url(forecast_url):
-    # Extract talent_id and tour_id from the forecast URL
+    # Pattern 1: /talents/ID/tours/ID in path
     match = re.search(r'talents/(\d+)/tours/(\d+)', forecast_url)
+    if match:
+        talent_id = match.group(1)
+        tour_id = match.group(2)
+        return f'https://artist.atvenu.com/as/talents/{talent_id}/tour_plan_merch_items?tour_id={tour_id}'
+    # Pattern 2: /talents/ID/tour_forecast_merch_items?tour_id=ID
+    match = re.search(r'talents/(\d+)/tour_forecast_merch_items\?tour_id=(\d+)', forecast_url)
     if match:
         talent_id = match.group(1)
         tour_id = match.group(2)

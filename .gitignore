@@ -1,0 +1,5 @@
+# macOS finder metadata
+.DS_Store
+
+# Large model artifact (exceeds GitHub file size limits)
+deploy/replit_upload/models/model_retrained.joblib

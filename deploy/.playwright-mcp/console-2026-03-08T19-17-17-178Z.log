@@ -1,0 +1,9 @@
+[    1368ms] [WARNING] Unrecognized feature: 'ambient-light-sensor'. @ https://mh-predict-new-ui.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[    1369ms] [WARNING] Unrecognized feature: 'battery'. @ https://mh-predict-new-ui.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[    1369ms] [WARNING] Unrecognized feature: 'document-domain'. @ https://mh-predict-new-ui.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[    1369ms] [WARNING] Unrecognized feature: 'layout-animations'. @ https://mh-predict-new-ui.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[    1369ms] [WARNING] Unrecognized feature: 'legacy-image-formats'. @ https://mh-predict-new-ui.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[    1369ms] [WARNING] Unrecognized feature: 'oversized-images'. @ https://mh-predict-new-ui.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[    1369ms] [WARNING] Unrecognized feature: 'vr'. @ https://mh-predict-new-ui.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[    1369ms] [WARNING] Unrecognized feature: 'wake-lock'. @ https://mh-predict-new-ui.streamlit.app/-/build/assets/index-DnU1CuPv.js:33
+[    1602ms] [WARNING] An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing. @ https://mh-predict-new-ui.streamlit.app/~/+/:0

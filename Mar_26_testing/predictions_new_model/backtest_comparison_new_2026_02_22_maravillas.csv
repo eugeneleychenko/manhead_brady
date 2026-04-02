@@ -1,0 +1,14 @@
+show_date,city,attendance,Item Name,productType,product size,product price,actual_sold,predicted_sold,delta,abs_error,pct_error
+02/22/2026,Maravillas,2500,50th Anniversary SA Tour Tee,T-Shirt,XS,46.69,3,25,22,22,733.3
+02/22/2026,Maravillas,2500,50th Anniversary SA Tour Tee,T-Shirt,M,46.69,6,27,21,21,350.0
+02/22/2026,Maravillas,2500,50th Anniversary SA Tour Tee,T-Shirt,L,46.69,5,28,23,23,460.0
+02/22/2026,Maravillas,2500,50th Anniversary SA Tour Tee,T-Shirt,XL,46.69,1,25,24,24,2400.0
+02/22/2026,Maravillas,2500,50th Anniversary SA Tour Tee,T-Shirt,2XL,46.69,1,24,23,23,2300.0
+02/22/2026,Maravillas,2500,S.A. Grey Jazzy Balloon Tee,T-Shirt,XS,46.69,4,25,21,21,525.0
+02/22/2026,Maravillas,2500,S.A. Grey Jazzy Balloon Tee,T-Shirt,M,46.69,2,27,25,25,1250.0
+02/22/2026,Maravillas,2500,S.A. Grey Jazzy Balloon Tee,T-Shirt,L,46.69,2,28,26,26,1300.0
+02/22/2026,Maravillas,2500,S.A. Grey Jazzy Balloon Tee,T-Shirt,XL,46.69,1,25,24,24,2400.0
+02/22/2026,Maravillas,2500,S.A. Black Est. 1975 Guitar T-Shirt,T-Shirt,XS,46.69,1,25,24,24,2400.0
+02/22/2026,Maravillas,2500,S.A. Black Est. 1975 Guitar T-Shirt,T-Shirt,M,46.69,5,27,22,22,440.0
+02/22/2026,Maravillas,2500,S.A. Black Est. 1975 Guitar T-Shirt,T-Shirt,L,46.69,4,28,24,24,600.0
+02/22/2026,Maravillas,2500,S.A. Black Est. 1975 Guitar T-Shirt,T-Shirt,XL,46.69,1,25,24,24,2400.0

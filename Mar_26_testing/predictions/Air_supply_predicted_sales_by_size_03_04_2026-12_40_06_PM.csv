@@ -1,0 +1,199 @@
+%_item_sales_per_category,Genre,Item Name,artistName,attendance,predicted_sales_quantity,product price,product size,productType,showDate,venue city,venue name,venue state
+2.42,Pop/Rock,Balloon Arch Tee,Air Supply,1280,12,40,S,T-Shirt,2026-03-12,Lancaster,American Music Theatre,PA
+2.99,Pop/Rock,Balloon Arch Tee,Air Supply,80,5,40,S,T-Shirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+2.29,Pop/Rock,Balloon Arch Tee,Air Supply,1200,11,40,S,T-Shirt,2026-03-14,Flint,The Capitol Theatre,MI
+3.62,Pop/Rock,Balloon Arch Tee,Air Supply,1680,20,40,S,T-Shirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+2.54,Pop/Rock,Balloon Arch Tee,Air Supply,825,9,40,S,T-Shirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+2.78,Pop/Rock,Balloon Arch Tee,Air Supply,891,11,40,S,T-Shirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+4.65,Pop/Rock,Balloon Arch Tee,Air Supply,1280,23,40,M,T-Shirt,2026-03-12,Lancaster,American Music Theatre,PA
+5.39,Pop/Rock,Balloon Arch Tee,Air Supply,80,9,40,M,T-Shirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+4.57,Pop/Rock,Balloon Arch Tee,Air Supply,1200,22,40,M,T-Shirt,2026-03-14,Flint,The Capitol Theatre,MI
+4.89,Pop/Rock,Balloon Arch Tee,Air Supply,1680,27,40,M,T-Shirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+4.23,Pop/Rock,Balloon Arch Tee,Air Supply,825,15,40,M,T-Shirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+4.05,Pop/Rock,Balloon Arch Tee,Air Supply,891,16,40,M,T-Shirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+5.45,Pop/Rock,Balloon Arch Tee,Air Supply,1280,27,40,L,T-Shirt,2026-03-12,Lancaster,American Music Theatre,PA
+8.38,Pop/Rock,Balloon Arch Tee,Air Supply,80,14,40,L,T-Shirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+6.24,Pop/Rock,Balloon Arch Tee,Air Supply,1200,30,40,L,T-Shirt,2026-03-14,Flint,The Capitol Theatre,MI
+5.62,Pop/Rock,Balloon Arch Tee,Air Supply,1680,31,40,L,T-Shirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+6.2,Pop/Rock,Balloon Arch Tee,Air Supply,825,22,40,L,T-Shirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+6.08,Pop/Rock,Balloon Arch Tee,Air Supply,891,24,40,L,T-Shirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+6.87,Pop/Rock,Balloon Arch Tee,Air Supply,1280,34,40,XL,T-Shirt,2026-03-12,Lancaster,American Music Theatre,PA
+5.39,Pop/Rock,Balloon Arch Tee,Air Supply,80,9,40,XL,T-Shirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+6.44,Pop/Rock,Balloon Arch Tee,Air Supply,1200,31,40,XL,T-Shirt,2026-03-14,Flint,The Capitol Theatre,MI
+5.62,Pop/Rock,Balloon Arch Tee,Air Supply,1680,31,40,XL,T-Shirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+7.04,Pop/Rock,Balloon Arch Tee,Air Supply,825,25,40,XL,T-Shirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+6.84,Pop/Rock,Balloon Arch Tee,Air Supply,891,27,40,XL,T-Shirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+5.25,Pop/Rock,Balloon Arch Tee,Air Supply,1280,26,40,2XL,T-Shirt,2026-03-12,Lancaster,American Music Theatre,PA
+3.59,Pop/Rock,Balloon Arch Tee,Air Supply,80,6,40,2XL,T-Shirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+5.41,Pop/Rock,Balloon Arch Tee,Air Supply,1200,26,40,2XL,T-Shirt,2026-03-14,Flint,The Capitol Theatre,MI
+5.25,Pop/Rock,Balloon Arch Tee,Air Supply,1680,29,40,2XL,T-Shirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+4.79,Pop/Rock,Balloon Arch Tee,Air Supply,825,17,40,2XL,T-Shirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+5.06,Pop/Rock,Balloon Arch Tee,Air Supply,891,20,40,2XL,T-Shirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+2.42,Pop/Rock,Jazzy Balloon Tee,Air Supply,1280,12,40,S,T-Shirt,2026-03-12,Lancaster,American Music Theatre,PA
+2.99,Pop/Rock,Jazzy Balloon Tee,Air Supply,80,5,40,S,T-Shirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+2.29,Pop/Rock,Jazzy Balloon Tee,Air Supply,1200,11,40,S,T-Shirt,2026-03-14,Flint,The Capitol Theatre,MI
+3.62,Pop/Rock,Jazzy Balloon Tee,Air Supply,1680,20,40,S,T-Shirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+2.54,Pop/Rock,Jazzy Balloon Tee,Air Supply,825,9,40,S,T-Shirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+2.78,Pop/Rock,Jazzy Balloon Tee,Air Supply,891,11,40,S,T-Shirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+4.65,Pop/Rock,Jazzy Balloon Tee,Air Supply,1280,23,40,M,T-Shirt,2026-03-12,Lancaster,American Music Theatre,PA
+5.39,Pop/Rock,Jazzy Balloon Tee,Air Supply,80,9,40,M,T-Shirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+4.57,Pop/Rock,Jazzy Balloon Tee,Air Supply,1200,22,40,M,T-Shirt,2026-03-14,Flint,The Capitol Theatre,MI
+4.89,Pop/Rock,Jazzy Balloon Tee,Air Supply,1680,27,40,M,T-Shirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+4.23,Pop/Rock,Jazzy Balloon Tee,Air Supply,825,15,40,M,T-Shirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+4.05,Pop/Rock,Jazzy Balloon Tee,Air Supply,891,16,40,M,T-Shirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+6.87,Pop/Rock,Jazzy Balloon Tee,Air Supply,1280,34,40,XL,T-Shirt,2026-03-12,Lancaster,American Music Theatre,PA
+5.39,Pop/Rock,Jazzy Balloon Tee,Air Supply,80,9,40,XL,T-Shirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+6.44,Pop/Rock,Jazzy Balloon Tee,Air Supply,1200,31,40,XL,T-Shirt,2026-03-14,Flint,The Capitol Theatre,MI
+5.62,Pop/Rock,Jazzy Balloon Tee,Air Supply,1680,31,40,XL,T-Shirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+7.04,Pop/Rock,Jazzy Balloon Tee,Air Supply,825,25,40,XL,T-Shirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+6.84,Pop/Rock,Jazzy Balloon Tee,Air Supply,891,27,40,XL,T-Shirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+5.25,Pop/Rock,Jazzy Balloon Tee,Air Supply,1280,26,40,2XL,T-Shirt,2026-03-12,Lancaster,American Music Theatre,PA
+3.59,Pop/Rock,Jazzy Balloon Tee,Air Supply,80,6,40,2XL,T-Shirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+5.41,Pop/Rock,Jazzy Balloon Tee,Air Supply,1200,26,40,2XL,T-Shirt,2026-03-14,Flint,The Capitol Theatre,MI
+5.25,Pop/Rock,Jazzy Balloon Tee,Air Supply,1680,29,40,2XL,T-Shirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+4.79,Pop/Rock,Jazzy Balloon Tee,Air Supply,825,17,40,2XL,T-Shirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+5.06,Pop/Rock,Jazzy Balloon Tee,Air Supply,891,20,40,2XL,T-Shirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+2.42,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,1280,12,40,S,T-Shirt,2026-03-12,Lancaster,American Music Theatre,PA
+2.99,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,80,5,40,S,T-Shirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+2.29,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,1200,11,40,S,T-Shirt,2026-03-14,Flint,The Capitol Theatre,MI
+3.62,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,1680,20,40,S,T-Shirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+2.54,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,825,9,40,S,T-Shirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+2.78,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,891,11,40,S,T-Shirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+4.65,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,1280,23,40,M,T-Shirt,2026-03-12,Lancaster,American Music Theatre,PA
+5.39,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,80,9,40,M,T-Shirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+4.57,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,1200,22,40,M,T-Shirt,2026-03-14,Flint,The Capitol Theatre,MI
+4.89,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,1680,27,40,M,T-Shirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+4.23,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,825,15,40,M,T-Shirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+4.05,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,891,16,40,M,T-Shirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+5.45,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,1280,27,40,L,T-Shirt,2026-03-12,Lancaster,American Music Theatre,PA
+8.38,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,80,14,40,L,T-Shirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+6.24,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,1200,30,40,L,T-Shirt,2026-03-14,Flint,The Capitol Theatre,MI
+5.62,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,1680,31,40,L,T-Shirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+6.2,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,825,22,40,L,T-Shirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+6.08,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,891,24,40,L,T-Shirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+6.87,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,1280,34,40,XL,T-Shirt,2026-03-12,Lancaster,American Music Theatre,PA
+5.39,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,80,9,40,XL,T-Shirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+6.44,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,1200,31,40,XL,T-Shirt,2026-03-14,Flint,The Capitol Theatre,MI
+5.62,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,1680,31,40,XL,T-Shirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+7.04,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,825,25,40,XL,T-Shirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+6.84,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,891,27,40,XL,T-Shirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+5.25,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,1280,26,40,2XL,T-Shirt,2026-03-12,Lancaster,American Music Theatre,PA
+3.59,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,80,6,40,2XL,T-Shirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+5.41,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,1200,26,40,2XL,T-Shirt,2026-03-14,Flint,The Capitol Theatre,MI
+5.25,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,1680,29,40,2XL,T-Shirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+4.79,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,825,17,40,2XL,T-Shirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+5.06,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,891,20,40,2XL,T-Shirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+6.87,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,1280,34,40,3XL,T-Shirt,2026-03-12,Lancaster,American Music Theatre,PA
+5.39,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,80,9,40,3XL,T-Shirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+6.44,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,1200,31,40,3XL,T-Shirt,2026-03-14,Flint,The Capitol Theatre,MI
+5.62,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,1680,31,40,3XL,T-Shirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+7.04,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,825,25,40,3XL,T-Shirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+6.84,Pop/Rock,Est. 1975 Guitar T-Shirt,Air Supply,891,27,40,3XL,T-Shirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+2.42,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,1280,12,40,S,T-Shirt,2026-03-12,Lancaster,American Music Theatre,PA
+2.99,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,80,5,40,S,T-Shirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+2.29,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,1200,11,40,S,T-Shirt,2026-03-14,Flint,The Capitol Theatre,MI
+3.62,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,1680,20,40,S,T-Shirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+2.54,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,825,9,40,S,T-Shirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+2.78,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,891,11,40,S,T-Shirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+4.65,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,1280,23,40,M,T-Shirt,2026-03-12,Lancaster,American Music Theatre,PA
+5.39,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,80,9,40,M,T-Shirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+4.57,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,1200,22,40,M,T-Shirt,2026-03-14,Flint,The Capitol Theatre,MI
+4.89,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,1680,27,40,M,T-Shirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+4.23,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,825,15,40,M,T-Shirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+4.05,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,891,16,40,M,T-Shirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+5.45,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,1280,27,40,L,T-Shirt,2026-03-12,Lancaster,American Music Theatre,PA
+8.38,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,80,14,40,L,T-Shirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+6.24,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,1200,30,40,L,T-Shirt,2026-03-14,Flint,The Capitol Theatre,MI
+5.62,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,1680,31,40,L,T-Shirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+6.2,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,825,22,40,L,T-Shirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+6.08,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,891,24,40,L,T-Shirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+6.87,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,1280,34,40,XL,T-Shirt,2026-03-12,Lancaster,American Music Theatre,PA
+5.39,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,80,9,40,XL,T-Shirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+6.44,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,1200,31,40,XL,T-Shirt,2026-03-14,Flint,The Capitol Theatre,MI
+5.62,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,1680,31,40,XL,T-Shirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+7.04,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,825,25,40,XL,T-Shirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+6.84,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,891,27,40,XL,T-Shirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+5.25,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,1280,26,40,2XL,T-Shirt,2026-03-12,Lancaster,American Music Theatre,PA
+3.59,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,80,6,40,2XL,T-Shirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+5.41,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,1200,26,40,2XL,T-Shirt,2026-03-14,Flint,The Capitol Theatre,MI
+5.25,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,1680,29,40,2XL,T-Shirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+4.79,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,825,17,40,2XL,T-Shirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+5.06,Pop/Rock,Women's V-Neck T-Shirt,Air Supply,891,20,40,2XL,T-Shirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+13.33,Pop/Rock,Bling Logo Tank,Air Supply,1280,10,40,S,Tank Top,2026-03-12,Lancaster,American Music Theatre,PA
+12.9,Pop/Rock,Bling Logo Tank,Air Supply,80,4,40,S,Tank Top,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+12.0,Pop/Rock,Bling Logo Tank,Air Supply,1200,9,40,S,Tank Top,2026-03-14,Flint,The Capitol Theatre,MI
+18.07,Pop/Rock,Bling Logo Tank,Air Supply,1680,15,40,S,Tank Top,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+13.64,Pop/Rock,Bling Logo Tank,Air Supply,825,9,40,S,Tank Top,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+13.7,Pop/Rock,Bling Logo Tank,Air Supply,891,10,40,S,Tank Top,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+18.67,Pop/Rock,Bling Logo Tank,Air Supply,1280,14,40,M,Tank Top,2026-03-12,Lancaster,American Music Theatre,PA
+22.58,Pop/Rock,Bling Logo Tank,Air Supply,80,7,40,M,Tank Top,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+18.67,Pop/Rock,Bling Logo Tank,Air Supply,1200,14,40,M,Tank Top,2026-03-14,Flint,The Capitol Theatre,MI
+20.48,Pop/Rock,Bling Logo Tank,Air Supply,1680,17,40,M,Tank Top,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+18.18,Pop/Rock,Bling Logo Tank,Air Supply,825,12,40,M,Tank Top,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+17.81,Pop/Rock,Bling Logo Tank,Air Supply,891,13,40,M,Tank Top,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+21.33,Pop/Rock,Bling Logo Tank,Air Supply,1280,16,40,L,Tank Top,2026-03-12,Lancaster,American Music Theatre,PA
+25.81,Pop/Rock,Bling Logo Tank,Air Supply,80,8,40,L,Tank Top,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+22.67,Pop/Rock,Bling Logo Tank,Air Supply,1200,17,40,L,Tank Top,2026-03-14,Flint,The Capitol Theatre,MI
+21.69,Pop/Rock,Bling Logo Tank,Air Supply,1680,18,40,L,Tank Top,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+24.24,Pop/Rock,Bling Logo Tank,Air Supply,825,16,40,L,Tank Top,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+23.29,Pop/Rock,Bling Logo Tank,Air Supply,891,17,40,L,Tank Top,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+24.0,Pop/Rock,Bling Logo Tank,Air Supply,1280,18,40,XL,Tank Top,2026-03-12,Lancaster,American Music Theatre,PA
+22.58,Pop/Rock,Bling Logo Tank,Air Supply,80,7,40,XL,Tank Top,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+24.0,Pop/Rock,Bling Logo Tank,Air Supply,1200,18,40,XL,Tank Top,2026-03-14,Flint,The Capitol Theatre,MI
+20.48,Pop/Rock,Bling Logo Tank,Air Supply,1680,17,40,XL,Tank Top,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+25.76,Pop/Rock,Bling Logo Tank,Air Supply,825,17,40,XL,Tank Top,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+24.66,Pop/Rock,Bling Logo Tank,Air Supply,891,18,40,XL,Tank Top,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+22.67,Pop/Rock,Bling Logo Tank,Air Supply,1280,17,40,2XL,Tank Top,2026-03-12,Lancaster,American Music Theatre,PA
+16.13,Pop/Rock,Bling Logo Tank,Air Supply,80,5,40,2XL,Tank Top,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+22.67,Pop/Rock,Bling Logo Tank,Air Supply,1200,17,40,2XL,Tank Top,2026-03-14,Flint,The Capitol Theatre,MI
+19.28,Pop/Rock,Bling Logo Tank,Air Supply,1680,16,40,2XL,Tank Top,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+18.18,Pop/Rock,Bling Logo Tank,Air Supply,825,12,40,2XL,Tank Top,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+20.55,Pop/Rock,Bling Logo Tank,Air Supply,891,15,40,2XL,Tank Top,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+15.79,Pop/Rock,Balloon Arch Hoodie,Air Supply,1280,3,75,S,Sweatshirt,2026-03-12,Lancaster,American Music Theatre,PA
+20.0,Pop/Rock,Balloon Arch Hoodie,Air Supply,80,3,75,S,Sweatshirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+15.0,Pop/Rock,Balloon Arch Hoodie,Air Supply,1200,3,75,S,Sweatshirt,2026-03-14,Flint,The Capitol Theatre,MI
+17.24,Pop/Rock,Balloon Arch Hoodie,Air Supply,1680,5,75,S,Sweatshirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+18.75,Pop/Rock,Balloon Arch Hoodie,Air Supply,825,3,75,S,Sweatshirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+15.79,Pop/Rock,Balloon Arch Hoodie,Air Supply,891,3,75,S,Sweatshirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+21.05,Pop/Rock,Balloon Arch Hoodie,Air Supply,1280,4,75,M,Sweatshirt,2026-03-12,Lancaster,American Music Theatre,PA
+20.0,Pop/Rock,Balloon Arch Hoodie,Air Supply,80,3,75,M,Sweatshirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+20.0,Pop/Rock,Balloon Arch Hoodie,Air Supply,1200,4,75,M,Sweatshirt,2026-03-14,Flint,The Capitol Theatre,MI
+20.69,Pop/Rock,Balloon Arch Hoodie,Air Supply,1680,6,75,M,Sweatshirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+18.75,Pop/Rock,Balloon Arch Hoodie,Air Supply,825,3,75,M,Sweatshirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+21.05,Pop/Rock,Balloon Arch Hoodie,Air Supply,891,4,75,M,Sweatshirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+21.05,Pop/Rock,Balloon Arch Hoodie,Air Supply,1280,4,75,L,Sweatshirt,2026-03-12,Lancaster,American Music Theatre,PA
+20.0,Pop/Rock,Balloon Arch Hoodie,Air Supply,80,3,75,L,Sweatshirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+25.0,Pop/Rock,Balloon Arch Hoodie,Air Supply,1200,5,75,L,Sweatshirt,2026-03-14,Flint,The Capitol Theatre,MI
+20.69,Pop/Rock,Balloon Arch Hoodie,Air Supply,1680,6,75,L,Sweatshirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+25.0,Pop/Rock,Balloon Arch Hoodie,Air Supply,825,4,75,L,Sweatshirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+21.05,Pop/Rock,Balloon Arch Hoodie,Air Supply,891,4,75,L,Sweatshirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+21.05,Pop/Rock,Balloon Arch Hoodie,Air Supply,1280,4,75,XL,Sweatshirt,2026-03-12,Lancaster,American Music Theatre,PA
+20.0,Pop/Rock,Balloon Arch Hoodie,Air Supply,80,3,75,XL,Sweatshirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+20.0,Pop/Rock,Balloon Arch Hoodie,Air Supply,1200,4,75,XL,Sweatshirt,2026-03-14,Flint,The Capitol Theatre,MI
+20.69,Pop/Rock,Balloon Arch Hoodie,Air Supply,1680,6,75,XL,Sweatshirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+18.75,Pop/Rock,Balloon Arch Hoodie,Air Supply,825,3,75,XL,Sweatshirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+21.05,Pop/Rock,Balloon Arch Hoodie,Air Supply,891,4,75,XL,Sweatshirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+21.05,Pop/Rock,Balloon Arch Hoodie,Air Supply,1280,4,75,3XL,Sweatshirt,2026-03-12,Lancaster,American Music Theatre,PA
+20.0,Pop/Rock,Balloon Arch Hoodie,Air Supply,80,3,75,3XL,Sweatshirt,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+20.0,Pop/Rock,Balloon Arch Hoodie,Air Supply,1200,4,75,3XL,Sweatshirt,2026-03-14,Flint,The Capitol Theatre,MI
+20.69,Pop/Rock,Balloon Arch Hoodie,Air Supply,1680,6,75,3XL,Sweatshirt,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+18.75,Pop/Rock,Balloon Arch Hoodie,Air Supply,825,3,75,3XL,Sweatshirt,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+21.05,Pop/Rock,Balloon Arch Hoodie,Air Supply,891,4,75,3XL,Sweatshirt,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+100.0,Pop/Rock,50th Anniversary Denim Jacket,Air Supply,1280,5,150,M,Jacket,2026-03-12,Lancaster,American Music Theatre,PA
+100.0,Pop/Rock,50th Anniversary Denim Jacket,Air Supply,80,7,150,M,Jacket,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+100.0,Pop/Rock,50th Anniversary Denim Jacket,Air Supply,1200,6,150,M,Jacket,2026-03-14,Flint,The Capitol Theatre,MI
+100.0,Pop/Rock,50th Anniversary Denim Jacket,Air Supply,1680,5,150,M,Jacket,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+100.0,Pop/Rock,50th Anniversary Denim Jacket,Air Supply,825,6,150,M,Jacket,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+100.0,Pop/Rock,50th Anniversary Denim Jacket,Air Supply,891,6,150,M,Jacket,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+100.0,Pop/Rock,Distressed Logo Tote,Air Supply,1280,19,30,ONE SIZE,Bag,2026-03-12,Lancaster,American Music Theatre,PA
+100.0,Pop/Rock,Distressed Logo Tote,Air Supply,80,6,30,ONE SIZE,Bag,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+100.0,Pop/Rock,Distressed Logo Tote,Air Supply,1200,17,30,ONE SIZE,Bag,2026-03-14,Flint,The Capitol Theatre,MI
+100.0,Pop/Rock,Distressed Logo Tote,Air Supply,1680,18,30,ONE SIZE,Bag,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+100.0,Pop/Rock,Distressed Logo Tote,Air Supply,825,13,30,ONE SIZE,Bag,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+100.0,Pop/Rock,Distressed Logo Tote,Air Supply,891,15,30,ONE SIZE,Bag,2026-03-29,Saint Louis,River City Casino & Hotel,MO
+100.0,Pop/Rock,Jazzy Balloon Magnet,Air Supply,1280,20,10,ONE SIZE,Magnet,2026-03-12,Lancaster,American Music Theatre,PA
+100.0,Pop/Rock,Jazzy Balloon Magnet,Air Supply,80,6,10,ONE SIZE,Magnet,2026-03-13,Englewood,Bergen Performing Arts Center,NJ
+100.0,Pop/Rock,Jazzy Balloon Magnet,Air Supply,1200,18,10,ONE SIZE,Magnet,2026-03-14,Flint,The Capitol Theatre,MI
+100.0,Pop/Rock,Jazzy Balloon Magnet,Air Supply,1680,20,10,ONE SIZE,Magnet,2026-03-27,Prior Lake,Mystic Lake Casino,MN
+100.0,Pop/Rock,Jazzy Balloon Magnet,Air Supply,825,13,10,ONE SIZE,Magnet,2026-03-28,Kansas City,Ameristar Casino And Hotel,MO
+100.0,Pop/Rock,Jazzy Balloon Magnet,Air Supply,891,15,10,ONE SIZE,Magnet,2026-03-29,Saint Louis,River City Casino & Hotel,MO

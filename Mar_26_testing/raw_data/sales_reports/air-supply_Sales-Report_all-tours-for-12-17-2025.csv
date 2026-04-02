@@ -1,0 +1,58 @@
+APPAREL
+SKU,Name,Type,Sex,Size,Sold,Unit % of Total,Comp,Avg. Price,Gross Rev,% of Total
+AIRS-T1021-S,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,"",S,6,12%,0,$45.09,$270.53,12%
+AIRS-T1021-M,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,"",M,12,24%,0,$45.09,$541.06,24%
+AIRS-T1021-L,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,"",L,12,24%,0,$45.09,$541.06,24%
+AIRS-T1021-XL,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,"",XL,12,24%,0,$45.09,$541.06,24%
+AIRS-T1021-XXL,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,"",2XL,6,12%,0,$45.09,$270.53,12%
+AIRS-T1021-3XL,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,"",3XL,3,6%,2,$45.09,$135.26,6%
+SUBTOTAL,50th Anniversary Tour Date T-Shirt 2026,T-Shirt,"","",51,26%,2,$45.09,"$2,299.50",28%
+
+AIRS-T1017-S,Balloon Arch Tee,T-Shirt,U,S,3,7%,0,$45.09,$135.26,7%
+AIRS-T1017-M,Balloon Arch Tee,T-Shirt,U,M,6,15%,0,$45.09,$270.53,15%
+AIRS-T1017-L,Balloon Arch Tee,T-Shirt,U,L,12,29%,0,$45.09,$541.06,29%
+AIRS-T1017-XL,Balloon Arch Tee,T-Shirt,U,XL,12,29%,0,$45.09,$541.06,29%
+AIRS-T1017-XXL,Balloon Arch Tee,T-Shirt,U,2XL,5,12%,0,$45.09,$225.44,12%
+AIRS-T1017-3XL,Balloon Arch Tee,T-Shirt,U,3XL,3,7%,0,$45.09,$135.26,7%
+SUBTOTAL,Balloon Arch Tee,T-Shirt,U,"",41,21%,0,$45.09,"$1,848.61",23%
+
+AIRS-T1018-S,Jazzy Balloon Tee,T-Shirt,U,S,3,9%,0,$45.09,$135.26,9%
+AIRS-T1018-M,Jazzy Balloon Tee,T-Shirt,U,M,6,18%,0,$45.09,$270.53,18%
+AIRS-T1018-L,Jazzy Balloon Tee,T-Shirt,U,L,12,36%,0,$45.09,$541.06,36%
+AIRS-T1018-XL,Jazzy Balloon Tee,T-Shirt,U,XL,8,24%,0,$45.09,$360.71,24%
+AIRS-T1018-XXL,Jazzy Balloon Tee,T-Shirt,U,2XL,3,9%,0,$45.09,$135.26,9%
+AIRS-T1018-3XL,Jazzy Balloon Tee,T-Shirt,U,3XL,1,3%,0,$45.09,$45.09,3%
+SUBTOTAL,Jazzy Balloon Tee,T-Shirt,U,"",33,17%,0,$45.09,"$1,487.91",18%
+
+AIRS-TANK1001-S,Bling Logo Tank,Tank Top,F,S,1,7%,0,$45.09,$45.09,7%
+AIRS-TANK1001-M,Bling Logo Tank,Tank Top,F,M,5,36%,0,$45.09,$225.44,36%
+AIRS-TANK1001-L,Bling Logo Tank,Tank Top,F,L,5,36%,0,$45.09,$225.44,36%
+AIRS-TANK1001-XL,Bling Logo Tank,Tank Top,F,XL,2,14%,0,$45.09,$90.18,14%
+AIRS-TANK1001-XXL,Bling Logo Tank,Tank Top,F,2XL,1,7%,0,$45.09,$45.09,7%
+SUBTOTAL,Bling Logo Tank,Tank Top,F,"",14,7%,0,$45.09,$631.23,8%
+
+AIRS-TOUR-HOOD1003-S,Balloon Arch Hoodie,Sweatshirt,U,S,3,17%,0,$61.48,$184.45,17%
+AIRS-TOUR-HOOD1003-M,Balloon Arch Hoodie,Sweatshirt,U,M,5,28%,0,$61.48,$307.42,28%
+AIRS-TOUR-HOOD1003-L,Balloon Arch Hoodie,Sweatshirt,U,L,4,22%,0,$61.48,$245.94,22%
+AIRS-TOUR-HOOD1003-XL,Balloon Arch Hoodie,Sweatshirt,U,XL,4,22%,0,$61.48,$245.94,22%
+AIRS-TOUR-HOOD1003-XXL,Balloon Arch Hoodie,Sweatshirt,U,2XL,2,11%,0,$61.48,$122.97,11%
+AIRS-TOUR-HOOD1003-3XL,Balloon Arch Hoodie,Sweatshirt,U,3XL,0,0%,0,$0.00,$0.00,0%
+SUBTOTAL,Balloon Arch Hoodie,Sweatshirt,U,"",18,9%,0,$61.48,"$1,106.71",14%
+
+TOTAL APPAREL,"","","","",157,79%,2,"","$7,373.96",91%
+
+
+OTHER
+SKU,Name,Type,Sex,Size,Sold,Unit % of Total,Comp,Avg. Price,Gross Rev,% of Total
+AIRS-ACC1008,Distressed Logo Tote,Bag,"",,19,10%,0,$24.59,$467.28,6%
+AIRS-ACC1009,Jazzy Balloon Magnet,Magnet,"",,22,11%,0,$12.30,$270.53,3%
+
+TOTAL OTHER,"","","","",41,21%,0,"",$737.81,9%
+
+
+MUSIC
+UPC,Name,Type,Sex,Size,Sold,Unit % of Total,Comp,Avg. Price,Gross Rev,% of Total
+
+TOTAL MUSIC,"","","","",0,0%,0,"",$0.00,0%
+
+GRAND TOTAL,"","","","",198,"",2,"","$8,111.77"
