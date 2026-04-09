@@ -2,11 +2,15 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
+import sys
+import os
 import time
 import logging
 import csv
 import re
 from datetime import datetime
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'prediction'))
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -59,16 +63,42 @@ def load_tour_data(filepath):
                     city = row[2] if len(row) > 2 else ''
                     state = row[3] if len(row) > 3 else ''
                     venue = row[4] if len(row) > 4 else ''
+                    capacity = row[7] if len(row) > 7 else '0'
                     attendance = row[8] if len(row) > 8 else '0'
                     key = (band, city)
                     venues[key] = {
                         'venue': venue,
                         'state': state,
+                        'capacity': capacity,
                         'attendance': attendance
                     }
     except FileNotFoundError:
         logging.warning(f"Tour data file not found: {filepath}")
     return venues
+
+
+def load_venue_capacity_from_api():
+    """Fetch venue capacity for all future shows via atVenu GraphQL API."""
+    try:
+        from atvenu_api import fetch_shows_from_api
+        shows = fetch_shows_from_api()
+        capacity_lookup = {}
+        for show in shows:
+            band = show['Band']
+            city = show['City']
+            if band and city:
+                key = (band, city.lower())
+                capacity_lookup[key] = {
+                    'capacity': show['Capacity'],
+                    'attendance': show['Attn'],
+                    'venue': show['Venue'],
+                    'state': show['ST'],
+                }
+        logging.info(f"Loaded {len(capacity_lookup)} venue entries from atVenu API")
+        return capacity_lookup
+    except Exception as e:
+        logging.warning(f"Failed to load venue data from atVenu API: {e}")
+        return {}
 
 
 def convert_to_forecast_url(merchiq_link):
@@ -113,7 +143,7 @@ def extract_size_from_sku(sku):
     return 'ONE SIZE'
 
 
-def scrape_forecast_page(driver, band_name, genre_info, sku_prices, tour_data):
+def scrape_forecast_page(driver, band_name, genre_info, sku_prices, tour_data, api_venues):
     """Scrape the tour forecast products page for a band."""
     rows = []
 
@@ -122,9 +152,9 @@ def scrape_forecast_page(driver, band_name, genre_info, sku_prices, tour_data):
 
     # Extract show dates and cities from header table (index 9 - the one with class containing 'header')
     show_columns = driver.execute_script("""
-        var headers = document.querySelectorAll('th.borderless.med-date');
+        var headers = document.querySelectorAll('td.med-date');
         if (headers.length === 0) {
-            headers = document.querySelectorAll('th.borderless.med-date.lighter');
+            headers = document.querySelectorAll('td.borderless.med-date');
         }
         var shows = [];
         for (var i = 0; i < headers.length; i++) {
@@ -148,79 +178,64 @@ def scrape_forecast_page(driver, band_name, genre_info, sku_prices, tour_data):
     # Extract products: each div.merch-item-row on the LEFT side has product info
     # The right-side tables (class containing 'tour-forecast-product-numbers') have the SKU data
     products = driver.execute_script("""
-        var merchDivs = document.querySelectorAll('div.merch-item-row');
         var dataTables = document.querySelectorAll('table.tour-forecast-product-numbers:not(.tour-forecast-product-numbers-header)');
         
-        // The page has two sets of tables: left summary (2 cols) and right numbers (16+ cols)
-        // We need the left tables (first half) for SKU names and the right tables for per-show data
-        // Left tables have 2 columns (size label + SKU), right tables have many columns
-        
-        var products = [];
         var leftTables = [];
         var rightTables = [];
         
         for (var i = 0; i < dataTables.length; i++) {
             var firstRow = dataTables[i].rows[0];
-            if (firstRow && firstRow.cells.length <= 2) {
+            if (firstRow && firstRow.cells.length <= 4) {
                 leftTables.push(dataTables[i]);
             } else {
                 rightTables.push(dataTables[i]);
             }
         }
         
-        // Left tables have the product type info in the merch-item-row divs
-        for (var i = 0; i < leftTables.length; i++) {
-            var table = leftTables[i];
+        // Get SKUs from right-side tables (they have td.borderless.compact with SKU text)
+        var products = [];
+        for (var i = 0; i < rightTables.length; i++) {
+            var rTable = rightTables[i];
             var skus = [];
-            var dataRows = table.querySelectorAll('tr');
-            
-            for (var j = 0; j < dataRows.length; j++) {
-                var cells = dataRows[j].querySelectorAll('td');
-                for (var k = 0; k < cells.length; k++) {
-                    var cls = cells[k].className;
-                    if (cls.indexOf('borderless') >= 0 && cls.indexOf('sm') >= 0 && cls.indexOf('right') >= 0) {
-                        // This is a size label cell (S, M, L, etc.)
-                    }
+            var rRows = rTable.querySelectorAll('tr');
+            for (var j = 1; j < rRows.length; j++) {
+                var firstCell = rRows[j].querySelector('td.compact');
+                if (firstCell) {
+                    var sku = firstCell.textContent.trim();
+                    if (sku) skus.push(sku);
                 }
             }
-            
-            // Get SKUs from the right table
-            if (i < rightTables.length) {
-                var rTable = rightTables[i];
-                var rRows = rTable.querySelectorAll('tr');
-                for (var j = 1; j < rRows.length; j++) {  // skip header row
-                    var firstCell = rRows[j].querySelector('td.borderless.compact');
-                    if (firstCell) {
-                        var sku = firstCell.textContent.trim();
-                        if (sku) {
-                            skus.push(sku);
-                        }
-                    }
-                }
-            }
-            
             products.push({skus: skus});
         }
         
-        // Get product names from merch-item-row divs (only first set, not duplicated)
+        // Get product names and Type from merch-item-row divs
+        var merchDivs = document.querySelectorAll('div.merch-item-row');
         var productNames = [];
         for (var i = 0; i < merchDivs.length; i++) {
             var nameEl = merchDivs[i].querySelector('h4, h3, strong');
             if (nameEl) {
                 var name = nameEl.textContent.trim();
-                // Also try to get product type from the div
-                var typeEl = merchDivs[i].querySelector('.product-type, [class*="type"]');
+                // Extract the Type field directly from the label/value pairs
                 var typeText = '';
-                var allText = merchDivs[i].textContent;
-                var typeMatch = allText.match(/Type\\s*[:\\s]+(\\S[^\\n]*)/);
-                if (typeMatch) {
-                    typeText = typeMatch[1].trim();
+                var labels = merchDivs[i].querySelectorAll('span, div, td, dt, dd, p, b');
+                for (var j = 0; j < labels.length; j++) {
+                    var lbl = labels[j].textContent.trim();
+                    if (lbl === 'Type' && labels[j+1]) {
+                        typeText = labels[j+1].textContent.trim();
+                        break;
+                    }
+                }
+                // Fallback: regex on full text
+                if (!typeText) {
+                    var allText = merchDivs[i].textContent;
+                    var typeMatch = allText.match(/Type\\s+([A-Za-z][A-Za-z /-]*)/);
+                    typeText = typeMatch ? typeMatch[1].trim() : '';
                 }
                 productNames.push({name: name, type: typeText});
             }
         }
         
-        return {products: products, productNames: productNames, leftCount: leftTables.length, rightCount: rightTables.length};
+        return {products: products, productNames: productNames};
     """)
 
     product_names = products.get('productNames', [])
@@ -231,7 +246,8 @@ def scrape_forecast_page(driver, band_name, genre_info, sku_prices, tour_data):
     for prod_idx, prod in enumerate(product_data):
         prod_name = product_names[prod_idx]['name'] if prod_idx < len(product_names) else f'Unknown Product {prod_idx}'
         prod_type_raw = product_names[prod_idx].get('type', '') if prod_idx < len(product_names) else ''
-        prod_type = prod_type_raw if prod_type_raw else extract_product_type_from_name(prod_name)
+        # Use the actual Type from the page, lowercased to match model encoder
+        prod_type = prod_type_raw.lower().strip() if prod_type_raw else extract_product_type_from_name(prod_name).lower().strip()
 
         for sku in prod.get('skus', []):
             if not sku:
@@ -253,11 +269,15 @@ def scrape_forecast_page(driver, band_name, genre_info, sku_prices, tour_data):
                 except Exception:
                     show_date_fmt = show_date
 
-                # Look up venue and attendance from tour data
-                venue_info = tour_data.get((band_name, city), {})
-                venue_name = venue_info.get('venue', '')
-                venue_state = venue_info.get('state', '')
-                attendance = venue_info.get('attendance', 0)
+                # Look up venue info: prefer API data, fall back to tour_data.csv
+                api_key = (band_name, city.lower())
+                api_info = api_venues.get(api_key, {})
+                td_info = tour_data.get((band_name, city), {})
+
+                venue_name = api_info.get('venue') or td_info.get('venue', '')
+                venue_state = api_info.get('state') or td_info.get('state', '')
+                attendance = api_info.get('attendance') or td_info.get('attendance', 0)
+                venue_capacity = api_info.get('capacity') or td_info.get('capacity', 0)
 
                 rows.append({
                     'artistName': artist_name,
@@ -267,6 +287,7 @@ def scrape_forecast_page(driver, band_name, genre_info, sku_prices, tour_data):
                     'venue city': city,
                     'venue state': venue_state,
                     'attendance': attendance,
+                    'venue capacity': venue_capacity,
                     'product size': size,
                     'productType': prod_type,
                     'product price': price,
@@ -280,7 +301,8 @@ def main():
     genre_map = load_genre_map(GENRE_CSV)
     sku_prices = load_sku_prices(SKU_PRICE_CSV)
     tour_data = load_tour_data(TOUR_DATA_CSV)
-    logging.info(f"Loaded {len(genre_map)} genre mappings, {len(sku_prices)} SKU prices, {len(tour_data)} venue entries")
+    api_venues = load_venue_capacity_from_api()
+    logging.info(f"Loaded {len(genre_map)} genre mappings, {len(sku_prices)} SKU prices, {len(tour_data)} tour data entries, {len(api_venues)} API venue entries")
 
     # Read bands with MerchIQ
     bands = []
@@ -336,7 +358,7 @@ def main():
                 logging.warning(f"  No genre mapping found for {band_name}")
                 genre_info = {'band_name': band_name.replace(' (MH)', ''), 'genre': ''}
 
-            rows = scrape_forecast_page(driver, band_name, genre_info, sku_prices, tour_data)
+            rows = scrape_forecast_page(driver, band_name, genre_info, sku_prices, tour_data, api_venues)
             all_rows.extend(rows)
             logging.info(f"  Extracted {len(rows)} rows")
 
@@ -344,8 +366,8 @@ def main():
 
         # Write output CSV
         fieldnames = ['artistName', 'Genre', 'showDate', 'venue name', 'venue city',
-                      'venue state', 'attendance', 'product size', 'productType',
-                      'product price', 'Item Name']
+                      'venue state', 'attendance', 'venue capacity', 'product size',
+                      'productType', 'product price', 'Item Name']
 
         with open(OUTPUT_CSV, 'w', newline='') as f:
             writer = csv.DictWriter(f, fieldnames=fieldnames)

@@ -31,11 +31,28 @@ def read_existing_bands(filepath):
     return bands
 
 
+def open_dropdown(driver):
+    """Reliably open the react-select account dropdown using ActionChains."""
+    from selenium.webdriver.common.action_chains import ActionChains
+    from selenium.webdriver.common.keys import Keys
+    # Click the container div (not the hidden input) to open dropdown
+    container = driver.find_element(By.CSS_SELECTOR, '#mainNavAccountSelect')
+    ActionChains(driver).move_to_element(container).click().perform()
+    time.sleep(1)
+    # Verify listbox opened
+    listboxes = driver.find_elements(By.ID, 'react-select-mainNavAccountSelect-listbox')
+    if not listboxes:
+        # Fallback: focus input via JS and send arrow down
+        input_el = driver.find_element(By.ID, 'react-select-mainNavAccountSelect-input')
+        driver.execute_script("arguments[0].focus();", input_el)
+        input_el.send_keys(Keys.ARROW_DOWN)
+        time.sleep(1)
+
+
 def get_all_band_names(driver):
     """Open the account dropdown and extract all band names."""
-    dropdown = driver.find_element(By.CSS_SELECTOR, '[id*="mainNavAccountSelect"]')
-    dropdown.click()
-    time.sleep(2)
+    open_dropdown(driver)
+    time.sleep(1)
 
     listbox = driver.find_element(By.ID, 'react-select-mainNavAccountSelect-listbox')
     options = listbox.find_elements(By.CSS_SELECTOR, '[id*="option"]')
@@ -52,13 +69,14 @@ def get_all_band_names(driver):
 
 def select_band_and_get_links(driver, band_name):
     """Select a band from dropdown and extract talent_id, tour_id, and links from sidebar."""
-    # Open dropdown
-    dropdown = driver.find_element(By.CSS_SELECTOR, '[id*="mainNavAccountSelect"]')
-    dropdown.click()
+    from selenium.webdriver.common.action_chains import ActionChains
+    # Open dropdown via ActionChains on the container
+    container = driver.find_element(By.CSS_SELECTOR, '#mainNavAccountSelect')
+    ActionChains(driver).move_to_element(container).click().perform()
     time.sleep(1)
-
-    # Type to filter
+    # Type to filter via the input
     input_el = driver.find_element(By.ID, 'react-select-mainNavAccountSelect-input')
+    driver.execute_script("arguments[0].focus();", input_el)
     input_el.send_keys(band_name[:20])
     time.sleep(1)
 
@@ -74,7 +92,7 @@ def select_band_and_get_links(driver, band_name):
         if not matched and options:
             matched = options[0]
         if matched:
-            matched.click()
+            driver.execute_script("arguments[0].click();", matched)
             time.sleep(4)
         else:
             logging.warning(f"Could not find option for {band_name}")
@@ -176,10 +194,13 @@ def main():
         updated_bands = dict(existing_bands)
         for i, band_name in enumerate(new_bands):
             logging.info(f"Processing new band {i+1}/{len(new_bands)}: {band_name}")
-            band_data = select_band_and_get_links(driver, band_name)
-            if band_data:
-                updated_bands[band_name] = band_data
-                logging.info(f"  MerchIQ: {band_data['Has MerchIQ']}, Link: {band_data['MerchIQ Link'][:80]}")
+            try:
+                band_data = select_band_and_get_links(driver, band_name)
+                if band_data:
+                    updated_bands[band_name] = band_data
+                    logging.info(f"  MerchIQ: {band_data['Has MerchIQ']}, Link: {band_data['MerchIQ Link'][:80]}")
+            except Exception as e:
+                logging.warning(f"  FAILED to process {band_name}: {e}")
             time.sleep(2)
 
         # Also re-check existing bands that had no MerchIQ (they might have it now)
@@ -189,10 +210,13 @@ def main():
             logging.info(f"Re-checking {len(no_merchiq)} bands without MerchIQ...")
             for i, band_name in enumerate(no_merchiq):
                 logging.info(f"Re-checking {i+1}/{len(no_merchiq)}: {band_name}")
-                band_data = select_band_and_get_links(driver, band_name)
-                if band_data and band_data['Has MerchIQ'] == 'Yes':
-                    updated_bands[band_name] = band_data
-                    logging.info(f"  NOW HAS MerchIQ: {band_data['MerchIQ Link'][:80]}")
+                try:
+                    band_data = select_band_and_get_links(driver, band_name)
+                    if band_data and band_data['Has MerchIQ'] == 'Yes':
+                        updated_bands[band_name] = band_data
+                        logging.info(f"  NOW HAS MerchIQ: {band_data['MerchIQ Link'][:80]}")
+                except Exception as e:
+                    logging.warning(f"  FAILED to re-check {band_name}: {e}")
                 time.sleep(2)
 
         # Write updated CSV preserving dropdown order
