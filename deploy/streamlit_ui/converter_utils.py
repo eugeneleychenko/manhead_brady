@@ -795,66 +795,80 @@ def _build_venue_lookup_from_tour_data(
     return lookup
 
 
-def _fetch_atvenu_api_venues(band_name: str) -> dict[str, dict[str, Any]]:
-    """Fetch venue data from atVenu GraphQL API for a band. Returns city->details."""
-    try:
-        from datetime import datetime, timedelta
-        from gql import Client, gql
-        from gql.transport.requests import RequestsHTTPTransport
-
-        transport = RequestsHTTPTransport(
-            url=ATVENU_API_ENDPOINT,
-            headers={"x-api-key": ATVENU_API_TOKEN},
-            retries=2,
-            timeout=30,
-        )
-        client = Client(transport=transport, fetch_schema_from_transport=True)
-
-        query = gql("""
-        query getFutureShows(
-          $firstForAccounts: Int!, $afterForAccounts: String,
-          $firstForTours: Int!, $firstForShows: Int!,
-          $dateRange: DateRange!
-        ) {
-          organization {
-            accounts(first: $firstForAccounts, after: $afterForAccounts) {
-              pageInfo { endCursor hasNextPage }
+_SHOWS_QUERY = """
+query getFutureShows(
+  $firstForAccounts: Int!, $afterForAccounts: String,
+  $firstForTours: Int!, $firstForShows: Int!,
+  $dateRange: DateRange!
+) {
+  organization {
+    accounts(first: $firstForAccounts, after: $afterForAccounts) {
+      pageInfo { endCursor hasNextPage }
+      nodes {
+        name
+        tours(first: $firstForTours) {
+          nodes {
+            shows(first: $firstForShows, showsOverlap: $dateRange) {
               nodes {
-                name
-                tours(first: $firstForTours) {
-                  nodes {
-                    shows(first: $firstForShows, showsOverlap: $dateRange) {
-                      nodes {
-                        showDate capacity attendance
-                        location { name city country }
-                      }
-                    }
-                  }
-                }
+                showDate capacity attendance
+                location { name city country }
               }
             }
           }
         }
-        """)
+      }
+    }
+  }
+}
+"""
 
-        start = datetime.now().strftime("%Y-%m-%d")
-        end = (datetime.now() + timedelta(days=365)).strftime("%Y-%m-%d")
-        lookup: dict[str, dict[str, Any]] = {}
-        cursor = None
 
+def _fetch_atvenu_api_venues(band_name: str) -> dict[str, dict[str, Any]]:
+    """Fetch venue data from atVenu GraphQL API for a band. Returns city->details.
+
+    Uses raw requests.post() instead of gql to avoid extra dependency on
+    Streamlit Cloud where gql is not installed.
+    """
+    from datetime import datetime, timedelta
+
+    start = datetime.now().strftime("%Y-%m-%d")
+    end = (datetime.now() + timedelta(days=365)).strftime("%Y-%m-%d")
+    lookup: dict[str, dict[str, Any]] = {}
+    cursor = None
+    headers = {
+        "Content-Type": "application/json",
+        "x-api-key": ATVENU_API_TOKEN,
+    }
+
+    try:
         while True:
-            data = client.execute(query, variable_values={
-                "firstForAccounts": 20, "afterForAccounts": cursor,
-                "firstForTours": 10, "firstForShows": 50,
-                "dateRange": {"start": start, "end": end},
-            })
-            for account in data["organization"]["accounts"]["nodes"]:
+            payload = {
+                "query": _SHOWS_QUERY,
+                "variables": {
+                    "firstForAccounts": 20,
+                    "afterForAccounts": cursor,
+                    "firstForTours": 10,
+                    "firstForShows": 50,
+                    "dateRange": {"start": start, "end": end},
+                },
+            }
+            resp = requests.post(
+                ATVENU_API_ENDPOINT, json=payload, headers=headers, timeout=30
+            )
+            resp.raise_for_status()
+            body = resp.json()
+            if "errors" in body:
+                break
+            data = body.get("data", {})
+            accounts_conn = data.get("organization", {}).get("accounts", {})
+
+            for account in accounts_conn.get("nodes", []):
                 if account["name"].lower().strip() != band_name.lower().strip():
                     continue
                 for tour in account.get("tours", {}).get("nodes", []):
                     for show in tour.get("shows", {}).get("nodes", []):
                         loc = show.get("location") or {}
-                        city_raw = loc.get("city", "")
+                        city_raw = loc.get("city") or ""
                         city, api_state = ("", "")
                         if "," in city_raw:
                             city, api_state = city_raw.split(",", 1)
@@ -881,10 +895,10 @@ def _fetch_atvenu_api_venues(band_name: str) -> dict[str, dict[str, Any]]:
                             "zip": "",
                         }
 
-            pi = data["organization"]["accounts"]["pageInfo"]
-            if not pi["hasNextPage"]:
+            pi = accounts_conn.get("pageInfo", {})
+            if not pi.get("hasNextPage"):
                 break
-            cursor = pi["endCursor"]
+            cursor = pi.get("endCursor")
 
         return lookup
     except Exception:
