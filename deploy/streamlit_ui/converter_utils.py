@@ -551,7 +551,7 @@ INCLUDED_BANDS = [
     "Nessa Barrett (MH)", "New Edition", "Noel Gallagher HFB (MH)",
     "Panic! At the Disco", "Royal Blood (MH)", "Seal (MH)",
     "Sebastian Maniscalco (MH)", "Sexyy Red", "Shame", "Skegss (MH)",
-    "Sonic Symphony", "Taylor Tomlinson (MH)", "The Buggles (MH)",
+    "Sofia Isella", "Sonic Symphony", "Taylor Tomlinson (MH)", "The Buggles (MH)",
     "The Chats (MH)", "The Sisters Of Mercy (MH)",
     "The Smashing Pumpkins (MH)", "The Zombies (MH)", "Toto (MH)",
     "Trevor Noah (MH)", "Tyler Childers (MH)", "Warren Hue", "Willow (MH)",
